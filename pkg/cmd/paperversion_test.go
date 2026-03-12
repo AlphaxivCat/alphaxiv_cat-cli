@@ -5,7 +5,7 @@ package cmd
 import (
 	"testing"
 
-	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/mocktest"
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/mocktest"
 )
 
 func TestPapersVersionsRequestAIOverview(t *testing.T) {
