@@ -1,6 +1,6 @@
 # Alphaxiv Cat CLI
 
-The official CLI for the Alphaxiv Cat REST API.
+The official CLI for the [Alphaxiv Cat REST API](https://api-dev.alphaxiv.org).
 
 It is generated with [Stainless](https://www.stainless.com/).
 
