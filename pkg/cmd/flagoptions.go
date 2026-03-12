@@ -14,11 +14,11 @@ import (
 	"strings"
 	"unicode/utf8"
 
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiform"
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/debugmiddleware"
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
 	"github.com/AlphaxivCat/alphaxiv_cat-go/option"
-	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/apiform"
-	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/apiquery"
-	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/debugmiddleware"
-	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/requestflag"
 
 	"github.com/goccy/go-yaml"
 	"github.com/urfave/cli/v3"

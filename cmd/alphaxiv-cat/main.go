@@ -10,8 +10,8 @@ import (
 	"os"
 	"slices"
 
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/pkg/cmd"
 	"github.com/AlphaxivCat/alphaxiv_cat-go"
-	"github.com/stainless-sdks/alphaxiv_cat-cli/pkg/cmd"
 	"github.com/tidwall/gjson"
 	"github.com/urfave/cli/v3"
 )

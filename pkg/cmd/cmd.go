@@ -12,8 +12,8 @@ import (
 	"slices"
 	"strings"
 
-	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/autocomplete"
-	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/requestflag"
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/autocomplete"
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
 	docs "github.com/urfave/cli-docs/v3"
 	"github.com/urfave/cli/v3"
 )
