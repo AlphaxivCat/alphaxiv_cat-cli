@@ -6,9 +6,9 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/AlphaxivCat/alphaxiv_cat-go"
 	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/requestflag"
-	"github.com/stainless-sdks/alphaxiv_cat-go"
 	"github.com/urfave/cli/v3"
 )
 
