@@ -3,6 +3,7 @@ module github.com/stainless-sdks/alphaxiv_cat-cli
 go 1.25
 
 require (
+	github.com/AlphaxivCat/alphaxiv_cat-go v0.2.0
 	github.com/charmbracelet/bubbles v0.21.0
 	github.com/charmbracelet/bubbletea v1.3.6
 	github.com/charmbracelet/lipgloss v1.1.0
@@ -10,7 +11,6 @@ require (
 	github.com/goccy/go-yaml v1.18.0
 	github.com/itchyny/json2yaml v0.1.4
 	github.com/muesli/reflow v0.3.0
-	github.com/stainless-sdks/alphaxiv_cat-go v0.0.0-20260312074341-c7284a0b440c
 	github.com/stretchr/testify v1.10.0
 	github.com/tidwall/gjson v1.18.0
 	github.com/tidwall/pretty v1.2.1

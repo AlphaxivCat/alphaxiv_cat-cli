@@ -16,8 +16,8 @@ import (
 	"strings"
 	"syscall"
 
+	"github.com/AlphaxivCat/alphaxiv_cat-go/option"
 	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/jsonview"
-	"github.com/stainless-sdks/alphaxiv_cat-go/option"
 
 	"github.com/charmbracelet/x/term"
 	"github.com/itchyny/json2yaml"
