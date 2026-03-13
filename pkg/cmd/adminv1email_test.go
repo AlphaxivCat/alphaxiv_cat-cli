@@ -5,8 +5,8 @@ package cmd
 import (
 	"testing"
 
-	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/mocktest"
-	"github.com/stainless-sdks/alphaxiv_cat-cli/internal/requestflag"
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/mocktest"
+	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
 )
 
 func TestAdminV1EmailsSendMonthlyDigest(t *testing.T) {

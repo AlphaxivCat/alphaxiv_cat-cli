@@ -1,4 +1,4 @@
-module github.com/stainless-sdks/alphaxiv_cat-cli
+module github.com/AlphaxivCat/alphaxiv_cat-cli
 
 go 1.25
 
