@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.1 (2026-03-14)
+
+Full Changelog: [v0.1.0...v0.1.1](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.1.0...v0.1.1)
+
+### Bug Fixes
+
+* only set client options when the corresponding CLI flag or env var is explicitly set ([6b464df](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/6b464dfa3bee4fa786b4cbc3a5d6665548854b88))
+
 ## 0.1.0 (2026-03-12)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.0.1...v0.1.0)
