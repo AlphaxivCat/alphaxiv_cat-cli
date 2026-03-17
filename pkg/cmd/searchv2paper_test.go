@@ -12,8 +12,9 @@ func TestSearchV2PaperFastSearch(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "search:v2:paper", "fast-search",
+			t,
 			"--api-key", "string",
+			"search:v2:paper", "fast-search",
 			"--include-private", "true",
 			"--q", "x",
 		)

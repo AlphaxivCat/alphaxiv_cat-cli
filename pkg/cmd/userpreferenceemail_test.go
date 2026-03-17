@@ -12,8 +12,9 @@ func TestUsersPreferencesEmailUpdate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:preferences:email", "update",
+			t,
 			"--api-key", "string",
+			"users:preferences:email", "update",
 			"--direct-notifications=true",
 			"--relevant-activity=true",
 		)
@@ -25,8 +26,9 @@ func TestUsersPreferencesEmailUpdate(t *testing.T) {
 			"directNotifications: true\n" +
 			"relevantActivity: true\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "users:preferences:email", "update",
+			t, pipeData,
 			"--api-key", "string",
+			"users:preferences:email", "update",
 		)
 	})
 }
@@ -35,8 +37,9 @@ func TestUsersPreferencesEmailGet(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:preferences:email", "get",
+			t,
 			"--api-key", "string",
+			"users:preferences:email", "get",
 		)
 	})
 }

@@ -12,8 +12,9 @@ func TestUsersV3CitationsGetGraph(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3:citations", "get-graph",
+			t,
 			"--api-key", "string",
+			"users:v3:citations", "get-graph",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -23,8 +24,9 @@ func TestUsersV3CitationsGetSummary(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3:citations", "get-summary",
+			t,
 			"--api-key", "string",
+			"users:v3:citations", "get-summary",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})

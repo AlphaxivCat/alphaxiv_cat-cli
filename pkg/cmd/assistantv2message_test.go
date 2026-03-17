@@ -13,8 +13,9 @@ func TestAssistantV2MessagesList(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2:messages", "list",
+			t,
 			"--api-key", "string",
+			"assistant:v2:messages", "list",
 			"--llm-chat", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -24,8 +25,9 @@ func TestAssistantV2MessagesSelect(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2:messages", "select",
+			t,
 			"--api-key", "string",
+			"assistant:v2:messages", "select",
 			"--llm-chat", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--message", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
@@ -36,8 +38,9 @@ func TestAssistantV2MessagesSetFeedback(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2:messages", "set-feedback",
+			t,
 			"--api-key", "string",
+			"assistant:v2:messages", "set-feedback",
 			"--message-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--feedback", "{type: upvote, category: category, details: details}",
 		)
@@ -49,8 +52,9 @@ func TestAssistantV2MessagesSetFeedback(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2:messages", "set-feedback",
+			t,
 			"--api-key", "string",
+			"assistant:v2:messages", "set-feedback",
 			"--message-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--feedback.type", "upvote",
 			"--feedback.category", "category",
@@ -66,8 +70,9 @@ func TestAssistantV2MessagesSetFeedback(t *testing.T) {
 			"  category: category\n" +
 			"  details: details\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "assistant:v2:messages", "set-feedback",
+			t, pipeData,
 			"--api-key", "string",
+			"assistant:v2:messages", "set-feedback",
 			"--message-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})

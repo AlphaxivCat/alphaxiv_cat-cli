@@ -12,8 +12,9 @@ func TestBriefsV1SeenGetSeen(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "briefs:v1:seen", "get-seen",
+			t,
 			"--api-key", "string",
+			"briefs:v1:seen", "get-seen",
 		)
 	})
 }
@@ -22,8 +23,9 @@ func TestBriefsV1SeenMarkSeen(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "briefs:v1:seen", "mark-seen",
+			t,
 			"--api-key", "string",
+			"briefs:v1:seen", "mark-seen",
 			"--paper-group-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -32,8 +34,9 @@ func TestBriefsV1SeenMarkSeen(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("paperGroupId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "briefs:v1:seen", "mark-seen",
+			t, pipeData,
 			"--api-key", "string",
+			"briefs:v1:seen", "mark-seen",
 		)
 	})
 }

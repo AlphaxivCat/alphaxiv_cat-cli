@@ -12,8 +12,9 @@ func TestSitemapsListOverviews(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "sitemaps", "list-overviews",
+			t,
 			"--api-key", "string",
+			"sitemaps", "list-overviews",
 			"--limit", "limit",
 			"--page", "page",
 		)
@@ -24,8 +25,9 @@ func TestSitemapsListPapers(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "sitemaps", "list-papers",
+			t,
 			"--api-key", "string",
+			"sitemaps", "list-papers",
 			"--limit", "limit",
 			"--page", "page",
 		)
@@ -36,8 +38,9 @@ func TestSitemapsListUsers(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "sitemaps", "list-users",
+			t,
 			"--api-key", "string",
+			"sitemaps", "list-users",
 			"--limit", "limit",
 			"--page", "page",
 		)

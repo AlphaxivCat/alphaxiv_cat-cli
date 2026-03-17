@@ -12,8 +12,9 @@ func TestGoogleScholarV1Connect(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "google-scholar:v1", "connect",
+			t,
 			"--api-key", "string",
+			"google-scholar:v1", "connect",
 			"--google-scholar-id", "x",
 		)
 	})
@@ -22,8 +23,9 @@ func TestGoogleScholarV1Connect(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("googleScholarId: x")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "google-scholar:v1", "connect",
+			t, pipeData,
 			"--api-key", "string",
+			"google-scholar:v1", "connect",
 		)
 	})
 }
@@ -32,8 +34,9 @@ func TestGoogleScholarV1DeleteConnection(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "google-scholar:v1", "delete-connection",
+			t,
 			"--api-key", "string",
+			"google-scholar:v1", "delete-connection",
 		)
 	})
 }
@@ -42,8 +45,9 @@ func TestGoogleScholarV1GetReport(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "google-scholar:v1", "get-report",
+			t,
 			"--api-key", "string",
+			"google-scholar:v1", "get-report",
 		)
 	})
 }
@@ -52,8 +56,9 @@ func TestGoogleScholarV1GetStatus(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "google-scholar:v1", "get-status",
+			t,
 			"--api-key", "string",
+			"google-scholar:v1", "get-status",
 		)
 	})
 }
@@ -62,8 +67,9 @@ func TestGoogleScholarV1Resync(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "google-scholar:v1", "resync",
+			t,
 			"--api-key", "string",
+			"google-scholar:v1", "resync",
 			"--mode", "all",
 		)
 	})
@@ -73,8 +79,9 @@ func TestGoogleScholarV1SetEmail(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "google-scholar:v1", "set-email",
+			t,
 			"--api-key", "string",
+			"google-scholar:v1", "set-email",
 			"--local-part", "localPart",
 			"--verify-account-email=true",
 		)
@@ -86,8 +93,9 @@ func TestGoogleScholarV1SetEmail(t *testing.T) {
 			"localPart: localPart\n" +
 			"verifyAccountEmail: true\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "google-scholar:v1", "set-email",
+			t, pipeData,
 			"--api-key", "string",
+			"google-scholar:v1", "set-email",
 		)
 	})
 }
@@ -96,8 +104,9 @@ func TestGoogleScholarV1Sync(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "google-scholar:v1", "sync",
+			t,
 			"--api-key", "string",
+			"google-scholar:v1", "sync",
 		)
 	})
 }
@@ -106,8 +115,9 @@ func TestGoogleScholarV1VerifyEmail(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "google-scholar:v1", "verify-email",
+			t,
 			"--api-key", "string",
+			"google-scholar:v1", "verify-email",
 			"--code", "xxxxxx",
 		)
 	})
@@ -116,8 +126,9 @@ func TestGoogleScholarV1VerifyEmail(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("code: xxxxxx")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "google-scholar:v1", "verify-email",
+			t, pipeData,
 			"--api-key", "string",
+			"google-scholar:v1", "verify-email",
 		)
 	})
 }

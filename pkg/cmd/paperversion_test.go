@@ -12,8 +12,9 @@ func TestPapersVersionsRequestAIOverview(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:versions", "request-ai-overview",
+			t,
 			"--api-key", "string",
+			"papers:versions", "request-ai-overview",
 			"--upid", "x",
 			"--version-order", "x",
 			"--preferred-language", "am",
@@ -25,8 +26,9 @@ func TestPapersVersionsRequestAITranslation(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:versions", "request-ai-translation",
+			t,
 			"--api-key", "string",
+			"papers:versions", "request-ai-translation",
 			"--upid", "x",
 			"--version-order", "x",
 			"--language", "am",

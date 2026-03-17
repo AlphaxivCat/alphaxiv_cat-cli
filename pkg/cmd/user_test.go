@@ -12,8 +12,9 @@ func TestUsersGetPrivateNotes(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users", "get-private-notes",
+			t,
 			"--api-key", "string",
+			"users", "get-private-notes",
 			"--uid", "uid",
 			"--limit", "limit",
 			"--page", "page",
@@ -25,8 +26,9 @@ func TestUsersWeighWeeklyReputation(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users", "weigh-weekly-reputation",
+			t,
 			"--api-key", "string",
+			"users", "weigh-weekly-reputation",
 		)
 	})
 }

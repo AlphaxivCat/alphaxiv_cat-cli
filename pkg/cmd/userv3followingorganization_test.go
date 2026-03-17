@@ -12,8 +12,9 @@ func TestUsersV3FollowingOrganizationsList(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3:following:organizations", "list",
+			t,
 			"--api-key", "string",
+			"users:v3:following:organizations", "list",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -23,8 +24,9 @@ func TestUsersV3FollowingOrganizationsToggle(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3:following:organizations", "toggle",
+			t,
 			"--api-key", "string",
+			"users:v3:following:organizations", "toggle",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--organization", "x",
 		)
@@ -34,8 +36,9 @@ func TestUsersV3FollowingOrganizationsToggle(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("organization: x")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "users:v3:following:organizations", "toggle",
+			t, pipeData,
 			"--api-key", "string",
+			"users:v3:following:organizations", "toggle",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})

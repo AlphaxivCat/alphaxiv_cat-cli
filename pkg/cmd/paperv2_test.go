@@ -13,8 +13,9 @@ func TestPapersV2Comment(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v2", "comment",
+			t,
 			"--api-key", "string",
+			"papers:v2", "comment",
 			"--version", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--anchor-position", "{offset: 0, pageIndex: 0, spanIndex: 0}",
 			"--body", "body",
@@ -34,8 +35,9 @@ func TestPapersV2Comment(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v2", "comment",
+			t,
 			"--api-key", "string",
+			"papers:v2", "comment",
 			"--version", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--anchor-position.offset", "0",
 			"--anchor-position.page-index", "0",
@@ -79,8 +81,9 @@ func TestPapersV2Comment(t *testing.T) {
 			"title: title\n" +
 			"highlightColor: '#26fBC5dF'\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v2", "comment",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v2", "comment",
 			"--version", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})

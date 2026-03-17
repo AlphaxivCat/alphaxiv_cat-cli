@@ -12,8 +12,9 @@ func TestAPIKeysV1Create(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "api-keys:v1", "create",
+			t,
 			"--api-key", "string",
+			"api-keys:v1", "create",
 			"--label", "x",
 		)
 	})
@@ -22,8 +23,9 @@ func TestAPIKeysV1Create(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("label: x")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "api-keys:v1", "create",
+			t, pipeData,
 			"--api-key", "string",
+			"api-keys:v1", "create",
 		)
 	})
 }
@@ -32,8 +34,9 @@ func TestAPIKeysV1List(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "api-keys:v1", "list",
+			t,
 			"--api-key", "string",
+			"api-keys:v1", "list",
 		)
 	})
 }
@@ -42,8 +45,9 @@ func TestAPIKeysV1CreateImpersonation(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "api-keys:v1", "create-impersonation",
+			t,
 			"--api-key", "string",
+			"api-keys:v1", "create-impersonation",
 			"--user", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -52,8 +56,9 @@ func TestAPIKeysV1CreateImpersonation(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("user: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "api-keys:v1", "create-impersonation",
+			t, pipeData,
 			"--api-key", "string",
+			"api-keys:v1", "create-impersonation",
 		)
 	})
 }
@@ -62,8 +67,9 @@ func TestAPIKeysV1Revoke(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "api-keys:v1", "revoke",
+			t,
 			"--api-key", "string",
+			"api-keys:v1", "revoke",
 			"--api-key-id", "own",
 		)
 	})

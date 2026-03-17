@@ -12,8 +12,9 @@ func TestPapersV3LegacyRetrieve(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3:legacy", "retrieve",
+			t,
 			"--api-key", "string",
+			"papers:v3:legacy", "retrieve",
 			"--unresolved", "unresolved",
 		)
 	})
@@ -23,8 +24,9 @@ func TestPapersV3LegacyRetrieveComments(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3:legacy", "retrieve-comments",
+			t,
 			"--api-key", "string",
+			"papers:v3:legacy", "retrieve-comments",
 			"--group", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})

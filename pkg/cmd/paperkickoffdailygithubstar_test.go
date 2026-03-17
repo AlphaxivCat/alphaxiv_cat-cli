@@ -12,8 +12,9 @@ func TestPapersKickoffDailyGitHubStarsUpdate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:kickoff-daily-github-stars", "update",
+			t,
 			"--api-key", "string",
+			"papers:kickoff-daily-github-stars", "update",
 			"--max", "max",
 		)
 	})
@@ -23,8 +24,9 @@ func TestPapersKickoffDailyGitHubStarsKickoffDailyGitHubStars(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:kickoff-daily-github-stars", "kickoff-daily-github-stars",
+			t,
 			"--api-key", "string",
+			"papers:kickoff-daily-github-stars", "kickoff-daily-github-stars",
 		)
 	})
 }

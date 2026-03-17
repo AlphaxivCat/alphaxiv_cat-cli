@@ -12,8 +12,9 @@ func TestPapersV3Retrieve(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve",
 			"--unresolved", "unresolved",
 		)
 	})
@@ -23,8 +24,9 @@ func TestPapersV3Comment(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "comment",
+			t,
 			"--api-key", "string",
+			"papers:v3", "comment",
 			"--version", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--tag", "anonymous",
 			"--body", "body",
@@ -41,8 +43,9 @@ func TestPapersV3Comment(t *testing.T) {
 			"parent: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n" +
 			"title: title\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v3", "comment",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v3", "comment",
 			"--version", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -52,8 +55,9 @@ func TestPapersV3DeleteVotes(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "delete-votes",
+			t,
 			"--api-key", "string",
+			"papers:v3", "delete-votes",
 			"--body", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -62,8 +66,9 @@ func TestPapersV3DeleteVotes(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("- 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v3", "delete-votes",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v3", "delete-votes",
 		)
 	})
 }
@@ -72,8 +77,9 @@ func TestPapersV3Implementation(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "implementation",
+			t,
 			"--api-key", "string",
+			"papers:v3", "implementation",
 			"--paper-group-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--url", "url",
 		)
@@ -83,8 +89,9 @@ func TestPapersV3Implementation(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("url: url")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v3", "implementation",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v3", "implementation",
 			"--paper-group-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -94,8 +101,9 @@ func TestPapersV3KickoffPaperCountries(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "kickoff-paper-countries",
+			t,
 			"--api-key", "string",
+			"papers:v3", "kickoff-paper-countries",
 			"--batch", "1",
 			"--max-papers", "1",
 			"--months", "1",
@@ -109,8 +117,9 @@ func TestPapersV3KickoffPaperCountries(t *testing.T) {
 			"maxPapers: 1\n" +
 			"months: 1\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v3", "kickoff-paper-countries",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v3", "kickoff-paper-countries",
 		)
 	})
 }
@@ -119,8 +128,9 @@ func TestPapersV3KickoffPaperFullText(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "kickoff-paper-full-text",
+			t,
 			"--api-key", "string",
+			"papers:v3", "kickoff-paper-full-text",
 			"--max-papers", "1",
 		)
 	})
@@ -129,8 +139,9 @@ func TestPapersV3KickoffPaperFullText(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("maxPapers: 1")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v3", "kickoff-paper-full-text",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v3", "kickoff-paper-full-text",
 		)
 	})
 }
@@ -139,8 +150,9 @@ func TestPapersV3KickoffPaperPodcasts(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "kickoff-paper-podcasts",
+			t,
 			"--api-key", "string",
+			"papers:v3", "kickoff-paper-podcasts",
 		)
 	})
 }
@@ -149,8 +161,9 @@ func TestPapersV3KickoffThumbnailsTrendingPapers(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "kickoff-thumbnails-trending-papers",
+			t,
 			"--api-key", "string",
+			"papers:v3", "kickoff-thumbnails-trending-papers",
 		)
 	})
 }
@@ -159,8 +172,9 @@ func TestPapersV3KickoffXMentionsSync(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "kickoff-x-mentions-sync",
+			t,
 			"--api-key", "string",
+			"papers:v3", "kickoff-x-mentions-sync",
 			"--dry-run=true",
 			"--limit", "1",
 		)
@@ -172,8 +186,9 @@ func TestPapersV3KickoffXMentionsSync(t *testing.T) {
 			"dryRun: true\n" +
 			"limit: 1\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v3", "kickoff-x-mentions-sync",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v3", "kickoff-x-mentions-sync",
 		)
 	})
 }
@@ -182,8 +197,9 @@ func TestPapersV3Like(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "like",
+			t,
 			"--api-key", "string",
+			"papers:v3", "like",
 			"--group", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -193,8 +209,9 @@ func TestPapersV3Podcast(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "podcast",
+			t,
 			"--api-key", "string",
+			"papers:v3", "podcast",
 			"--paper-group-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -204,8 +221,9 @@ func TestPapersV3ProcessAI(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "process-ai",
+			t,
 			"--api-key", "string",
+			"papers:v3", "process-ai",
 			"--paper-version-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--preferred-language", "am",
 		)
@@ -216,8 +234,9 @@ func TestPapersV3ProcessCountries(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "process-countries",
+			t,
 			"--api-key", "string",
+			"papers:v3", "process-countries",
 			"--universal-paper-id", "string",
 		)
 	})
@@ -228,8 +247,9 @@ func TestPapersV3ProcessCountries(t *testing.T) {
 			"universalPaperIds:\n" +
 			"  - string\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v3", "process-countries",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v3", "process-countries",
 		)
 	})
 }
@@ -238,8 +258,9 @@ func TestPapersV3ProcessFullText(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "process-full-text",
+			t,
 			"--api-key", "string",
+			"papers:v3", "process-full-text",
 			"--paper-version-id", "paperVersionId",
 		)
 	})
@@ -248,8 +269,9 @@ func TestPapersV3ProcessFullText(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("paperVersionId: paperVersionId")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v3", "process-full-text",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v3", "process-full-text",
 		)
 	})
 }
@@ -258,8 +280,9 @@ func TestPapersV3PruneEmbeddingsByDate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "prune-embeddings-by-date",
+			t,
 			"--api-key", "string",
+			"papers:v3", "prune-embeddings-by-date",
 		)
 	})
 }
@@ -268,8 +291,9 @@ func TestPapersV3RequestImplementation(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "request-implementation",
+			t,
 			"--api-key", "string",
+			"papers:v3", "request-implementation",
 			"--group", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--paper-title", "paperTitle",
 			"--universal-paper-id", "universalPaperId",
@@ -284,8 +308,9 @@ func TestPapersV3RequestImplementation(t *testing.T) {
 			"universalPaperId: universalPaperId\n" +
 			"additionalInfo: additionalInfo\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:v3", "request-implementation",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:v3", "request-implementation",
 			"--group", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -295,8 +320,9 @@ func TestPapersV3RequestPodcast(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "request-podcast",
+			t,
 			"--api-key", "string",
+			"papers:v3", "request-podcast",
 			"--paper-group-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -306,8 +332,9 @@ func TestPapersV3RetrieveAll(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-all",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-all",
 			"--limit", "limit",
 			"--skip", "skip",
 		)
@@ -318,8 +345,9 @@ func TestPapersV3RetrieveDiversePapers(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-diverse-papers",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-diverse-papers",
 			"--topics", "topics",
 		)
 	})
@@ -329,8 +357,9 @@ func TestPapersV3RetrieveFeed(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-feed",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-feed",
 			"--interval", "3 Days",
 			"--page-num", "pageNum",
 			"--page-size", "pageSize",
@@ -349,8 +378,9 @@ func TestPapersV3RetrieveFigures(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-figures",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-figures",
 			"--paper-group-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -360,8 +390,9 @@ func TestPapersV3RetrieveFullText(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-full-text",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-full-text",
 			"--paper-version", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -371,8 +402,9 @@ func TestPapersV3RetrieveGeoTrends(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-geo-trends",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-geo-trends",
 			"--collaboration-limit", "collaborationLimit",
 			"--paper-limit", "paperLimit",
 			"--past-months", "pastMonths",
@@ -386,8 +418,9 @@ func TestPapersV3RetrieveMetrics(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-metrics",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-metrics",
 			"--unresolved", "unresolved",
 		)
 	})
@@ -397,8 +430,9 @@ func TestPapersV3RetrievePapersByCountry(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-papers-by-country",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-papers-by-country",
 			"--country", "country",
 			"--limit", "limit",
 		)
@@ -409,8 +443,9 @@ func TestPapersV3RetrievePreview(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-preview",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-preview",
 			"--id", "id",
 		)
 	})
@@ -420,8 +455,9 @@ func TestPapersV3RetrieveSimilarPapers(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-similar-papers",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-similar-papers",
 			"--id", "id",
 			"--exclude", "exclude",
 			"--exclude-likes", "false",
@@ -435,8 +471,9 @@ func TestPapersV3RetrieveUnrelated(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "retrieve-unrelated",
+			t,
 			"--api-key", "string",
+			"papers:v3", "retrieve-unrelated",
 			"--limit", "limit",
 			"--papers", "papers",
 			"--topics", "topics",
@@ -448,8 +485,9 @@ func TestPapersV3View(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:v3", "view",
+			t,
 			"--api-key", "string",
+			"papers:v3", "view",
 			"--group", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
