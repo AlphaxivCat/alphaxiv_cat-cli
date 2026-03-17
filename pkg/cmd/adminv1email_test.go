@@ -13,8 +13,9 @@ func TestAdminV1EmailsSendMonthlyDigest(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "admin:v1:emails", "send-monthly-digest",
+			t,
 			"--api-key", "string",
+			"admin:v1:emails", "send-monthly-digest",
 			"--role", "admin",
 		)
 	})
@@ -23,8 +24,9 @@ func TestAdminV1EmailsSendMonthlyDigest(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("role: admin")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "admin:v1:emails", "send-monthly-digest",
+			t, pipeData,
 			"--api-key", "string",
+			"admin:v1:emails", "send-monthly-digest",
 		)
 	})
 }
@@ -33,8 +35,9 @@ func TestAdminV1EmailsSendWeeklyDigest(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "admin:v1:emails", "send-weekly-digest",
+			t,
 			"--api-key", "string",
+			"admin:v1:emails", "send-weekly-digest",
 			"--event", "{date: date, description: description, link: link, title: title, endTimeRaw: endTimeRaw, startTimeRaw: startTimeRaw}",
 			"--intro-text", "introText",
 			"--role", "admin",
@@ -48,8 +51,9 @@ func TestAdminV1EmailsSendWeeklyDigest(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "admin:v1:emails", "send-weekly-digest",
+			t,
 			"--api-key", "string",
+			"admin:v1:emails", "send-weekly-digest",
 			"--event.date", "date",
 			"--event.description", "description",
 			"--event.link", "link",
@@ -76,8 +80,9 @@ func TestAdminV1EmailsSendWeeklyDigest(t *testing.T) {
 			"role: admin\n" +
 			"subject: subject\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "admin:v1:emails", "send-weekly-digest",
+			t, pipeData,
 			"--api-key", "string",
+			"admin:v1:emails", "send-weekly-digest",
 		)
 	})
 }

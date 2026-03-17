@@ -12,8 +12,9 @@ func TestWellKnownRetrieveOAuthProtectedResource(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "well-known", "retrieve-oauth-protected-resource",
+			t,
 			"--api-key", "string",
+			"well-known", "retrieve-oauth-protected-resource",
 		)
 	})
 }

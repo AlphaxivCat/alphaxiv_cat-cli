@@ -13,8 +13,9 @@ func TestAssistantV2Chat(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2", "chat",
+			t,
 			"--api-key", "string",
+			"assistant:v2", "chat",
 			"--max-items", "10",
 			"--file", "{contentType: contentType, url: https://example.com}",
 			"--llm-chat-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -37,8 +38,9 @@ func TestAssistantV2Chat(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2", "chat",
+			t,
 			"--api-key", "string",
+			"assistant:v2", "chat",
 			"--max-items", "10",
 			"--file.content-type", "contentType",
 			"--file.url", "https://example.com",
@@ -76,8 +78,9 @@ func TestAssistantV2Chat(t *testing.T) {
 			"folderId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n" +
 			"model: gemini-2.5-flash\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "assistant:v2", "chat",
+			t, pipeData,
 			"--api-key", "string",
+			"assistant:v2", "chat",
 			"--max-items", "10",
 		)
 	})
@@ -87,8 +90,9 @@ func TestAssistantV2DeleteChat(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2", "delete-chat",
+			t,
 			"--api-key", "string",
+			"assistant:v2", "delete-chat",
 			"--llm-chat", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -98,8 +102,9 @@ func TestAssistantV2EditChat(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2", "edit-chat",
+			t,
 			"--api-key", "string",
+			"assistant:v2", "edit-chat",
 			"--llm-chat", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--title", "title",
 		)
@@ -109,8 +114,9 @@ func TestAssistantV2EditChat(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("title: title")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "assistant:v2", "edit-chat",
+			t, pipeData,
 			"--api-key", "string",
+			"assistant:v2", "edit-chat",
 			"--llm-chat", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -120,8 +126,9 @@ func TestAssistantV2GetChats(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2", "get-chats",
+			t,
 			"--api-key", "string",
+			"assistant:v2", "get-chats",
 			"--folder", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--paper-version", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--variant", "homepage",
@@ -133,8 +140,9 @@ func TestAssistantV2GetURLMetadata(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant:v2", "get-url-metadata",
+			t,
 			"--api-key", "string",
+			"assistant:v2", "get-url-metadata",
 			"--url", "https://example.com",
 		)
 	})

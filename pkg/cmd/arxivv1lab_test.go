@@ -12,8 +12,9 @@ func TestArxivV1LabsRetrieve(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "arxiv:v1:labs", "retrieve",
+			t,
 			"--api-key", "string",
+			"arxiv:v1:labs", "retrieve",
 			"--unresolved", "unresolved",
 		)
 	})

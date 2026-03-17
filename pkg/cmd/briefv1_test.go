@@ -12,8 +12,9 @@ func TestBriefsV1GenerateSpeech(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "briefs:v1", "generate-speech",
+			t,
 			"--api-key", "string",
+			"briefs:v1", "generate-speech",
 			"--paper-group-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--text", "text",
 		)
@@ -25,8 +26,9 @@ func TestBriefsV1GenerateSpeech(t *testing.T) {
 			"paperGroupId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n" +
 			"text: text\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "briefs:v1", "generate-speech",
+			t, pipeData,
 			"--api-key", "string",
+			"briefs:v1", "generate-speech",
 		)
 	})
 }

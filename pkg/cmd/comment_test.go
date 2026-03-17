@@ -13,8 +13,9 @@ func TestCommentsEdit(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "comments", "edit",
+			t,
 			"--api-key", "string",
+			"comments", "edit",
 			"--comment", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--anchor-position", "{offset: 0, pageIndex: 0, spanIndex: 0}",
 			"--body", "body",
@@ -32,8 +33,9 @@ func TestCommentsEdit(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "comments", "edit",
+			t,
 			"--api-key", "string",
+			"comments", "edit",
 			"--comment", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--anchor-position.offset", "0",
 			"--anchor-position.page-index", "0",
@@ -73,8 +75,9 @@ func TestCommentsEdit(t *testing.T) {
 			"selectedText: selectedText\n" +
 			"title: title\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "comments", "edit",
+			t, pipeData,
 			"--api-key", "string",
+			"comments", "edit",
 			"--comment", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})

@@ -12,8 +12,9 @@ func TestPapersIngestIngestLatest(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:ingest", "ingest-latest",
+			t,
 			"--api-key", "string",
+			"papers:ingest", "ingest-latest",
 			"--upid", "x",
 			"--prevent-tracking", "preventTracking",
 		)
@@ -24,8 +25,9 @@ func TestPapersIngestIngestVersion(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:ingest", "ingest-version",
+			t,
 			"--api-key", "string",
+			"papers:ingest", "ingest-version",
 			"--upid", "x",
 			"--version-label", "x",
 			"--prevent-tracking", "preventTracking",
