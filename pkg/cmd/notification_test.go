@@ -12,8 +12,9 @@ func TestNotificationsSendKickoffNotificationEmails(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "notifications", "send-kickoff-notification-emails",
+			t,
 			"--api-key", "string",
+			"notifications", "send-kickoff-notification-emails",
 		)
 	})
 }

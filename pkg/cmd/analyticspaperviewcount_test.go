@@ -12,8 +12,9 @@ func TestAnalyticsPaperViewCountIngestEvent(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "analytics:paper-view-count", "ingest-event",
+			t,
 			"--api-key", "string",
+			"analytics:paper-view-count", "ingest-event",
 			"--paper-id", "paperId",
 			"--created-at", "createdAt",
 			"--user-id", "userId",
@@ -27,8 +28,9 @@ func TestAnalyticsPaperViewCountIngestEvent(t *testing.T) {
 			"createdAt: createdAt\n" +
 			"userId: userId\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "analytics:paper-view-count", "ingest-event",
+			t, pipeData,
 			"--api-key", "string",
+			"analytics:paper-view-count", "ingest-event",
 		)
 	})
 }
@@ -37,8 +39,9 @@ func TestAnalyticsPaperViewCountKickoffJob(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "analytics:paper-view-count", "kickoff-job",
+			t,
 			"--api-key", "string",
+			"analytics:paper-view-count", "kickoff-job",
 			"--type", "type",
 			"--like", "like",
 		)
@@ -50,8 +53,9 @@ func TestAnalyticsPaperViewCountKickoffJob(t *testing.T) {
 			"type: type\n" +
 			"like: like\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "analytics:paper-view-count", "kickoff-job",
+			t, pipeData,
 			"--api-key", "string",
+			"analytics:paper-view-count", "kickoff-job",
 		)
 	})
 }
@@ -60,8 +64,9 @@ func TestAnalyticsPaperViewCountProcessJob(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "analytics:paper-view-count", "process-job",
+			t,
 			"--api-key", "string",
+			"analytics:paper-view-count", "process-job",
 			"--paper-id", "paperId",
 			"--publication-date", "publicationDate",
 			"--like=true",
@@ -75,8 +80,9 @@ func TestAnalyticsPaperViewCountProcessJob(t *testing.T) {
 			"publicationDate: publicationDate\n" +
 			"like: true\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "analytics:paper-view-count", "process-job",
+			t, pipeData,
 			"--api-key", "string",
+			"analytics:paper-view-count", "process-job",
 		)
 	})
 }

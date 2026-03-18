@@ -13,8 +13,9 @@ func TestResearchCreateProject(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "research", "create-project",
+			t,
 			"--api-key", "string",
+			"research", "create-project",
 			"--name", "name",
 			"--folder", "{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, delete: true}",
 			"--initial-paper", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -28,8 +29,9 @@ func TestResearchCreateProject(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "research", "create-project",
+			t,
 			"--api-key", "string",
+			"research", "create-project",
 			"--name", "name",
 			"--folder.id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--folder.delete=true",
@@ -49,8 +51,9 @@ func TestResearchCreateProject(t *testing.T) {
 			"  - 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n" +
 			"parentId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "research", "create-project",
+			t, pipeData,
 			"--api-key", "string",
+			"research", "create-project",
 		)
 	})
 }

@@ -12,8 +12,9 @@ func TestAssistantUploadFile(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "assistant", "upload-file",
+			t,
 			"--api-key", "string",
+			"assistant", "upload-file",
 		)
 	})
 }

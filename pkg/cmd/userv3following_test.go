@@ -12,8 +12,9 @@ func TestUsersV3FollowingList(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3:following", "list",
+			t,
 			"--api-key", "string",
+			"users:v3:following", "list",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})

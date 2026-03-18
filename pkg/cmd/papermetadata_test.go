@@ -12,8 +12,9 @@ func TestPapersMetadataRetrieveLatestMetadata(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:metadata", "retrieve-latest-metadata",
+			t,
 			"--api-key", "string",
+			"papers:metadata", "retrieve-latest-metadata",
 			"--upid", "x",
 			"--prevent-tracking", "preventTracking",
 		)
@@ -24,8 +25,9 @@ func TestPapersMetadataRetrieveVersionMetadata(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:metadata", "retrieve-version-metadata",
+			t,
 			"--api-key", "string",
+			"papers:metadata", "retrieve-version-metadata",
 			"--upid", "x",
 			"--version-order", "x",
 			"--prevent-tracking", "preventTracking",

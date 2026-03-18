@@ -12,8 +12,9 @@ func TestMcpV1EstablishConnection(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "mcp:v1", "establish-connection",
+			t,
 			"--api-key", "string",
+			"mcp:v1", "establish-connection",
 			"--max-items", "10",
 		)
 	})
@@ -23,8 +24,9 @@ func TestMcpV1SendMessage(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "mcp:v1", "send-message",
+			t,
 			"--api-key", "string",
+			"mcp:v1", "send-message",
 			"--body", "{}",
 		)
 	})
@@ -33,8 +35,9 @@ func TestMcpV1SendMessage(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("{}")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "mcp:v1", "send-message",
+			t, pipeData,
 			"--api-key", "string",
+			"mcp:v1", "send-message",
 		)
 	})
 }
@@ -43,8 +46,9 @@ func TestMcpV1TerminateSession(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "mcp:v1", "terminate-session",
+			t,
 			"--api-key", "string",
+			"mcp:v1", "terminate-session",
 		)
 	})
 }

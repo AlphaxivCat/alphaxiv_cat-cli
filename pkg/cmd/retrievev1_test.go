@@ -12,8 +12,9 @@ func TestRetrieveV1GetTopPapers(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retrieve:v1", "get-top-papers",
+			t,
 			"--api-key", "string",
+			"retrieve:v1", "get-top-papers",
 			"--limit", "limit",
 			"--skip", "skip",
 		)

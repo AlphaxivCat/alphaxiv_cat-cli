@@ -12,8 +12,9 @@ func TestRetoolV1GetCumulativeUsers(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-cumulative-users",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-cumulative-users",
 		)
 	})
 }
@@ -22,8 +23,9 @@ func TestRetoolV1GetDailyConversations(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-daily-conversations",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-daily-conversations",
 		)
 	})
 }
@@ -32,8 +34,9 @@ func TestRetoolV1GetDailyNewAccounts(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-daily-new-accounts",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-daily-new-accounts",
 		)
 	})
 }
@@ -42,8 +45,9 @@ func TestRetoolV1GetDailyUserChatMessages(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-daily-user-chat-messages",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-daily-user-chat-messages",
 		)
 	})
 }
@@ -52,8 +56,9 @@ func TestRetoolV1GetTotalCommentCount(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-total-comment-count",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-total-comment-count",
 		)
 	})
 }
@@ -62,8 +67,9 @@ func TestRetoolV1GetTotalPaperCount(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-total-paper-count",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-total-paper-count",
 		)
 	})
 }
@@ -72,8 +78,9 @@ func TestRetoolV1GetTotalPrivateNotesCount(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-total-private-notes-count",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-total-private-notes-count",
 		)
 	})
 }
@@ -82,8 +89,9 @@ func TestRetoolV1GetTotalUserCount(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-total-user-count",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-total-user-count",
 		)
 	})
 }
@@ -92,8 +100,9 @@ func TestRetoolV1GetWeeklyMessageCountsByUser(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-weekly-message-counts-by-user",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-weekly-message-counts-by-user",
 		)
 	})
 }
@@ -102,8 +111,9 @@ func TestRetoolV1GetWeeklyPrivateNotes(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-weekly-private-notes",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-weekly-private-notes",
 		)
 	})
 }
@@ -112,8 +122,9 @@ func TestRetoolV1GetWeeklyPublicComments(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "retool:v1", "get-weekly-public-comments",
+			t,
 			"--api-key", "string",
+			"retool:v1", "get-weekly-public-comments",
 		)
 	})
 }

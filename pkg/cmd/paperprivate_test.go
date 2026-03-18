@@ -13,8 +13,9 @@ func TestPapersPrivateCreate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:private", "create",
+			t,
 			"--api-key", "string",
+			"papers:private", "create",
 			"--content-type", "x",
 			"--file", "x",
 			"--filename", "x",
@@ -28,8 +29,9 @@ func TestPapersPrivateCreate(t *testing.T) {
 			"file: x\n" +
 			"filename: x\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:private", "create",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:private", "create",
 		)
 	})
 }
@@ -38,8 +40,9 @@ func TestPapersPrivateUpdateMetadata(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:private", "update-metadata",
+			t,
 			"--api-key", "string",
+			"papers:private", "update-metadata",
 			"--paper-id", "paperId",
 			"--abstract", "abstract",
 			"--author", "{name: x}",
@@ -56,8 +59,9 @@ func TestPapersPrivateUpdateMetadata(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "papers:private", "update-metadata",
+			t,
 			"--api-key", "string",
+			"papers:private", "update-metadata",
 			"--paper-id", "paperId",
 			"--abstract", "abstract",
 			"--author.name", "x",
@@ -80,8 +84,9 @@ func TestPapersPrivateUpdateMetadata(t *testing.T) {
 			"publicationDate: 0\n" +
 			"title: x\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "papers:private", "update-metadata",
+			t, pipeData,
 			"--api-key", "string",
+			"papers:private", "update-metadata",
 			"--paper-id", "paperId",
 		)
 	})

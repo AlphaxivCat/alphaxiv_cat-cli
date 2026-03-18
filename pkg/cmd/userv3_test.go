@@ -13,8 +13,9 @@ func TestUsersV3AutocompleteProfile(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "autocomplete-profile",
+			t,
 			"--api-key", "string",
+			"users:v3", "autocomplete-profile",
 			"--user-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -23,8 +24,9 @@ func TestUsersV3AutocompleteProfile(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("userId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "users:v3", "autocomplete-profile",
+			t, pipeData,
 			"--api-key", "string",
+			"users:v3", "autocomplete-profile",
 		)
 	})
 }
@@ -33,8 +35,9 @@ func TestUsersV3DeleteBanner(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "delete-banner",
+			t,
 			"--api-key", "string",
+			"users:v3", "delete-banner",
 			"--banner-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -44,8 +47,9 @@ func TestUsersV3DeleteOwnUser(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "delete-own-user",
+			t,
 			"--api-key", "string",
+			"users:v3", "delete-own-user",
 		)
 	})
 }
@@ -54,8 +58,9 @@ func TestUsersV3GetActivity(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "get-activity",
+			t,
 			"--api-key", "string",
+			"users:v3", "get-activity",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--sort", "date",
 		)
@@ -66,8 +71,9 @@ func TestUsersV3GetClaimedPapers(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "get-claimed-papers",
+			t,
 			"--api-key", "string",
+			"users:v3", "get-claimed-papers",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--sort", "date",
 		)
@@ -78,8 +84,9 @@ func TestUsersV3GetCurrentUser(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "get-current-user",
+			t,
 			"--api-key", "string",
+			"users:v3", "get-current-user",
 		)
 	})
 }
@@ -88,8 +95,9 @@ func TestUsersV3GetFeaturedActivity(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "get-featured-activity",
+			t,
 			"--api-key", "string",
+			"users:v3", "get-featured-activity",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -99,8 +107,9 @@ func TestUsersV3GetFollowers(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "get-followers",
+			t,
 			"--api-key", "string",
+			"users:v3", "get-followers",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -110,8 +119,9 @@ func TestUsersV3GetLeaderboard(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "get-leaderboard",
+			t,
 			"--api-key", "string",
+			"users:v3", "get-leaderboard",
 		)
 	})
 }
@@ -120,8 +130,9 @@ func TestUsersV3GetUserByUuid(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "get-user-by-uuid",
+			t,
 			"--api-key", "string",
+			"users:v3", "get-user-by-uuid",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -131,8 +142,9 @@ func TestUsersV3GetViewedHistory(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "get-viewed-history",
+			t,
 			"--api-key", "string",
+			"users:v3", "get-viewed-history",
 			"--offset", "offset",
 			"--search", "search",
 		)
@@ -143,8 +155,9 @@ func TestUsersV3ProcessNotificationEmail(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "process-notification-email",
+			t,
 			"--api-key", "string",
+			"users:v3", "process-notification-email",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -154,8 +167,9 @@ func TestUsersV3Search(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "search",
+			t,
 			"--api-key", "string",
+			"users:v3", "search",
 			"--q", "x",
 			"--limit", "limit",
 		)
@@ -166,8 +180,9 @@ func TestUsersV3ToggleFollowUser(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "toggle-follow-user",
+			t,
 			"--api-key", "string",
+			"users:v3", "toggle-follow-user",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -177,8 +192,9 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "update-preferences",
+			t,
 			"--api-key", "string",
+			"users:v3", "update-preferences",
 			"--banner", "{link: link, name: name, type: success}",
 			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, isDarkModeEnabled: true, isDebugModeEnabled: true, isMembersSidebarVisible: true, preferredLanguage: am, preferredLlmModel: preferredLlmModel, readingModeEnabled: true, showModelThinking: true, toolingPaneWidth: 0, webSearch: 'off'}",
 		)
@@ -190,8 +206,9 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "update-preferences",
+			t,
 			"--api-key", "string",
+			"users:v3", "update-preferences",
 			"--banner.link", "link",
 			"--banner.name", "name",
 			"--banner.type", "success",
@@ -238,8 +255,9 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"  toolingPaneWidth: 0\n" +
 			"  webSearch: 'off'\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "users:v3", "update-preferences",
+			t, pipeData,
 			"--api-key", "string",
+			"users:v3", "update-preferences",
 		)
 	})
 }
@@ -248,8 +266,9 @@ func TestUsersV3UpdateProfile(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "update-profile",
+			t,
 			"--api-key", "string",
+			"users:v3", "update-profile",
 			"--biography", "biography",
 			"--bluesky-username", "blueskyUsername",
 			"--github-username", "githubUsername",
@@ -277,8 +296,9 @@ func TestUsersV3UpdateProfile(t *testing.T) {
 			"username: username\n" +
 			"xUsername: xUsername\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "users:v3", "update-profile",
+			t, pipeData,
 			"--api-key", "string",
+			"users:v3", "update-profile",
 		)
 	})
 }
@@ -287,8 +307,9 @@ func TestUsersV3UploadAvatar(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "users:v3", "upload-avatar",
+			t,
 			"--api-key", "string",
+			"users:v3", "upload-avatar",
 		)
 	})
 }

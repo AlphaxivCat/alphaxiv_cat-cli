@@ -12,8 +12,9 @@ func TestNotificationsV4ArchiveCreate(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "notifications:v4:archive", "create",
+			t,
 			"--api-key", "string",
+			"notifications:v4:archive", "create",
 			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
@@ -24,8 +25,9 @@ func TestNotificationsV4ArchiveCreate(t *testing.T) {
 			"ids:\n" +
 			"  - 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "notifications:v4:archive", "create",
+			t, pipeData,
 			"--api-key", "string",
+			"notifications:v4:archive", "create",
 		)
 	})
 }
@@ -34,8 +36,9 @@ func TestNotificationsV4ArchiveList(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "notifications:v4:archive", "list",
+			t,
 			"--api-key", "string",
+			"notifications:v4:archive", "list",
 			"--before", "before",
 		)
 	})

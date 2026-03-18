@@ -13,8 +13,9 @@ func TestNotificationsV4ListNotifications(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "notifications:v4", "list-notifications",
+			t,
 			"--api-key", "string",
+			"notifications:v4", "list-notifications",
 		)
 	})
 }
@@ -23,8 +24,9 @@ func TestNotificationsV4Subscribe(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "notifications:v4", "subscribe",
+			t,
 			"--api-key", "string",
+			"notifications:v4", "subscribe",
 			"--subscription", "{endpoint: https://example.com, keys: {auth: auth, p256dh: p256dh}}",
 		)
 	})
@@ -35,8 +37,9 @@ func TestNotificationsV4Subscribe(t *testing.T) {
 
 		// Alternative argument passing style using inner flags
 		mocktest.TestRunMockTestWithFlags(
-			t, "notifications:v4", "subscribe",
+			t,
 			"--api-key", "string",
+			"notifications:v4", "subscribe",
 			"--subscription.endpoint", "https://example.com",
 			"--subscription.keys", "{auth: auth, p256dh: p256dh}",
 		)
@@ -51,8 +54,9 @@ func TestNotificationsV4Subscribe(t *testing.T) {
 			"    auth: auth\n" +
 			"    p256dh: p256dh\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "notifications:v4", "subscribe",
+			t, pipeData,
 			"--api-key", "string",
+			"notifications:v4", "subscribe",
 		)
 	})
 }
@@ -61,8 +65,9 @@ func TestNotificationsV4Unsubscribe(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
 		mocktest.TestRunMockTestWithFlags(
-			t, "notifications:v4", "unsubscribe",
+			t,
 			"--api-key", "string",
+			"notifications:v4", "unsubscribe",
 			"--endpoint", "https://example.com",
 		)
 	})
@@ -71,8 +76,9 @@ func TestNotificationsV4Unsubscribe(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("endpoint: https://example.com")
 		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData, "notifications:v4", "unsubscribe",
+			t, pipeData,
 			"--api-key", "string",
+			"notifications:v4", "unsubscribe",
 		)
 	})
 }
