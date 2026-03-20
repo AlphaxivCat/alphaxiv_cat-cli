@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.2 (2026-03-19)
+
+Full Changelog: [v0.1.1...v0.1.2](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.1.1...v0.1.2)
+
+### Bug Fixes
+
+* avoid reading from stdin unless request body is form encoded or json ([1674f47](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/1674f474425c12eb583dd0993e002d624a12347b))
+* improve linking behavior when developing on a branch not in the Go SDK ([162ab83](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/162ab83ac7027220da99954c617f0c85b25d6f56))
+
 ## 0.1.1 (2026-03-18)
 
 Full Changelog: [v0.1.0...v0.1.1](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.1.0...v0.1.1)
