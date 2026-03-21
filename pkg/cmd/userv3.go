@@ -64,6 +64,7 @@ var usersV3GetActivity = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "sort",
+			Usage:     `Allowed values: "date", "liked".`,
 			Default:   "date",
 			QueryPath: "sort",
 		},
@@ -83,6 +84,7 @@ var usersV3GetClaimedPapers = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "sort",
+			Usage:     `Allowed values: "date", "liked", "citations".`,
 			QueryPath: "sort",
 		},
 	},
@@ -243,6 +245,7 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "banner.type",
+			Usage:      `Allowed values: "success", "info", "warning", "error".`,
 			InnerField: "type",
 		},
 	},
@@ -257,14 +260,17 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[any]{
 			Name:       "base.default-private-paper-sidebar-tab",
+			Usage:      `Allowed values: "assistant", "notes", "similar".`,
 			InnerField: "defaultPrivatePaperSidebarTab",
 		},
 		&requestflag.InnerFlag[any]{
 			Name:       "base.default-public-paper-sidebar-tab",
+			Usage:      `Allowed values: "comments", "assistant", "similar", "notes", "social".`,
 			InnerField: "defaultPublicPaperSidebarTab",
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "base.feed-sort",
+			Usage:      `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended".`,
 			InnerField: "feedSort",
 		},
 		&requestflag.InnerFlag[bool]{
@@ -281,6 +287,7 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[any]{
 			Name:       "base.preferred-language",
+			Usage:      `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "en", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
 			InnerField: "preferredLanguage",
 		},
 		&requestflag.InnerFlag[any]{
@@ -301,6 +308,7 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "base.web-search",
+			Usage:      `Allowed values: "off", "full".`,
 			InnerField: "webSearch",
 		},
 	},

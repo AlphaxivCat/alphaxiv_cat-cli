@@ -65,6 +65,7 @@ var googleScholarV1Resync = cli.Command{
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:     "mode",
+			Usage:    `Allowed values: "all", "new".`,
 			Required: true,
 		},
 	},
