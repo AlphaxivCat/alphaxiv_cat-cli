@@ -30,6 +30,7 @@ var papersVersionsRequestAIOverview = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "preferred-language",
+			Usage:     `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "en", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
 			QueryPath: "preferredLanguage",
 		},
 	},
@@ -52,6 +53,7 @@ var papersVersionsRequestAITranslation = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "language",
+			Usage:    `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
 			Required: true,
 		},
 	},

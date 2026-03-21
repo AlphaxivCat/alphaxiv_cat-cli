@@ -22,6 +22,7 @@ var searchV2PaperFastSearch = cli.Command{
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:      "include-private",
+			Usage:     `Allowed values: "true", "false".`,
 			Required:  true,
 			QueryPath: "includePrivate",
 		},

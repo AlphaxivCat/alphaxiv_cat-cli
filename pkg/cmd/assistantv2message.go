@@ -68,6 +68,7 @@ var assistantV2MessagesSetFeedback = requestflag.WithInnerFlags(cli.Command{
 	"feedback": {
 		&requestflag.InnerFlag[string]{
 			Name:       "feedback.type",
+			Usage:      `Allowed values: "upvote", "downvote".`,
 			InnerField: "type",
 		},
 		&requestflag.InnerFlag[any]{

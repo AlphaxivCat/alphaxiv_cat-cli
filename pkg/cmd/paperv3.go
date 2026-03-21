@@ -41,6 +41,7 @@ var papersV3Comment = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "tag",
+			Usage:    `Allowed values: "anonymous", "general", "personal", "research", "resources".`,
 			Required: true,
 			BodyPath: "tag",
 		},
@@ -217,6 +218,7 @@ var papersV3ProcessAI = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "preferred-language",
+			Usage:     `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "en", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
 			QueryPath: "preferredLanguage",
 		},
 	},
@@ -350,6 +352,7 @@ var papersV3RetrieveFeed = cli.Command{
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:      "interval",
+			Usage:     `Allowed values: "3 Days", "7 Days", "30 Days", "90 Days", "All time".`,
 			Required:  true,
 			QueryPath: "interval",
 		},
@@ -365,11 +368,13 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "sort",
+			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended".`,
 			Required:  true,
 			QueryPath: "sort",
 		},
 		&requestflag.Flag[string]{
 			Name:      "exclude-seen-briefs",
+			Usage:     `Allowed values: "true", "false".`,
 			QueryPath: "excludeSeenBriefs",
 		},
 		&requestflag.Flag[string]{
@@ -378,10 +383,12 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "require-summary",
+			Usage:     `Allowed values: "true", "false".`,
 			QueryPath: "requireSummary",
 		},
 		&requestflag.Flag[string]{
 			Name:      "source",
+			Usage:     `Allowed values: "GitHub", "Twitter (X)".`,
 			QueryPath: "source",
 		},
 		&requestflag.Flag[string]{
@@ -520,10 +527,12 @@ var papersV3RetrieveSimilarPapers = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "exclude-likes",
+			Usage:     `Allowed values: "false", "true".`,
 			QueryPath: "excludeLikes",
 		},
 		&requestflag.Flag[string]{
 			Name:      "interval",
+			Usage:     `Allowed values: "3 Days", "7 Days", "30 Days", "90 Days", "All time".`,
 			Default:   "All time",
 			QueryPath: "interval",
 		},

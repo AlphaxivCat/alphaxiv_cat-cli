@@ -56,6 +56,7 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[any]{
 			Name:     "tag",
+			Usage:    `Allowed values: "anonymous", "general", "personal", "research", "resources".`,
 			Required: true,
 			BodyPath: "tag",
 		},

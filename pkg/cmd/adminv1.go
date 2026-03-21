@@ -22,6 +22,7 @@ var adminV1GetModeratorFeed = cli.Command{
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:      "feed-type",
+			Usage:     `Allowed values: "all", "flagged", "recent".`,
 			Default:   "all",
 			QueryPath: "feedType",
 		},

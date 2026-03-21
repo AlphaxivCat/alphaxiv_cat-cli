@@ -57,11 +57,13 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "web-search",
+			Usage:    `Allowed values: "off", "full".`,
 			Required: true,
 			BodyPath: "webSearch",
 		},
 		&requestflag.Flag[string]{
 			Name:     "assistant-variant",
+			Usage:    `Allowed values: "homepage", "paper", "folder", "landing", "folder-add-papers".`,
 			BodyPath: "assistantVariant",
 		},
 		&requestflag.Flag[bool]{
@@ -74,6 +76,7 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "model",
+			Usage:    `Allowed values: "gemini-2.5-flash", "gemini-2.5-pro", "gemini-3-flash", "gemini-3-pro", "gemini-3.1-pro", "claude-4.5-sonnet", "claude-4.6-sonnet", "grok-4", "qwen-3", "qwen-3-next", "qwen-3.5", "gpt-5", "gpt-5.2", "gpt-5.4", "gpt-oss-120b", "llama-4-maverick", "kimi-k2", "kimi-k2.5", "glm-5", "glm-5-turbo", "minimax-m2.5", "minimax-m2.7", "aurelle-1".`,
 			Default:  "gemini-3-flash",
 			BodyPath: "model",
 		},
@@ -145,6 +148,7 @@ var assistantV2GetChats = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "variant",
+			Usage:     `Allowed values: "homepage", "paper", "folder".`,
 			QueryPath: "variant",
 		},
 	},
