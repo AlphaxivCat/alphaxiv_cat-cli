@@ -14,7 +14,7 @@ import (
 
 var adminV1EmailsSendMonthlyDigest = cli.Command{
 	Name:    "send-monthly-digest",
-	Usage:   "Queue monthly digest emails to users via Upstash",
+	Usage:   "Queue monthly digest emails to users",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -29,7 +29,7 @@ var adminV1EmailsSendMonthlyDigest = cli.Command{
 
 var adminV1EmailsSendWeeklyDigest = requestflag.WithInnerFlags(cli.Command{
 	Name:    "send-weekly-digest",
-	Usage:   "Queue weekly digest emails to users via Upstash",
+	Usage:   "Queue weekly digest emails to users",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[[]map[string]any]{

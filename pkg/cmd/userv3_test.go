@@ -196,7 +196,7 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--api-key", "string",
 			"users:v3", "update-preferences",
 			"--banner", "{link: link, name: name, type: success}",
-			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, isDarkModeEnabled: true, isDebugModeEnabled: true, isMembersSidebarVisible: true, preferredLanguage: am, preferredLlmModel: preferredLlmModel, readingModeEnabled: true, showModelThinking: true, toolingPaneWidth: 0, webSearch: 'off'}",
+			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, isDarkModeEnabled: true, isDebugModeEnabled: true, isMembersSidebarVisible: true, preferredLanguage: am, preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory, preferredLlmModel: preferredLlmModel, preferredLlmThinking: preferredLlmThinking, readingModeEnabled: true, showModelThinking: true, toolingPaneWidth: 0, webSearch: 'off'}",
 		)
 	})
 
@@ -221,7 +221,9 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--base.is-debug-mode-enabled=true",
 			"--base.is-members-sidebar-visible=true",
 			"--base.preferred-language", "am",
+			"--base.preferred-llm-follow-latest-category", "preferredLlmFollowLatestCategory",
 			"--base.preferred-llm-model", "preferredLlmModel",
+			"--base.preferred-llm-thinking", "preferredLlmThinking",
 			"--base.reading-mode-enabled=true",
 			"--base.show-model-thinking=true",
 			"--base.tooling-pane-width", "0",
@@ -249,7 +251,9 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"  isDebugModeEnabled: true\n" +
 			"  isMembersSidebarVisible: true\n" +
 			"  preferredLanguage: am\n" +
+			"  preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory\n" +
 			"  preferredLlmModel: preferredLlmModel\n" +
+			"  preferredLlmThinking: preferredLlmThinking\n" +
 			"  readingModeEnabled: true\n" +
 			"  showModelThinking: true\n" +
 			"  toolingPaneWidth: 0\n" +
