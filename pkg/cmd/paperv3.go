@@ -97,7 +97,7 @@ var papersV3Implementation = cli.Command{
 
 var papersV3KickoffPaperCountries = cli.Command{
 	Name:    "kickoff-paper-countries",
-	Usage:   "Kickoff paper countries processing on Upstash for hot papers",
+	Usage:   "Kickoff paper countries processing for hot papers",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[float64]{
@@ -124,7 +124,7 @@ var papersV3KickoffPaperCountries = cli.Command{
 
 var papersV3KickoffPaperFullText = cli.Command{
 	Name:    "kickoff-paper-full-text",
-	Usage:   "Kickoff paper full text processing on Upstash for recent papers",
+	Usage:   "Kickoff paper full text processing for recent papers",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[float64]{

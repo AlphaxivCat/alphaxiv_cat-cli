@@ -291,8 +291,16 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 			InnerField: "preferredLanguage",
 		},
 		&requestflag.InnerFlag[any]{
+			Name:       "base.preferred-llm-follow-latest-category",
+			InnerField: "preferredLlmFollowLatestCategory",
+		},
+		&requestflag.InnerFlag[any]{
 			Name:       "base.preferred-llm-model",
 			InnerField: "preferredLlmModel",
+		},
+		&requestflag.InnerFlag[any]{
+			Name:       "base.preferred-llm-thinking",
+			InnerField: "preferredLlmThinking",
 		},
 		&requestflag.InnerFlag[bool]{
 			Name:       "base.reading-mode-enabled",
