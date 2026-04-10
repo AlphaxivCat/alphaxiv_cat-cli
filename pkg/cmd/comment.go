@@ -21,7 +21,7 @@ var commentsEdit = requestflag.WithInnerFlags(cli.Command{
 			Name:     "comment",
 			Required: true,
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:     "anchor-position",
 			Required: true,
 			BodyPath: "anchorPosition",
@@ -31,7 +31,7 @@ var commentsEdit = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "body",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:     "focus-position",
 			Required: true,
 			BodyPath: "focusPosition",
