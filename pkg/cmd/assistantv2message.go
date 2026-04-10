@@ -56,7 +56,7 @@ var assistantV2MessagesSetFeedback = requestflag.WithInnerFlags(cli.Command{
 			Name:     "message-id",
 			Required: true,
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:     "feedback",
 			Required: true,
 			BodyPath: "feedback",
