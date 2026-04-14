@@ -25,7 +25,7 @@ var researchCreateProject = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "name",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:     "folder",
 			Usage:    "Prefill the project with a set of research papers.",
 			BodyPath: "folder",

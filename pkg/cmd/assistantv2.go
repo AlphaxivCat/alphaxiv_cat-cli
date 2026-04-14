@@ -50,18 +50,20 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "selectionPageRange",
 		},
-		&requestflag.Flag[bool]{
+		&requestflag.Flag[any]{
 			Name:     "thinking",
 			Required: true,
 			BodyPath: "thinking",
 		},
 		&requestflag.Flag[string]{
 			Name:     "web-search",
+			Usage:    `Allowed values: "off", "full".`,
 			Required: true,
 			BodyPath: "webSearch",
 		},
 		&requestflag.Flag[string]{
 			Name:     "assistant-variant",
+			Usage:    `Allowed values: "homepage", "paper", "folder", "landing", "folder-add-papers".`,
 			BodyPath: "assistantVariant",
 		},
 		&requestflag.Flag[bool]{
@@ -74,8 +76,19 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "model",
-			Default:  "gemini-3-flash",
+			Usage:    `Allowed values: "claude-opus-4.5", "claude-opus-4.6", "claude-sonnet-4.5", "claude-sonnet-4.6", "gemini-2.5-flash", "gemini-2.5-pro", "gemini-3-flash", "gemini-3-pro", "gemini-3.1-pro", "glm-5-turbo", "glm-5.1", "gpt-5", "gpt-5.1", "gpt-5.2", "gpt-5.4", "gpt-5.4-mini", "gpt-5.4-nano", "kimi-k2.5", "mercury-2", "minimax-m2.5", "minimax-m2.7", "qwen-3.5", "aurelle-1", "fast", "smart", "pro", "claude-4.5-sonnet", "claude-4.6-sonnet".`,
+			Default:  "fast",
 			BodyPath: "model",
+		},
+		&requestflag.Flag[string]{
+			Name:     "plan",
+			Usage:    `Allowed values: "free", "pro".`,
+			Default:  "free",
+			BodyPath: "plan",
+		},
+		&requestflag.Flag[string]{
+			Name:     "signature",
+			BodyPath: "signature",
 		},
 		&requestflag.Flag[int64]{
 			Name:  "max-items",
@@ -145,6 +158,7 @@ var assistantV2GetChats = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "variant",
+			Usage:     `Allowed values: "homepage", "paper", "folder".`,
 			QueryPath: "variant",
 		},
 	},

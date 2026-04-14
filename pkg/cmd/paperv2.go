@@ -24,7 +24,7 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 			Name:     "version",
 			Required: true,
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:     "anchor-position",
 			Required: true,
 			BodyPath: "anchorPosition",
@@ -34,7 +34,7 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "body",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[map[string]any]{
 			Name:     "focus-position",
 			Required: true,
 			BodyPath: "focusPosition",
@@ -56,6 +56,7 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[any]{
 			Name:     "tag",
+			Usage:    `Allowed values: "anonymous", "general", "personal", "research", "resources".`,
 			Required: true,
 			BodyPath: "tag",
 		},

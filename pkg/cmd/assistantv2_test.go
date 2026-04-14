@@ -28,7 +28,9 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--assistant-variant", "homepage",
 			"--folder-add-papers=true",
 			"--folder-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-			"--model", "gemini-2.5-flash",
+			"--model", "claude-opus-4.5",
+			"--plan", "free",
+			"--signature", "signature",
 		)
 	})
 
@@ -54,7 +56,9 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--assistant-variant", "homepage",
 			"--folder-add-papers=true",
 			"--folder-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-			"--model", "gemini-2.5-flash",
+			"--model", "claude-opus-4.5",
+			"--plan", "free",
+			"--signature", "signature",
 		)
 	})
 
@@ -76,7 +80,9 @@ func TestAssistantV2Chat(t *testing.T) {
 			"assistantVariant: homepage\n" +
 			"folderAddPapers: true\n" +
 			"folderId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n" +
-			"model: gemini-2.5-flash\n")
+			"model: claude-opus-4.5\n" +
+			"plan: free\n" +
+			"signature: signature\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,
 			"--api-key", "string",

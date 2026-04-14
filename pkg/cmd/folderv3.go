@@ -128,6 +128,7 @@ var foldersV3ToggleSharing = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "sharing-status",
+			Usage:    `Allowed values: "not_shared", "shared".`,
 			Required: true,
 			BodyPath: "sharingStatus",
 		},

@@ -26,6 +26,7 @@ var papersV3ImplementationsCreate = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "implementation-type",
+			Usage:    `Allowed values: "alphaxiv", "marimo", "author".`,
 			Required: true,
 			BodyPath: "implementationType",
 		},
@@ -68,6 +69,7 @@ var papersV3ImplementationsDelete = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "type",
+			Usage:     `Allowed values: "alphaxiv", "resource".`,
 			Required:  true,
 			QueryPath: "type",
 		},
