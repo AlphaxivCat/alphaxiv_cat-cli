@@ -119,8 +119,9 @@ func handleAnalyticsPaperViewCountIngestEvent(ctx context.Context, cmd *cli.Comm
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "analytics:paper-view-count ingest-event", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "analytics:paper-view-count ingest-event", obj, format, explicitFormat, transform)
 }
 
 func handleAnalyticsPaperViewCountKickoffJob(ctx context.Context, cmd *cli.Command) error {
@@ -153,8 +154,9 @@ func handleAnalyticsPaperViewCountKickoffJob(ctx context.Context, cmd *cli.Comma
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "analytics:paper-view-count kickoff-job", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "analytics:paper-view-count kickoff-job", obj, format, explicitFormat, transform)
 }
 
 func handleAnalyticsPaperViewCountProcessJob(ctx context.Context, cmd *cli.Command) error {
@@ -187,6 +189,7 @@ func handleAnalyticsPaperViewCountProcessJob(ctx context.Context, cmd *cli.Comma
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "analytics:paper-view-count process-job", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "analytics:paper-view-count process-job", obj, format, explicitFormat, transform)
 }

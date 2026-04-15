@@ -79,8 +79,9 @@ func handleUsersV3FollowingTopicsList(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3:following:topics list", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3:following:topics list", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3FollowingTopicsToggle(ctx context.Context, cmd *cli.Command) error {
@@ -121,6 +122,7 @@ func handleUsersV3FollowingTopicsToggle(ctx context.Context, cmd *cli.Command) e
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3:following:topics toggle", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3:following:topics toggle", obj, format, explicitFormat, transform)
 }

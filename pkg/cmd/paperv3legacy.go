@@ -75,8 +75,9 @@ func handlePapersV3LegacyRetrieve(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3:legacy retrieve", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3:legacy retrieve", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3LegacyRetrieveComments(ctx context.Context, cmd *cli.Command) error {
@@ -110,6 +111,7 @@ func handlePapersV3LegacyRetrieveComments(ctx context.Context, cmd *cli.Command)
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3:legacy retrieve-comments", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3:legacy retrieve-comments", obj, format, explicitFormat, transform)
 }

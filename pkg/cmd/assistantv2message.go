@@ -113,8 +113,9 @@ func handleAssistantV2MessagesList(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "assistant:v2:messages list", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "assistant:v2:messages list", obj, format, explicitFormat, transform)
 }
 
 func handleAssistantV2MessagesSelect(ctx context.Context, cmd *cli.Command) error {

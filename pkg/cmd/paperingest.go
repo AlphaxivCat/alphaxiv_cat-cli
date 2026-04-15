@@ -93,8 +93,9 @@ func handlePapersIngestIngestLatest(ctx context.Context, cmd *cli.Command) error
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:ingest ingest-latest", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:ingest ingest-latest", obj, format, explicitFormat, transform)
 }
 
 func handlePapersIngestIngestVersion(ctx context.Context, cmd *cli.Command) error {
@@ -137,6 +138,7 @@ func handlePapersIngestIngestVersion(ctx context.Context, cmd *cli.Command) erro
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:ingest ingest-version", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:ingest ingest-version", obj, format, explicitFormat, transform)
 }

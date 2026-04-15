@@ -141,8 +141,9 @@ func handleRetoolV1GetCumulativeUsers(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-cumulative-users", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-cumulative-users", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetDailyConversations(ctx context.Context, cmd *cli.Command) error {
@@ -173,8 +174,9 @@ func handleRetoolV1GetDailyConversations(ctx context.Context, cmd *cli.Command) 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-daily-conversations", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-daily-conversations", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetDailyNewAccounts(ctx context.Context, cmd *cli.Command) error {
@@ -205,8 +207,9 @@ func handleRetoolV1GetDailyNewAccounts(ctx context.Context, cmd *cli.Command) er
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-daily-new-accounts", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-daily-new-accounts", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetDailyUserChatMessages(ctx context.Context, cmd *cli.Command) error {
@@ -237,8 +240,9 @@ func handleRetoolV1GetDailyUserChatMessages(ctx context.Context, cmd *cli.Comman
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-daily-user-chat-messages", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-daily-user-chat-messages", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetTotalCommentCount(ctx context.Context, cmd *cli.Command) error {
@@ -269,8 +273,9 @@ func handleRetoolV1GetTotalCommentCount(ctx context.Context, cmd *cli.Command) e
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-total-comment-count", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-total-comment-count", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetTotalPaperCount(ctx context.Context, cmd *cli.Command) error {
@@ -301,8 +306,9 @@ func handleRetoolV1GetTotalPaperCount(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-total-paper-count", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-total-paper-count", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetTotalPrivateNotesCount(ctx context.Context, cmd *cli.Command) error {
@@ -333,8 +339,9 @@ func handleRetoolV1GetTotalPrivateNotesCount(ctx context.Context, cmd *cli.Comma
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-total-private-notes-count", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-total-private-notes-count", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetTotalUserCount(ctx context.Context, cmd *cli.Command) error {
@@ -365,8 +372,9 @@ func handleRetoolV1GetTotalUserCount(ctx context.Context, cmd *cli.Command) erro
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-total-user-count", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-total-user-count", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetWeeklyMessageCountsByUser(ctx context.Context, cmd *cli.Command) error {
@@ -397,8 +405,9 @@ func handleRetoolV1GetWeeklyMessageCountsByUser(ctx context.Context, cmd *cli.Co
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-weekly-message-counts-by-user", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-weekly-message-counts-by-user", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetWeeklyPrivateNotes(ctx context.Context, cmd *cli.Command) error {
@@ -429,8 +438,9 @@ func handleRetoolV1GetWeeklyPrivateNotes(ctx context.Context, cmd *cli.Command) 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-weekly-private-notes", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-weekly-private-notes", obj, format, explicitFormat, transform)
 }
 
 func handleRetoolV1GetWeeklyPublicComments(ctx context.Context, cmd *cli.Command) error {
@@ -461,6 +471,7 @@ func handleRetoolV1GetWeeklyPublicComments(ctx context.Context, cmd *cli.Command
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "retool:v1 get-weekly-public-comments", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-weekly-public-comments", obj, format, explicitFormat, transform)
 }

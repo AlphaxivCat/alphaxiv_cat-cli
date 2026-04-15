@@ -101,8 +101,9 @@ func handlePapersVersionsRequestAIOverview(ctx context.Context, cmd *cli.Command
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:versions request-ai-overview", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:versions request-ai-overview", obj, format, explicitFormat, transform)
 }
 
 func handlePapersVersionsRequestAITranslation(ctx context.Context, cmd *cli.Command) error {
@@ -146,6 +147,7 @@ func handlePapersVersionsRequestAITranslation(ctx context.Context, cmd *cli.Comm
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:versions request-ai-translation", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:versions request-ai-translation", obj, format, explicitFormat, transform)
 }

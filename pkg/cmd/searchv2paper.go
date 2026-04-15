@@ -66,6 +66,7 @@ func handleSearchV2PaperFastSearch(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "search:v2:paper fast-search", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "search:v2:paper fast-search", obj, format, explicitFormat, transform)
 }

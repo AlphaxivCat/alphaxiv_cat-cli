@@ -51,6 +51,7 @@ func handleUsersPreferencesGetFoldersPreferences(ctx context.Context, cmd *cli.C
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:preferences get-folders-preferences", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:preferences get-folders-preferences", obj, format, explicitFormat, transform)
 }

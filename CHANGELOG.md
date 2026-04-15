@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.0 (2026-04-15)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([2fab5d8](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/2fab5d8fe069f2df56fb60e1ec1cbf6df4f7ebf1))
+* **cli:** alias parameters in data with `x-stainless-cli-data-alias` ([d1f22c2](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/d1f22c29f33b1d05922a6f5ae9de0facc47de772))
+
+
+### Chores
+
+* **cli:** fall back to JSON when using default "explore" with non-TTY ([2927694](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/2927694dfbbf6b130c262906f6441b45a06824e6))
+
 ## 0.2.0 (2026-04-14)
 
 Full Changelog: [v0.1.2...v0.2.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.1.2...v0.2.0)
