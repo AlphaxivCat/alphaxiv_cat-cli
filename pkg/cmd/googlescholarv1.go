@@ -149,8 +149,9 @@ func handleGoogleScholarV1Connect(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "google-scholar:v1 connect", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 connect", obj, format, explicitFormat, transform)
 }
 
 func handleGoogleScholarV1DeleteConnection(ctx context.Context, cmd *cli.Command) error {
@@ -203,8 +204,9 @@ func handleGoogleScholarV1GetReport(ctx context.Context, cmd *cli.Command) error
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "google-scholar:v1 get-report", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 get-report", obj, format, explicitFormat, transform)
 }
 
 func handleGoogleScholarV1GetStatus(ctx context.Context, cmd *cli.Command) error {
@@ -235,8 +237,9 @@ func handleGoogleScholarV1GetStatus(ctx context.Context, cmd *cli.Command) error
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "google-scholar:v1 get-status", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 get-status", obj, format, explicitFormat, transform)
 }
 
 func handleGoogleScholarV1Resync(ctx context.Context, cmd *cli.Command) error {
@@ -270,8 +273,9 @@ func handleGoogleScholarV1Resync(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "google-scholar:v1 resync", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 resync", obj, format, explicitFormat, transform)
 }
 
 func handleGoogleScholarV1SetEmail(ctx context.Context, cmd *cli.Command) error {
@@ -326,8 +330,9 @@ func handleGoogleScholarV1Sync(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "google-scholar:v1 sync", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 sync", obj, format, explicitFormat, transform)
 }
 
 func handleGoogleScholarV1VerifyEmail(ctx context.Context, cmd *cli.Command) error {
@@ -360,6 +365,7 @@ func handleGoogleScholarV1VerifyEmail(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "google-scholar:v1 verify-email", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 verify-email", obj, format, explicitFormat, transform)
 }

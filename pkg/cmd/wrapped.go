@@ -60,6 +60,7 @@ func handleWrappedRetrieveByUser(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "wrapped retrieve-by-user", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "wrapped retrieve-by-user", obj, format, explicitFormat, transform)
 }

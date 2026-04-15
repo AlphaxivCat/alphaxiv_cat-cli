@@ -67,6 +67,7 @@ func handleBriefsV1GenerateSpeech(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "briefs:v1 generate-speech", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "briefs:v1 generate-speech", obj, format, explicitFormat, transform)
 }

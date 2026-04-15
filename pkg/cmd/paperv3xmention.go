@@ -89,8 +89,9 @@ func handlePapersV3XMentionsUpdate(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3:x-mentions update", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3:x-mentions update", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3XMentionsDelete(ctx context.Context, cmd *cli.Command) error {

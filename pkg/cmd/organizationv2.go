@@ -109,8 +109,9 @@ func handleOrganizationsV2ListTop(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "organizations:v2 list-top", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 list-top", obj, format, explicitFormat, transform)
 }
 
 func handleOrganizationsV2RetrieveByID(ctx context.Context, cmd *cli.Command) error {
@@ -144,8 +145,9 @@ func handleOrganizationsV2RetrieveByID(ctx context.Context, cmd *cli.Command) er
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "organizations:v2 retrieve-by-id", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 retrieve-by-id", obj, format, explicitFormat, transform)
 }
 
 func handleOrganizationsV2RetrieveByName(ctx context.Context, cmd *cli.Command) error {
@@ -179,8 +181,9 @@ func handleOrganizationsV2RetrieveByName(ctx context.Context, cmd *cli.Command) 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "organizations:v2 retrieve-by-name", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 retrieve-by-name", obj, format, explicitFormat, transform)
 }
 
 func handleOrganizationsV2Search(ctx context.Context, cmd *cli.Command) error {
@@ -213,8 +216,9 @@ func handleOrganizationsV2Search(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "organizations:v2 search", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 search", obj, format, explicitFormat, transform)
 }
 
 func handleOrganizationsV2ToggleFollow(ctx context.Context, cmd *cli.Command) error {
@@ -248,6 +252,7 @@ func handleOrganizationsV2ToggleFollow(ctx context.Context, cmd *cli.Command) er
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "organizations:v2 toggle-follow", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 toggle-follow", obj, format, explicitFormat, transform)
 }

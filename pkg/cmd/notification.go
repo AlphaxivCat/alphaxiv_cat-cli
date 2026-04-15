@@ -51,6 +51,7 @@ func handleNotificationsSendKickoffNotificationEmails(ctx context.Context, cmd *
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "notifications send-kickoff-notification-emails", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "notifications send-kickoff-notification-emails", obj, format, explicitFormat, transform)
 }

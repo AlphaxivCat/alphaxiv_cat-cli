@@ -79,8 +79,9 @@ func handleUsersV3FollowingOrganizationsList(ctx context.Context, cmd *cli.Comma
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3:following:organizations list", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3:following:organizations list", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3FollowingOrganizationsToggle(ctx context.Context, cmd *cli.Command) error {
@@ -121,6 +122,7 @@ func handleUsersV3FollowingOrganizationsToggle(ctx context.Context, cmd *cli.Com
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3:following:organizations toggle", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3:following:organizations toggle", obj, format, explicitFormat, transform)
 }

@@ -93,8 +93,9 @@ func handlePapersMetadataRetrieveLatestMetadata(ctx context.Context, cmd *cli.Co
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:metadata retrieve-latest-metadata", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:metadata retrieve-latest-metadata", obj, format, explicitFormat, transform)
 }
 
 func handlePapersMetadataRetrieveVersionMetadata(ctx context.Context, cmd *cli.Command) error {
@@ -137,6 +138,7 @@ func handlePapersMetadataRetrieveVersionMetadata(ctx context.Context, cmd *cli.C
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:metadata retrieve-version-metadata", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:metadata retrieve-version-metadata", obj, format, explicitFormat, transform)
 }

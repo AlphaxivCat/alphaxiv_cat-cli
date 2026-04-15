@@ -74,8 +74,9 @@ func handleUsersV3ByUsernameGetProfilePage(ctx context.Context, cmd *cli.Command
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3:by-username get-profile-page", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3:by-username get-profile-page", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3ByUsernameGetUser(ctx context.Context, cmd *cli.Command) error {
@@ -109,6 +110,7 @@ func handleUsersV3ByUsernameGetUser(ctx context.Context, cmd *cli.Command) error
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3:by-username get-user", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3:by-username get-user", obj, format, explicitFormat, transform)
 }
