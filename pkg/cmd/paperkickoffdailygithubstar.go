@@ -69,8 +69,9 @@ func handlePapersKickoffDailyGitHubStarsUpdate(ctx context.Context, cmd *cli.Com
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:kickoff-daily-github-stars update", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:kickoff-daily-github-stars update", obj, format, explicitFormat, transform)
 }
 
 func handlePapersKickoffDailyGitHubStarsKickoffDailyGitHubStars(ctx context.Context, cmd *cli.Command) error {
@@ -101,6 +102,7 @@ func handlePapersKickoffDailyGitHubStarsKickoffDailyGitHubStars(ctx context.Cont
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:kickoff-daily-github-stars kickoff-daily-github-stars", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:kickoff-daily-github-stars kickoff-daily-github-stars", obj, format, explicitFormat, transform)
 }

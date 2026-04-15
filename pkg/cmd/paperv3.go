@@ -615,8 +615,9 @@ func handlePapersV3Retrieve(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3Comment(ctx context.Context, cmd *cli.Command) error {
@@ -657,8 +658,9 @@ func handlePapersV3Comment(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 comment", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 comment", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3DeleteVotes(ctx context.Context, cmd *cli.Command) error {
@@ -723,8 +725,9 @@ func handlePapersV3Implementation(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 implementation", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 implementation", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3KickoffPaperCountries(ctx context.Context, cmd *cli.Command) error {
@@ -825,8 +828,9 @@ func handlePapersV3KickoffThumbnailsTrendingPapers(ctx context.Context, cmd *cli
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 kickoff-thumbnails-trending-papers", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 kickoff-thumbnails-trending-papers", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3KickoffXMentionsSync(ctx context.Context, cmd *cli.Command) error {
@@ -884,8 +888,9 @@ func handlePapersV3Like(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 like", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 like", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3Podcast(ctx context.Context, cmd *cli.Command) error {
@@ -1021,8 +1026,9 @@ func handlePapersV3PruneEmbeddingsByDate(ctx context.Context, cmd *cli.Command) 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 prune-embeddings-by-date", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 prune-embeddings-by-date", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RequestImplementation(ctx context.Context, cmd *cli.Command) error {
@@ -1063,8 +1069,9 @@ func handlePapersV3RequestImplementation(ctx context.Context, cmd *cli.Command) 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 request-implementation", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 request-implementation", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RequestPodcast(ctx context.Context, cmd *cli.Command) error {
@@ -1098,8 +1105,9 @@ func handlePapersV3RequestPodcast(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 request-podcast", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 request-podcast", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrieveAll(ctx context.Context, cmd *cli.Command) error {
@@ -1132,8 +1140,9 @@ func handlePapersV3RetrieveAll(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-all", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-all", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrieveDiversePapers(ctx context.Context, cmd *cli.Command) error {
@@ -1166,8 +1175,9 @@ func handlePapersV3RetrieveDiversePapers(ctx context.Context, cmd *cli.Command) 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-diverse-papers", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-diverse-papers", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrieveFeed(ctx context.Context, cmd *cli.Command) error {
@@ -1200,8 +1210,9 @@ func handlePapersV3RetrieveFeed(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-feed", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-feed", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrieveFigures(ctx context.Context, cmd *cli.Command) error {
@@ -1235,8 +1246,9 @@ func handlePapersV3RetrieveFigures(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-figures", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-figures", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrieveFullText(ctx context.Context, cmd *cli.Command) error {
@@ -1270,8 +1282,9 @@ func handlePapersV3RetrieveFullText(ctx context.Context, cmd *cli.Command) error
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-full-text", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-full-text", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrieveGeoTrends(ctx context.Context, cmd *cli.Command) error {
@@ -1304,8 +1317,9 @@ func handlePapersV3RetrieveGeoTrends(ctx context.Context, cmd *cli.Command) erro
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-geo-trends", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-geo-trends", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrieveMetrics(ctx context.Context, cmd *cli.Command) error {
@@ -1339,8 +1353,9 @@ func handlePapersV3RetrieveMetrics(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-metrics", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-metrics", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrievePapersByCountry(ctx context.Context, cmd *cli.Command) error {
@@ -1373,8 +1388,9 @@ func handlePapersV3RetrievePapersByCountry(ctx context.Context, cmd *cli.Command
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-papers-by-country", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-papers-by-country", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrievePreview(ctx context.Context, cmd *cli.Command) error {
@@ -1408,8 +1424,9 @@ func handlePapersV3RetrievePreview(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-preview", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-preview", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrieveSimilarPapers(ctx context.Context, cmd *cli.Command) error {
@@ -1450,8 +1467,9 @@ func handlePapersV3RetrieveSimilarPapers(ctx context.Context, cmd *cli.Command) 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-similar-papers", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-similar-papers", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3RetrieveUnrelated(ctx context.Context, cmd *cli.Command) error {
@@ -1484,8 +1502,9 @@ func handlePapersV3RetrieveUnrelated(ctx context.Context, cmd *cli.Command) erro
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3 retrieve-unrelated", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3 retrieve-unrelated", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3View(ctx context.Context, cmd *cli.Command) error {

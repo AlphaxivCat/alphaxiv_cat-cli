@@ -99,8 +99,9 @@ func handleSitemapsListOverviews(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "sitemaps list-overviews", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "sitemaps list-overviews", obj, format, explicitFormat, transform)
 }
 
 func handleSitemapsListPapers(ctx context.Context, cmd *cli.Command) error {
@@ -133,8 +134,9 @@ func handleSitemapsListPapers(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "sitemaps list-papers", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "sitemaps list-papers", obj, format, explicitFormat, transform)
 }
 
 func handleSitemapsListUsers(ctx context.Context, cmd *cli.Command) error {
@@ -167,6 +169,7 @@ func handleSitemapsListUsers(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "sitemaps list-users", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "sitemaps list-users", obj, format, explicitFormat, transform)
 }

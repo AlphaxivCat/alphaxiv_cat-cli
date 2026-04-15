@@ -75,8 +75,9 @@ func handleNotificationsV4ArchiveCreate(ctx context.Context, cmd *cli.Command) e
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "notifications:v4:archive create", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "notifications:v4:archive create", obj, format, explicitFormat, transform)
 }
 
 func handleNotificationsV4ArchiveList(ctx context.Context, cmd *cli.Command) error {
@@ -109,6 +110,7 @@ func handleNotificationsV4ArchiveList(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "notifications:v4:archive list", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "notifications:v4:archive list", obj, format, explicitFormat, transform)
 }

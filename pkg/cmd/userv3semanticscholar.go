@@ -74,8 +74,9 @@ func handleUsersV3SemanticScholarLink(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3:semantic-scholar link", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3:semantic-scholar link", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3SemanticScholarScrape(ctx context.Context, cmd *cli.Command) error {
@@ -109,6 +110,7 @@ func handleUsersV3SemanticScholarScrape(ctx context.Context, cmd *cli.Command) e
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3:semantic-scholar scrape", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3:semantic-scholar scrape", obj, format, explicitFormat, transform)
 }

@@ -93,8 +93,9 @@ func handleNotificationsV4ListNotifications(ctx context.Context, cmd *cli.Comman
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "notifications:v4 list-notifications", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "notifications:v4 list-notifications", obj, format, explicitFormat, transform)
 }
 
 func handleNotificationsV4Subscribe(ctx context.Context, cmd *cli.Command) error {

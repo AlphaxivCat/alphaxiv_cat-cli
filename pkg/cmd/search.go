@@ -77,8 +77,9 @@ func handleSearchClosestTopic(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "search closest-topic", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "search closest-topic", obj, format, explicitFormat, transform)
 }
 
 func handleSearchGoogleSearch(ctx context.Context, cmd *cli.Command) error {
@@ -111,6 +112,7 @@ func handleSearchGoogleSearch(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "search google-search", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "search google-search", obj, format, explicitFormat, transform)
 }

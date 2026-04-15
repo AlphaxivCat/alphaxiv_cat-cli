@@ -122,8 +122,9 @@ func handlePapersPrivateCreate(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:private create", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:private create", obj, format, explicitFormat, transform)
 }
 
 func handlePapersPrivateUpdateMetadata(ctx context.Context, cmd *cli.Command) error {

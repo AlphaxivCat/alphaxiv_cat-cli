@@ -151,6 +151,7 @@ func handlePapersV2Comment(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v2 comment", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v2 comment", obj, format, explicitFormat, transform)
 }

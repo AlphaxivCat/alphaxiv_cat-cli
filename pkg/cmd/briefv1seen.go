@@ -67,8 +67,9 @@ func handleBriefsV1SeenGetSeen(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "briefs:v1:seen get-seen", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "briefs:v1:seen get-seen", obj, format, explicitFormat, transform)
 }
 
 func handleBriefsV1SeenMarkSeen(ctx context.Context, cmd *cli.Command) error {

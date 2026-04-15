@@ -411,8 +411,9 @@ func handleUsersV3AutocompleteProfile(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 autocomplete-profile", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 autocomplete-profile", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3DeleteBanner(ctx context.Context, cmd *cli.Command) error {
@@ -500,8 +501,9 @@ func handleUsersV3GetActivity(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 get-activity", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 get-activity", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3GetClaimedPapers(ctx context.Context, cmd *cli.Command) error {
@@ -542,8 +544,9 @@ func handleUsersV3GetClaimedPapers(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 get-claimed-papers", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 get-claimed-papers", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3GetCurrentUser(ctx context.Context, cmd *cli.Command) error {
@@ -574,8 +577,9 @@ func handleUsersV3GetCurrentUser(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 get-current-user", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 get-current-user", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3GetFeaturedActivity(ctx context.Context, cmd *cli.Command) error {
@@ -609,8 +613,9 @@ func handleUsersV3GetFeaturedActivity(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 get-featured-activity", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 get-featured-activity", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3GetFollowers(ctx context.Context, cmd *cli.Command) error {
@@ -644,8 +649,9 @@ func handleUsersV3GetFollowers(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 get-followers", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 get-followers", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3GetLeaderboard(ctx context.Context, cmd *cli.Command) error {
@@ -676,8 +682,9 @@ func handleUsersV3GetLeaderboard(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 get-leaderboard", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 get-leaderboard", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3GetUserByUuid(ctx context.Context, cmd *cli.Command) error {
@@ -711,8 +718,9 @@ func handleUsersV3GetUserByUuid(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 get-user-by-uuid", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 get-user-by-uuid", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3GetViewedHistory(ctx context.Context, cmd *cli.Command) error {
@@ -745,8 +753,9 @@ func handleUsersV3GetViewedHistory(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 get-viewed-history", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 get-viewed-history", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3ProcessNotificationEmail(ctx context.Context, cmd *cli.Command) error {
@@ -780,8 +789,9 @@ func handleUsersV3ProcessNotificationEmail(ctx context.Context, cmd *cli.Command
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 process-notification-email", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 process-notification-email", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3Search(ctx context.Context, cmd *cli.Command) error {
@@ -814,8 +824,9 @@ func handleUsersV3Search(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 search", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 search", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3ToggleFollowUser(ctx context.Context, cmd *cli.Command) error {
@@ -849,8 +860,9 @@ func handleUsersV3ToggleFollowUser(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 toggle-follow-user", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 toggle-follow-user", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3UpdatePreferences(ctx context.Context, cmd *cli.Command) error {
@@ -883,8 +895,9 @@ func handleUsersV3UpdatePreferences(ctx context.Context, cmd *cli.Command) error
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 update-preferences", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 update-preferences", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3UpdateProfile(ctx context.Context, cmd *cli.Command) error {
@@ -917,8 +930,9 @@ func handleUsersV3UpdateProfile(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 update-profile", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 update-profile", obj, format, explicitFormat, transform)
 }
 
 func handleUsersV3UploadAvatar(ctx context.Context, cmd *cli.Command) error {
@@ -949,6 +963,7 @@ func handleUsersV3UploadAvatar(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "users:v3 upload-avatar", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "users:v3 upload-avatar", obj, format, explicitFormat, transform)
 }

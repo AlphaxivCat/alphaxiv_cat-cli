@@ -116,8 +116,9 @@ func handlePapersV3ImplementationsCreate(ctx context.Context, cmd *cli.Command) 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3:implementations create", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3:implementations create", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3ImplementationsList(ctx context.Context, cmd *cli.Command) error {
@@ -151,8 +152,9 @@ func handlePapersV3ImplementationsList(ctx context.Context, cmd *cli.Command) er
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3:implementations list", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3:implementations list", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3ImplementationsDelete(ctx context.Context, cmd *cli.Command) error {

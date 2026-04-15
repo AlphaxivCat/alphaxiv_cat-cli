@@ -88,8 +88,9 @@ func handlePapersV3OverviewRetrieve(ctx context.Context, cmd *cli.Command) error
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3:overview retrieve", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3:overview retrieve", obj, format, explicitFormat, transform)
 }
 
 func handlePapersV3OverviewRetrieveStatus(ctx context.Context, cmd *cli.Command) error {
@@ -123,6 +124,7 @@ func handlePapersV3OverviewRetrieveStatus(ctx context.Context, cmd *cli.Command)
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "papers:v3:overview retrieve-status", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "papers:v3:overview retrieve-status", obj, format, explicitFormat, transform)
 }

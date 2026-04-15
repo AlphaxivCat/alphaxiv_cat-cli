@@ -51,6 +51,7 @@ func handleWellKnownRetrieveOAuthProtectedResource(ctx context.Context, cmd *cli
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "well-known retrieve-oauth-protected-resource", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "well-known retrieve-oauth-protected-resource", obj, format, explicitFormat, transform)
 }

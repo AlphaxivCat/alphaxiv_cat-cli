@@ -204,13 +204,14 @@ func handleAssistantV2Chat(ctx context.Context, cmd *cli.Command) error {
 	}
 
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
 	stream := client.Assistant.V2.ChatStreaming(ctx, params, options...)
 	maxItems := int64(-1)
 	if cmd.IsSet("max-items") {
 		maxItems = cmd.Value("max-items").(int64)
 	}
-	return ShowJSONIterator(os.Stdout, "assistant:v2 chat", stream, format, transform, maxItems)
+	return ShowJSONIterator(os.Stdout, os.Stderr, "assistant:v2 chat", stream, format, explicitFormat, transform, maxItems)
 }
 
 func handleAssistantV2DeleteChat(ctx context.Context, cmd *cli.Command) error {
@@ -300,8 +301,9 @@ func handleAssistantV2GetChats(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "assistant:v2 get-chats", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "assistant:v2 get-chats", obj, format, explicitFormat, transform)
 }
 
 func handleAssistantV2GetURLMetadata(ctx context.Context, cmd *cli.Command) error {
@@ -334,6 +336,7 @@ func handleAssistantV2GetURLMetadata(ctx context.Context, cmd *cli.Command) erro
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "assistant:v2 get-url-metadata", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "assistant:v2 get-url-metadata", obj, format, explicitFormat, transform)
 }

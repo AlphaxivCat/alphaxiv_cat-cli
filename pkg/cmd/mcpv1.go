@@ -72,13 +72,14 @@ func handleMcpV1EstablishConnection(ctx context.Context, cmd *cli.Command) error
 	}
 
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
 	stream := client.Mcp.V1.EstablishConnectionStreaming(ctx, options...)
 	maxItems := int64(-1)
 	if cmd.IsSet("max-items") {
 		maxItems = cmd.Value("max-items").(int64)
 	}
-	return ShowJSONIterator(os.Stdout, "mcp:v1 establish-connection", stream, format, transform, maxItems)
+	return ShowJSONIterator(os.Stdout, os.Stderr, "mcp:v1 establish-connection", stream, format, explicitFormat, transform, maxItems)
 }
 
 func handleMcpV1SendMessage(ctx context.Context, cmd *cli.Command) error {
@@ -111,8 +112,9 @@ func handleMcpV1SendMessage(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "mcp:v1 send-message", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "mcp:v1 send-message", obj, format, explicitFormat, transform)
 }
 
 func handleMcpV1TerminateSession(ctx context.Context, cmd *cli.Command) error {

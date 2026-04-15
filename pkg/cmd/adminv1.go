@@ -84,8 +84,9 @@ func handleAdminV1GetModeratorFeed(ctx context.Context, cmd *cli.Command) error 
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "admin:v1 get-moderator-feed", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "admin:v1 get-moderator-feed", obj, format, explicitFormat, transform)
 }
 
 func handleAdminV1LookupUserByEmail(ctx context.Context, cmd *cli.Command) error {
@@ -118,6 +119,7 @@ func handleAdminV1LookupUserByEmail(ctx context.Context, cmd *cli.Command) error
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "admin:v1 lookup-user-by-email", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "admin:v1 lookup-user-by-email", obj, format, explicitFormat, transform)
 }

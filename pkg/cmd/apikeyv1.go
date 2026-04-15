@@ -98,8 +98,9 @@ func handleAPIKeysV1Create(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "api-keys:v1 create", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "api-keys:v1 create", obj, format, explicitFormat, transform)
 }
 
 func handleAPIKeysV1List(ctx context.Context, cmd *cli.Command) error {
@@ -130,8 +131,9 @@ func handleAPIKeysV1List(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "api-keys:v1 list", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "api-keys:v1 list", obj, format, explicitFormat, transform)
 }
 
 func handleAPIKeysV1CreateImpersonation(ctx context.Context, cmd *cli.Command) error {
@@ -164,8 +166,9 @@ func handleAPIKeysV1CreateImpersonation(ctx context.Context, cmd *cli.Command) e
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "api-keys:v1 create-impersonation", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "api-keys:v1 create-impersonation", obj, format, explicitFormat, transform)
 }
 
 func handleAPIKeysV1Revoke(ctx context.Context, cmd *cli.Command) error {
@@ -199,6 +202,7 @@ func handleAPIKeysV1Revoke(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "api-keys:v1 revoke", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "api-keys:v1 revoke", obj, format, explicitFormat, transform)
 }

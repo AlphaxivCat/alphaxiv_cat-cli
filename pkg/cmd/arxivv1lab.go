@@ -61,6 +61,7 @@ func handleArxivV1LabsRetrieve(ctx context.Context, cmd *cli.Command) error {
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "arxiv:v1:labs retrieve", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "arxiv:v1:labs retrieve", obj, format, explicitFormat, transform)
 }

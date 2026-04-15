@@ -201,8 +201,9 @@ func handleEmailsCaptureBouncedEmails(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "emails capture-bounced-emails", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "emails capture-bounced-emails", obj, format, explicitFormat, transform)
 }
 
 func handleEmailsCaptureResendBouncedEmail(ctx context.Context, cmd *cli.Command) error {
@@ -235,8 +236,9 @@ func handleEmailsCaptureResendBouncedEmail(ctx context.Context, cmd *cli.Command
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "emails capture-resend-bounced-email", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "emails capture-resend-bounced-email", obj, format, explicitFormat, transform)
 }
 
 func handleEmailsKickoffCommentUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -280,8 +282,9 @@ func handleEmailsKickoffCommentUpdate(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "emails kickoff-comment-update", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "emails kickoff-comment-update", obj, format, explicitFormat, transform)
 }
 
 func handleEmailsKickoffGeneralUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -315,8 +318,9 @@ func handleEmailsKickoffGeneralUpdate(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "emails kickoff-general-update", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "emails kickoff-general-update", obj, format, explicitFormat, transform)
 }
 
 func handleEmailsProcessBouncedEmail(ctx context.Context, cmd *cli.Command) error {
@@ -349,8 +353,9 @@ func handleEmailsProcessBouncedEmail(ctx context.Context, cmd *cli.Command) erro
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "emails process-bounced-email", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "emails process-bounced-email", obj, format, explicitFormat, transform)
 }
 
 func handleEmailsProcessCommentUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -383,8 +388,9 @@ func handleEmailsProcessCommentUpdate(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "emails process-comment-update", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "emails process-comment-update", obj, format, explicitFormat, transform)
 }
 
 func handleEmailsProcessGeneralUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -417,6 +423,7 @@ func handleEmailsProcessGeneralUpdate(ctx context.Context, cmd *cli.Command) err
 
 	obj := gjson.ParseBytes(res)
 	format := cmd.Root().String("format")
+	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, "emails process-general-update", obj, format, transform)
+	return ShowJSON(os.Stdout, os.Stderr, "emails process-general-update", obj, format, explicitFormat, transform)
 }
