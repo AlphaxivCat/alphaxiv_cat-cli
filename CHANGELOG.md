@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 (2026-04-16)
+
+Full Changelog: [v0.3.0...v0.3.1](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.3.0...v0.3.1)
+
+### Chores
+
+* **cli:** switch long lists of positional args over to param structs ([99acc54](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/99acc540d457526be101913dfaa908a79fc035a7))
+
 ## 0.3.0 (2026-04-15)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.2.0...v0.3.0)
