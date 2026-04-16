@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -121,7 +120,12 @@ func handleAnalyticsPaperViewCountIngestEvent(ctx context.Context, cmd *cli.Comm
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "analytics:paper-view-count ingest-event", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "analytics:paper-view-count ingest-event",
+		Transform:      transform,
+	})
 }
 
 func handleAnalyticsPaperViewCountKickoffJob(ctx context.Context, cmd *cli.Command) error {
@@ -156,7 +160,12 @@ func handleAnalyticsPaperViewCountKickoffJob(ctx context.Context, cmd *cli.Comma
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "analytics:paper-view-count kickoff-job", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "analytics:paper-view-count kickoff-job",
+		Transform:      transform,
+	})
 }
 
 func handleAnalyticsPaperViewCountProcessJob(ctx context.Context, cmd *cli.Command) error {
@@ -191,5 +200,10 @@ func handleAnalyticsPaperViewCountProcessJob(ctx context.Context, cmd *cli.Comma
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "analytics:paper-view-count process-job", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "analytics:paper-view-count process-job",
+		Transform:      transform,
+	})
 }

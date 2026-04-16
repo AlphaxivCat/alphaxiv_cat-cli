@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -211,7 +210,12 @@ func handleAssistantV2Chat(ctx context.Context, cmd *cli.Command) error {
 	if cmd.IsSet("max-items") {
 		maxItems = cmd.Value("max-items").(int64)
 	}
-	return ShowJSONIterator(os.Stdout, os.Stderr, "assistant:v2 chat", stream, format, explicitFormat, transform, maxItems)
+	return ShowJSONIterator(stream, maxItems, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "assistant:v2 chat",
+		Transform:      transform,
+	})
 }
 
 func handleAssistantV2DeleteChat(ctx context.Context, cmd *cli.Command) error {
@@ -303,7 +307,12 @@ func handleAssistantV2GetChats(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "assistant:v2 get-chats", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "assistant:v2 get-chats",
+		Transform:      transform,
+	})
 }
 
 func handleAssistantV2GetURLMetadata(ctx context.Context, cmd *cli.Command) error {
@@ -338,5 +347,10 @@ func handleAssistantV2GetURLMetadata(ctx context.Context, cmd *cli.Command) erro
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "assistant:v2 get-url-metadata", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "assistant:v2 get-url-metadata",
+		Transform:      transform,
+	})
 }

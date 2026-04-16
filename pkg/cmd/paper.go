@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -493,7 +492,12 @@ func handlePapersAddAuthor(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers add-author", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers add-author",
+		Transform:      transform,
+	})
 }
 
 func handlePapersAdminVote(ctx context.Context, cmd *cli.Command) error {
@@ -536,7 +540,12 @@ func handlePapersAdminVote(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers admin-vote", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers admin-vote",
+		Transform:      transform,
+	})
 }
 
 func handlePapersCrxAbstractClick(ctx context.Context, cmd *cli.Command) error {
@@ -581,7 +590,12 @@ func handlePapersCrxAbstractClick(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers crx-abstract-click", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers crx-abstract-click",
+		Transform:      transform,
+	})
 }
 
 func handlePapersCrxAbstractHit(ctx context.Context, cmd *cli.Command) error {
@@ -617,7 +631,12 @@ func handlePapersCrxAbstractHit(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers crx-abstract-hit", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers crx-abstract-hit",
+		Transform:      transform,
+	})
 }
 
 func handlePapersCrxPdfClick(ctx context.Context, cmd *cli.Command) error {
@@ -662,7 +681,12 @@ func handlePapersCrxPdfClick(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers crx-pdf-click", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers crx-pdf-click",
+		Transform:      transform,
+	})
 }
 
 func handlePapersCrxPdfHit(ctx context.Context, cmd *cli.Command) error {
@@ -698,7 +722,12 @@ func handlePapersCrxPdfHit(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers crx-pdf-hit", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers crx-pdf-hit",
+		Transform:      transform,
+	})
 }
 
 func handlePapersEmailAuthor(ctx context.Context, cmd *cli.Command) error {
@@ -741,7 +770,12 @@ func handlePapersEmailAuthor(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers email-author", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers email-author",
+		Transform:      transform,
+	})
 }
 
 func handlePapersGetCrxPaperInfo(ctx context.Context, cmd *cli.Command) error {
@@ -777,7 +811,12 @@ func handlePapersGetCrxPaperInfo(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers get-crx-paper-info", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers get-crx-paper-info",
+		Transform:      transform,
+	})
 }
 
 func handlePapersGetPaperInfo(ctx context.Context, cmd *cli.Command) error {
@@ -813,7 +852,12 @@ func handlePapersGetPaperInfo(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers get-paper-info", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers get-paper-info",
+		Transform:      transform,
+	})
 }
 
 func handlePapersKickoffAbstractEmbed(ctx context.Context, cmd *cli.Command) error {
@@ -846,7 +890,12 @@ func handlePapersKickoffAbstractEmbed(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers kickoff-abstract-embed", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers kickoff-abstract-embed",
+		Transform:      transform,
+	})
 }
 
 func handlePapersKickoffAI(ctx context.Context, cmd *cli.Command) error {
@@ -879,7 +928,12 @@ func handlePapersKickoffAI(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers kickoff-ai", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers kickoff-ai",
+		Transform:      transform,
+	})
 }
 
 func handlePapersKickoffBibtex(ctx context.Context, cmd *cli.Command) error {
@@ -912,7 +966,12 @@ func handlePapersKickoffBibtex(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers kickoff-bibtex", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers kickoff-bibtex",
+		Transform:      transform,
+	})
 }
 
 func handlePapersKickoffGitHub(ctx context.Context, cmd *cli.Command) error {
@@ -945,7 +1004,12 @@ func handlePapersKickoffGitHub(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers kickoff-github", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers kickoff-github",
+		Transform:      transform,
+	})
 }
 
 func handlePapersKickoffPaperCategorization(ctx context.Context, cmd *cli.Command) error {
@@ -981,7 +1045,12 @@ func handlePapersKickoffPaperCategorization(ctx context.Context, cmd *cli.Comman
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers kickoff-paper-categorization", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers kickoff-paper-categorization",
+		Transform:      transform,
+	})
 }
 
 func handlePapersKickoffRecentPapers(ctx context.Context, cmd *cli.Command) error {
@@ -1014,7 +1083,12 @@ func handlePapersKickoffRecentPapers(ctx context.Context, cmd *cli.Command) erro
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers kickoff-recent-papers", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers kickoff-recent-papers",
+		Transform:      transform,
+	})
 }
 
 func handlePapersMarkViewed(ctx context.Context, cmd *cli.Command) error {
@@ -1050,7 +1124,12 @@ func handlePapersMarkViewed(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers mark-viewed", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers mark-viewed",
+		Transform:      transform,
+	})
 }
 
 func handlePapersProcessAbstractEmbed(ctx context.Context, cmd *cli.Command) error {
@@ -1085,7 +1164,12 @@ func handlePapersProcessAbstractEmbed(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers process-abstract-embed", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers process-abstract-embed",
+		Transform:      transform,
+	})
 }
 
 func handlePapersProcessMetadata(ctx context.Context, cmd *cli.Command) error {
@@ -1120,7 +1204,12 @@ func handlePapersProcessMetadata(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers process-metadata", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers process-metadata",
+		Transform:      transform,
+	})
 }
 
 func handlePapersRequestAILatest(ctx context.Context, cmd *cli.Command) error {
@@ -1163,7 +1252,12 @@ func handlePapersRequestAILatest(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers request-ai-latest", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers request-ai-latest",
+		Transform:      transform,
+	})
 }
 
 func handlePapersRequestAITranslationLatest(ctx context.Context, cmd *cli.Command) error {
@@ -1208,7 +1302,12 @@ func handlePapersRequestAITranslationLatest(ctx context.Context, cmd *cli.Comman
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers request-ai-translation-latest", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers request-ai-translation-latest",
+		Transform:      transform,
+	})
 }
 
 func handlePapersSetGitHubRepository(ctx context.Context, cmd *cli.Command) error {
@@ -1251,7 +1350,12 @@ func handlePapersSetGitHubRepository(ctx context.Context, cmd *cli.Command) erro
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers set-github-repository", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers set-github-repository",
+		Transform:      transform,
+	})
 }
 
 func handlePapersToggleFollow(ctx context.Context, cmd *cli.Command) error {
@@ -1287,7 +1391,12 @@ func handlePapersToggleFollow(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers toggle-follow", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers toggle-follow",
+		Transform:      transform,
+	})
 }
 
 func handlePapersTranslateAIOverview(ctx context.Context, cmd *cli.Command) error {
@@ -1332,7 +1441,12 @@ func handlePapersTranslateAIOverview(ctx context.Context, cmd *cli.Command) erro
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers translate-ai-overview", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers translate-ai-overview",
+		Transform:      transform,
+	})
 }
 
 func handlePapersUnclaim(ctx context.Context, cmd *cli.Command) error {
@@ -1368,7 +1482,12 @@ func handlePapersUnclaim(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers unclaim", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers unclaim",
+		Transform:      transform,
+	})
 }
 
 func handlePapersVote(ctx context.Context, cmd *cli.Command) error {
@@ -1404,5 +1523,10 @@ func handlePapersVote(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers vote", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers vote",
+		Transform:      transform,
+	})
 }

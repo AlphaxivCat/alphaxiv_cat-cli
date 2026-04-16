@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -100,7 +99,12 @@ func handleAPIKeysV1Create(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "api-keys:v1 create", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "api-keys:v1 create",
+		Transform:      transform,
+	})
 }
 
 func handleAPIKeysV1List(ctx context.Context, cmd *cli.Command) error {
@@ -133,7 +137,12 @@ func handleAPIKeysV1List(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "api-keys:v1 list", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "api-keys:v1 list",
+		Transform:      transform,
+	})
 }
 
 func handleAPIKeysV1CreateImpersonation(ctx context.Context, cmd *cli.Command) error {
@@ -168,7 +177,12 @@ func handleAPIKeysV1CreateImpersonation(ctx context.Context, cmd *cli.Command) e
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "api-keys:v1 create-impersonation", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "api-keys:v1 create-impersonation",
+		Transform:      transform,
+	})
 }
 
 func handleAPIKeysV1Revoke(ctx context.Context, cmd *cli.Command) error {
@@ -204,5 +218,10 @@ func handleAPIKeysV1Revoke(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "api-keys:v1 revoke", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "api-keys:v1 revoke",
+		Transform:      transform,
+	})
 }

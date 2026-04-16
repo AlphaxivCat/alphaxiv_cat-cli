@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -151,7 +150,12 @@ func handleGoogleScholarV1Connect(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 connect", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "google-scholar:v1 connect",
+		Transform:      transform,
+	})
 }
 
 func handleGoogleScholarV1DeleteConnection(ctx context.Context, cmd *cli.Command) error {
@@ -206,7 +210,12 @@ func handleGoogleScholarV1GetReport(ctx context.Context, cmd *cli.Command) error
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 get-report", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "google-scholar:v1 get-report",
+		Transform:      transform,
+	})
 }
 
 func handleGoogleScholarV1GetStatus(ctx context.Context, cmd *cli.Command) error {
@@ -239,7 +248,12 @@ func handleGoogleScholarV1GetStatus(ctx context.Context, cmd *cli.Command) error
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 get-status", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "google-scholar:v1 get-status",
+		Transform:      transform,
+	})
 }
 
 func handleGoogleScholarV1Resync(ctx context.Context, cmd *cli.Command) error {
@@ -275,7 +289,12 @@ func handleGoogleScholarV1Resync(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 resync", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "google-scholar:v1 resync",
+		Transform:      transform,
+	})
 }
 
 func handleGoogleScholarV1SetEmail(ctx context.Context, cmd *cli.Command) error {
@@ -332,7 +351,12 @@ func handleGoogleScholarV1Sync(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 sync", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "google-scholar:v1 sync",
+		Transform:      transform,
+	})
 }
 
 func handleGoogleScholarV1VerifyEmail(ctx context.Context, cmd *cli.Command) error {
@@ -367,5 +391,10 @@ func handleGoogleScholarV1VerifyEmail(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "google-scholar:v1 verify-email", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "google-scholar:v1 verify-email",
+		Transform:      transform,
+	})
 }
