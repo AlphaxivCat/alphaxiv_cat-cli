@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -95,7 +94,12 @@ func handlePapersMetadataRetrieveLatestMetadata(ctx context.Context, cmd *cli.Co
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers:metadata retrieve-latest-metadata", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers:metadata retrieve-latest-metadata",
+		Transform:      transform,
+	})
 }
 
 func handlePapersMetadataRetrieveVersionMetadata(ctx context.Context, cmd *cli.Command) error {
@@ -140,5 +144,10 @@ func handlePapersMetadataRetrieveVersionMetadata(ctx context.Context, cmd *cli.C
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers:metadata retrieve-version-metadata", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers:metadata retrieve-version-metadata",
+		Transform:      transform,
+	})
 }

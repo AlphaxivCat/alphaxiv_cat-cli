@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -71,7 +70,12 @@ func handlePapersKickoffDailyGitHubStarsUpdate(ctx context.Context, cmd *cli.Com
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers:kickoff-daily-github-stars update", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers:kickoff-daily-github-stars update",
+		Transform:      transform,
+	})
 }
 
 func handlePapersKickoffDailyGitHubStarsKickoffDailyGitHubStars(ctx context.Context, cmd *cli.Command) error {
@@ -104,5 +108,10 @@ func handlePapersKickoffDailyGitHubStarsKickoffDailyGitHubStars(ctx context.Cont
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "papers:kickoff-daily-github-stars kickoff-daily-github-stars", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "papers:kickoff-daily-github-stars kickoff-daily-github-stars",
+		Transform:      transform,
+	})
 }

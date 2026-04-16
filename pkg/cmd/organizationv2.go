@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -111,7 +110,12 @@ func handleOrganizationsV2ListTop(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 list-top", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "organizations:v2 list-top",
+		Transform:      transform,
+	})
 }
 
 func handleOrganizationsV2RetrieveByID(ctx context.Context, cmd *cli.Command) error {
@@ -147,7 +151,12 @@ func handleOrganizationsV2RetrieveByID(ctx context.Context, cmd *cli.Command) er
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 retrieve-by-id", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "organizations:v2 retrieve-by-id",
+		Transform:      transform,
+	})
 }
 
 func handleOrganizationsV2RetrieveByName(ctx context.Context, cmd *cli.Command) error {
@@ -183,7 +192,12 @@ func handleOrganizationsV2RetrieveByName(ctx context.Context, cmd *cli.Command) 
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 retrieve-by-name", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "organizations:v2 retrieve-by-name",
+		Transform:      transform,
+	})
 }
 
 func handleOrganizationsV2Search(ctx context.Context, cmd *cli.Command) error {
@@ -218,7 +232,12 @@ func handleOrganizationsV2Search(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 search", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "organizations:v2 search",
+		Transform:      transform,
+	})
 }
 
 func handleOrganizationsV2ToggleFollow(ctx context.Context, cmd *cli.Command) error {
@@ -254,5 +273,10 @@ func handleOrganizationsV2ToggleFollow(ctx context.Context, cmd *cli.Command) er
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "organizations:v2 toggle-follow", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "organizations:v2 toggle-follow",
+		Transform:      transform,
+	})
 }

@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -207,7 +206,12 @@ func handleFoldersV3Create(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "folders:v3 create", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "folders:v3 create",
+		Transform:      transform,
+	})
 }
 
 func handleFoldersV3List(ctx context.Context, cmd *cli.Command) error {
@@ -240,7 +244,12 @@ func handleFoldersV3List(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "folders:v3 list", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "folders:v3 list",
+		Transform:      transform,
+	})
 }
 
 func handleFoldersV3Delete(ctx context.Context, cmd *cli.Command) error {
@@ -308,7 +317,12 @@ func handleFoldersV3AddPapers(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "folders:v3 add-papers", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "folders:v3 add-papers",
+		Transform:      transform,
+	})
 }
 
 func handleFoldersV3MovePapers(ctx context.Context, cmd *cli.Command) error {
@@ -351,7 +365,12 @@ func handleFoldersV3MovePapers(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "folders:v3 move-papers", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "folders:v3 move-papers",
+		Transform:      transform,
+	})
 }
 
 func handleFoldersV3RemovePapers(ctx context.Context, cmd *cli.Command) error {
@@ -426,7 +445,12 @@ func handleFoldersV3ToggleSharing(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "folders:v3 toggle-sharing", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "folders:v3 toggle-sharing",
+		Transform:      transform,
+	})
 }
 
 func handleFoldersV3UpdateName(ctx context.Context, cmd *cli.Command) error {
