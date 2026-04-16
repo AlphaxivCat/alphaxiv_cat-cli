@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-go"
@@ -143,7 +142,12 @@ func handleRetoolV1GetCumulativeUsers(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-cumulative-users", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-cumulative-users",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetDailyConversations(ctx context.Context, cmd *cli.Command) error {
@@ -176,7 +180,12 @@ func handleRetoolV1GetDailyConversations(ctx context.Context, cmd *cli.Command) 
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-daily-conversations", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-daily-conversations",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetDailyNewAccounts(ctx context.Context, cmd *cli.Command) error {
@@ -209,7 +218,12 @@ func handleRetoolV1GetDailyNewAccounts(ctx context.Context, cmd *cli.Command) er
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-daily-new-accounts", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-daily-new-accounts",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetDailyUserChatMessages(ctx context.Context, cmd *cli.Command) error {
@@ -242,7 +256,12 @@ func handleRetoolV1GetDailyUserChatMessages(ctx context.Context, cmd *cli.Comman
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-daily-user-chat-messages", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-daily-user-chat-messages",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetTotalCommentCount(ctx context.Context, cmd *cli.Command) error {
@@ -275,7 +294,12 @@ func handleRetoolV1GetTotalCommentCount(ctx context.Context, cmd *cli.Command) e
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-total-comment-count", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-total-comment-count",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetTotalPaperCount(ctx context.Context, cmd *cli.Command) error {
@@ -308,7 +332,12 @@ func handleRetoolV1GetTotalPaperCount(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-total-paper-count", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-total-paper-count",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetTotalPrivateNotesCount(ctx context.Context, cmd *cli.Command) error {
@@ -341,7 +370,12 @@ func handleRetoolV1GetTotalPrivateNotesCount(ctx context.Context, cmd *cli.Comma
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-total-private-notes-count", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-total-private-notes-count",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetTotalUserCount(ctx context.Context, cmd *cli.Command) error {
@@ -374,7 +408,12 @@ func handleRetoolV1GetTotalUserCount(ctx context.Context, cmd *cli.Command) erro
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-total-user-count", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-total-user-count",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetWeeklyMessageCountsByUser(ctx context.Context, cmd *cli.Command) error {
@@ -407,7 +446,12 @@ func handleRetoolV1GetWeeklyMessageCountsByUser(ctx context.Context, cmd *cli.Co
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-weekly-message-counts-by-user", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-weekly-message-counts-by-user",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetWeeklyPrivateNotes(ctx context.Context, cmd *cli.Command) error {
@@ -440,7 +484,12 @@ func handleRetoolV1GetWeeklyPrivateNotes(ctx context.Context, cmd *cli.Command) 
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-weekly-private-notes", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-weekly-private-notes",
+		Transform:      transform,
+	})
 }
 
 func handleRetoolV1GetWeeklyPublicComments(ctx context.Context, cmd *cli.Command) error {
@@ -473,5 +522,10 @@ func handleRetoolV1GetWeeklyPublicComments(ctx context.Context, cmd *cli.Command
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "retool:v1 get-weekly-public-comments", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "retool:v1 get-weekly-public-comments",
+		Transform:      transform,
+	})
 }

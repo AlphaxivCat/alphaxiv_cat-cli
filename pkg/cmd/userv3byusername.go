@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -76,7 +75,12 @@ func handleUsersV3ByUsernameGetProfilePage(ctx context.Context, cmd *cli.Command
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "users:v3:by-username get-profile-page", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "users:v3:by-username get-profile-page",
+		Transform:      transform,
+	})
 }
 
 func handleUsersV3ByUsernameGetUser(ctx context.Context, cmd *cli.Command) error {
@@ -112,5 +116,10 @@ func handleUsersV3ByUsernameGetUser(ctx context.Context, cmd *cli.Command) error
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "users:v3:by-username get-user", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "users:v3:by-username get-user",
+		Transform:      transform,
+	})
 }

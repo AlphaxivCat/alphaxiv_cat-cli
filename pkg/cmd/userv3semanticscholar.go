@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -76,7 +75,12 @@ func handleUsersV3SemanticScholarLink(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "users:v3:semantic-scholar link", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "users:v3:semantic-scholar link",
+		Transform:      transform,
+	})
 }
 
 func handleUsersV3SemanticScholarScrape(ctx context.Context, cmd *cli.Command) error {
@@ -112,5 +116,10 @@ func handleUsersV3SemanticScholarScrape(ctx context.Context, cmd *cli.Command) e
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "users:v3:semantic-scholar scrape", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "users:v3:semantic-scholar scrape",
+		Transform:      transform,
+	})
 }

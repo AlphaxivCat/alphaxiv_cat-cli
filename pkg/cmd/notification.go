@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-go"
@@ -53,5 +52,10 @@ func handleNotificationsSendKickoffNotificationEmails(ctx context.Context, cmd *
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "notifications send-kickoff-notification-emails", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "notifications send-kickoff-notification-emails",
+		Transform:      transform,
+	})
 }

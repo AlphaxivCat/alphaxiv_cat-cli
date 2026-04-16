@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -203,7 +202,12 @@ func handleEmailsCaptureBouncedEmails(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "emails capture-bounced-emails", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "emails capture-bounced-emails",
+		Transform:      transform,
+	})
 }
 
 func handleEmailsCaptureResendBouncedEmail(ctx context.Context, cmd *cli.Command) error {
@@ -238,7 +242,12 @@ func handleEmailsCaptureResendBouncedEmail(ctx context.Context, cmd *cli.Command
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "emails capture-resend-bounced-email", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "emails capture-resend-bounced-email",
+		Transform:      transform,
+	})
 }
 
 func handleEmailsKickoffCommentUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -284,7 +293,12 @@ func handleEmailsKickoffCommentUpdate(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "emails kickoff-comment-update", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "emails kickoff-comment-update",
+		Transform:      transform,
+	})
 }
 
 func handleEmailsKickoffGeneralUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -320,7 +334,12 @@ func handleEmailsKickoffGeneralUpdate(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "emails kickoff-general-update", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "emails kickoff-general-update",
+		Transform:      transform,
+	})
 }
 
 func handleEmailsProcessBouncedEmail(ctx context.Context, cmd *cli.Command) error {
@@ -355,7 +374,12 @@ func handleEmailsProcessBouncedEmail(ctx context.Context, cmd *cli.Command) erro
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "emails process-bounced-email", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "emails process-bounced-email",
+		Transform:      transform,
+	})
 }
 
 func handleEmailsProcessCommentUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -390,7 +414,12 @@ func handleEmailsProcessCommentUpdate(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "emails process-comment-update", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "emails process-comment-update",
+		Transform:      transform,
+	})
 }
 
 func handleEmailsProcessGeneralUpdate(ctx context.Context, cmd *cli.Command) error {
@@ -425,5 +454,10 @@ func handleEmailsProcessGeneralUpdate(ctx context.Context, cmd *cli.Command) err
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "emails process-general-update", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "emails process-general-update",
+		Transform:      transform,
+	})
 }

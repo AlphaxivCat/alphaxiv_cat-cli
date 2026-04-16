@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -79,7 +78,12 @@ func handleMcpV1EstablishConnection(ctx context.Context, cmd *cli.Command) error
 	if cmd.IsSet("max-items") {
 		maxItems = cmd.Value("max-items").(int64)
 	}
-	return ShowJSONIterator(os.Stdout, os.Stderr, "mcp:v1 establish-connection", stream, format, explicitFormat, transform, maxItems)
+	return ShowJSONIterator(stream, maxItems, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "mcp:v1 establish-connection",
+		Transform:      transform,
+	})
 }
 
 func handleMcpV1SendMessage(ctx context.Context, cmd *cli.Command) error {
@@ -114,7 +118,12 @@ func handleMcpV1SendMessage(ctx context.Context, cmd *cli.Command) error {
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "mcp:v1 send-message", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "mcp:v1 send-message",
+		Transform:      transform,
+	})
 }
 
 func handleMcpV1TerminateSession(ctx context.Context, cmd *cli.Command) error {

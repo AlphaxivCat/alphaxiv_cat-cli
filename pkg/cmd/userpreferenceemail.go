@@ -5,7 +5,6 @@ package cmd
 import (
 	"context"
 	"fmt"
-	"os"
 
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/apiquery"
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
@@ -74,7 +73,12 @@ func handleUsersPreferencesEmailUpdate(ctx context.Context, cmd *cli.Command) er
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "users:preferences:email update", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "users:preferences:email update",
+		Transform:      transform,
+	})
 }
 
 func handleUsersPreferencesEmailGet(ctx context.Context, cmd *cli.Command) error {
@@ -107,5 +111,10 @@ func handleUsersPreferencesEmailGet(ctx context.Context, cmd *cli.Command) error
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
 	transform := cmd.Root().String("transform")
-	return ShowJSON(os.Stdout, os.Stderr, "users:preferences:email get", obj, format, explicitFormat, transform)
+	return ShowJSON(obj, ShowJSONOpts{
+		ExplicitFormat: explicitFormat,
+		Format:         format,
+		Title:          "users:preferences:email get",
+		Transform:      transform,
+	})
 }
