@@ -76,6 +76,7 @@ func handleUsersPreferencesEmailUpdate(ctx context.Context, cmd *cli.Command) er
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:preferences:email update",
 		Transform:      transform,
 	})
@@ -114,6 +115,7 @@ func handleUsersPreferencesEmailGet(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:preferences:email get",
 		Transform:      transform,
 	})

@@ -123,6 +123,7 @@ func handleAnalyticsPaperViewCountIngestEvent(ctx context.Context, cmd *cli.Comm
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "analytics:paper-view-count ingest-event",
 		Transform:      transform,
 	})
@@ -163,6 +164,7 @@ func handleAnalyticsPaperViewCountKickoffJob(ctx context.Context, cmd *cli.Comma
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "analytics:paper-view-count kickoff-job",
 		Transform:      transform,
 	})
@@ -203,6 +205,7 @@ func handleAnalyticsPaperViewCountProcessJob(ctx context.Context, cmd *cli.Comma
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "analytics:paper-view-count process-job",
 		Transform:      transform,
 	})

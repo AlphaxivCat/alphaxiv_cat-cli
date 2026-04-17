@@ -91,6 +91,7 @@ func handleUsersGetPrivateNotes(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users get-private-notes",
 		Transform:      transform,
 	})
@@ -129,6 +130,7 @@ func handleUsersWeighWeeklyReputation(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users weigh-weekly-reputation",
 		Transform:      transform,
 	})

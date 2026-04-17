@@ -145,6 +145,7 @@ func handleRetoolV1GetCumulativeUsers(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-cumulative-users",
 		Transform:      transform,
 	})
@@ -183,6 +184,7 @@ func handleRetoolV1GetDailyConversations(ctx context.Context, cmd *cli.Command) 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-daily-conversations",
 		Transform:      transform,
 	})
@@ -221,6 +223,7 @@ func handleRetoolV1GetDailyNewAccounts(ctx context.Context, cmd *cli.Command) er
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-daily-new-accounts",
 		Transform:      transform,
 	})
@@ -259,6 +262,7 @@ func handleRetoolV1GetDailyUserChatMessages(ctx context.Context, cmd *cli.Comman
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-daily-user-chat-messages",
 		Transform:      transform,
 	})
@@ -297,6 +301,7 @@ func handleRetoolV1GetTotalCommentCount(ctx context.Context, cmd *cli.Command) e
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-total-comment-count",
 		Transform:      transform,
 	})
@@ -335,6 +340,7 @@ func handleRetoolV1GetTotalPaperCount(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-total-paper-count",
 		Transform:      transform,
 	})
@@ -373,6 +379,7 @@ func handleRetoolV1GetTotalPrivateNotesCount(ctx context.Context, cmd *cli.Comma
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-total-private-notes-count",
 		Transform:      transform,
 	})
@@ -411,6 +418,7 @@ func handleRetoolV1GetTotalUserCount(ctx context.Context, cmd *cli.Command) erro
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-total-user-count",
 		Transform:      transform,
 	})
@@ -449,6 +457,7 @@ func handleRetoolV1GetWeeklyMessageCountsByUser(ctx context.Context, cmd *cli.Co
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-weekly-message-counts-by-user",
 		Transform:      transform,
 	})
@@ -487,6 +496,7 @@ func handleRetoolV1GetWeeklyPrivateNotes(ctx context.Context, cmd *cli.Command) 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-weekly-private-notes",
 		Transform:      transform,
 	})
@@ -525,6 +535,7 @@ func handleRetoolV1GetWeeklyPublicComments(ctx context.Context, cmd *cli.Command
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "retool:v1 get-weekly-public-comments",
 		Transform:      transform,
 	})

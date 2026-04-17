@@ -415,6 +415,7 @@ func handleUsersV3AutocompleteProfile(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 autocomplete-profile",
 		Transform:      transform,
 	})
@@ -510,6 +511,7 @@ func handleUsersV3GetActivity(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 get-activity",
 		Transform:      transform,
 	})
@@ -558,6 +560,7 @@ func handleUsersV3GetClaimedPapers(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 get-claimed-papers",
 		Transform:      transform,
 	})
@@ -596,6 +599,7 @@ func handleUsersV3GetCurrentUser(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 get-current-user",
 		Transform:      transform,
 	})
@@ -637,6 +641,7 @@ func handleUsersV3GetFeaturedActivity(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 get-featured-activity",
 		Transform:      transform,
 	})
@@ -678,6 +683,7 @@ func handleUsersV3GetFollowers(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 get-followers",
 		Transform:      transform,
 	})
@@ -716,6 +722,7 @@ func handleUsersV3GetLeaderboard(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 get-leaderboard",
 		Transform:      transform,
 	})
@@ -757,6 +764,7 @@ func handleUsersV3GetUserByUuid(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 get-user-by-uuid",
 		Transform:      transform,
 	})
@@ -797,6 +805,7 @@ func handleUsersV3GetViewedHistory(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 get-viewed-history",
 		Transform:      transform,
 	})
@@ -838,6 +847,7 @@ func handleUsersV3ProcessNotificationEmail(ctx context.Context, cmd *cli.Command
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 process-notification-email",
 		Transform:      transform,
 	})
@@ -878,6 +888,7 @@ func handleUsersV3Search(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 search",
 		Transform:      transform,
 	})
@@ -919,6 +930,7 @@ func handleUsersV3ToggleFollowUser(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 toggle-follow-user",
 		Transform:      transform,
 	})
@@ -959,6 +971,7 @@ func handleUsersV3UpdatePreferences(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 update-preferences",
 		Transform:      transform,
 	})
@@ -999,6 +1012,7 @@ func handleUsersV3UpdateProfile(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 update-profile",
 		Transform:      transform,
 	})
@@ -1037,6 +1051,7 @@ func handleUsersV3UploadAvatar(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 upload-avatar",
 		Transform:      transform,
 	})

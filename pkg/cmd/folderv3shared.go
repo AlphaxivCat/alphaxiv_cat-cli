@@ -78,6 +78,7 @@ func handleFoldersV3SharedRetrieve(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "folders:v3:shared retrieve",
 		Transform:      transform,
 	})
@@ -119,6 +120,7 @@ func handleFoldersV3SharedCopy(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "folders:v3:shared copy",
 		Transform:      transform,
 	})

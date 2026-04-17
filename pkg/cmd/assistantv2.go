@@ -213,6 +213,7 @@ func handleAssistantV2Chat(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSONIterator(stream, maxItems, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "assistant:v2 chat",
 		Transform:      transform,
 	})
@@ -310,6 +311,7 @@ func handleAssistantV2GetChats(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "assistant:v2 get-chats",
 		Transform:      transform,
 	})
@@ -350,6 +352,7 @@ func handleAssistantV2GetURLMetadata(ctx context.Context, cmd *cli.Command) erro
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "assistant:v2 get-url-metadata",
 		Transform:      transform,
 	})

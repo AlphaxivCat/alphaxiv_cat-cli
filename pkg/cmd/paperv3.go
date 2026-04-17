@@ -619,6 +619,7 @@ func handlePapersV3Retrieve(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve",
 		Transform:      transform,
 	})
@@ -667,6 +668,7 @@ func handlePapersV3Comment(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 comment",
 		Transform:      transform,
 	})
@@ -739,6 +741,7 @@ func handlePapersV3Implementation(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 implementation",
 		Transform:      transform,
 	})
@@ -847,6 +850,7 @@ func handlePapersV3KickoffThumbnailsTrendingPapers(ctx context.Context, cmd *cli
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 kickoff-thumbnails-trending-papers",
 		Transform:      transform,
 	})
@@ -912,6 +916,7 @@ func handlePapersV3Like(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 like",
 		Transform:      transform,
 	})
@@ -1055,6 +1060,7 @@ func handlePapersV3PruneEmbeddingsByDate(ctx context.Context, cmd *cli.Command) 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 prune-embeddings-by-date",
 		Transform:      transform,
 	})
@@ -1103,6 +1109,7 @@ func handlePapersV3RequestImplementation(ctx context.Context, cmd *cli.Command) 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 request-implementation",
 		Transform:      transform,
 	})
@@ -1144,6 +1151,7 @@ func handlePapersV3RequestPodcast(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 request-podcast",
 		Transform:      transform,
 	})
@@ -1184,6 +1192,7 @@ func handlePapersV3RetrieveAll(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-all",
 		Transform:      transform,
 	})
@@ -1224,6 +1233,7 @@ func handlePapersV3RetrieveDiversePapers(ctx context.Context, cmd *cli.Command) 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-diverse-papers",
 		Transform:      transform,
 	})
@@ -1264,6 +1274,7 @@ func handlePapersV3RetrieveFeed(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-feed",
 		Transform:      transform,
 	})
@@ -1305,6 +1316,7 @@ func handlePapersV3RetrieveFigures(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-figures",
 		Transform:      transform,
 	})
@@ -1346,6 +1358,7 @@ func handlePapersV3RetrieveFullText(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-full-text",
 		Transform:      transform,
 	})
@@ -1386,6 +1399,7 @@ func handlePapersV3RetrieveGeoTrends(ctx context.Context, cmd *cli.Command) erro
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-geo-trends",
 		Transform:      transform,
 	})
@@ -1427,6 +1441,7 @@ func handlePapersV3RetrieveMetrics(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-metrics",
 		Transform:      transform,
 	})
@@ -1467,6 +1482,7 @@ func handlePapersV3RetrievePapersByCountry(ctx context.Context, cmd *cli.Command
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-papers-by-country",
 		Transform:      transform,
 	})
@@ -1508,6 +1524,7 @@ func handlePapersV3RetrievePreview(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-preview",
 		Transform:      transform,
 	})
@@ -1556,6 +1573,7 @@ func handlePapersV3RetrieveSimilarPapers(ctx context.Context, cmd *cli.Command) 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-similar-papers",
 		Transform:      transform,
 	})
@@ -1596,6 +1614,7 @@ func handlePapersV3RetrieveUnrelated(ctx context.Context, cmd *cli.Command) erro
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-unrelated",
 		Transform:      transform,
 	})

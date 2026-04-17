@@ -93,6 +93,7 @@ func handlePapersV3XMentionsUpdate(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3:x-mentions update",
 		Transform:      transform,
 	})
