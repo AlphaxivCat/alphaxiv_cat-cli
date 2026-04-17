@@ -55,6 +55,7 @@ func handleUsersPreferencesGetFoldersPreferences(ctx context.Context, cmd *cli.C
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:preferences get-folders-preferences",
 		Transform:      transform,
 	})

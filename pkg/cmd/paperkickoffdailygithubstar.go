@@ -73,6 +73,7 @@ func handlePapersKickoffDailyGitHubStarsUpdate(ctx context.Context, cmd *cli.Com
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:kickoff-daily-github-stars update",
 		Transform:      transform,
 	})
@@ -111,6 +112,7 @@ func handlePapersKickoffDailyGitHubStarsKickoffDailyGitHubStars(ctx context.Cont
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:kickoff-daily-github-stars kickoff-daily-github-stars",
 		Transform:      transform,
 	})

@@ -81,6 +81,7 @@ func handleMcpV1EstablishConnection(ctx context.Context, cmd *cli.Command) error
 	return ShowJSONIterator(stream, maxItems, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "mcp:v1 establish-connection",
 		Transform:      transform,
 	})
@@ -121,6 +122,7 @@ func handleMcpV1SendMessage(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "mcp:v1 send-message",
 		Transform:      transform,
 	})

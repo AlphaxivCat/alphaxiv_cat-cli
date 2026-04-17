@@ -81,6 +81,7 @@ func handleSearchClosestTopic(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "search closest-topic",
 		Transform:      transform,
 	})
@@ -121,6 +122,7 @@ func handleSearchGoogleSearch(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "search google-search",
 		Transform:      transform,
 	})

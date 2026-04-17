@@ -97,6 +97,7 @@ func handlePapersMetadataRetrieveLatestMetadata(ctx context.Context, cmd *cli.Co
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:metadata retrieve-latest-metadata",
 		Transform:      transform,
 	})
@@ -147,6 +148,7 @@ func handlePapersMetadataRetrieveVersionMetadata(ctx context.Context, cmd *cli.C
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:metadata retrieve-version-metadata",
 		Transform:      transform,
 	})

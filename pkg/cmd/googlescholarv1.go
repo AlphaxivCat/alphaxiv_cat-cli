@@ -153,6 +153,7 @@ func handleGoogleScholarV1Connect(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "google-scholar:v1 connect",
 		Transform:      transform,
 	})
@@ -213,6 +214,7 @@ func handleGoogleScholarV1GetReport(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "google-scholar:v1 get-report",
 		Transform:      transform,
 	})
@@ -251,6 +253,7 @@ func handleGoogleScholarV1GetStatus(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "google-scholar:v1 get-status",
 		Transform:      transform,
 	})
@@ -292,6 +295,7 @@ func handleGoogleScholarV1Resync(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "google-scholar:v1 resync",
 		Transform:      transform,
 	})
@@ -354,6 +358,7 @@ func handleGoogleScholarV1Sync(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "google-scholar:v1 sync",
 		Transform:      transform,
 	})
@@ -394,6 +399,7 @@ func handleGoogleScholarV1VerifyEmail(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "google-scholar:v1 verify-email",
 		Transform:      transform,
 	})

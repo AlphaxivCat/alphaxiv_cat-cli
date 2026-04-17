@@ -78,6 +78,7 @@ func handleUsersV3CitationsGetGraph(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3:citations get-graph",
 		Transform:      transform,
 	})
@@ -119,6 +120,7 @@ func handleUsersV3CitationsGetSummary(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3:citations get-summary",
 		Transform:      transform,
 	})

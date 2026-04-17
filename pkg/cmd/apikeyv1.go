@@ -102,6 +102,7 @@ func handleAPIKeysV1Create(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "api-keys:v1 create",
 		Transform:      transform,
 	})
@@ -140,6 +141,7 @@ func handleAPIKeysV1List(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "api-keys:v1 list",
 		Transform:      transform,
 	})
@@ -180,6 +182,7 @@ func handleAPIKeysV1CreateImpersonation(ctx context.Context, cmd *cli.Command) e
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "api-keys:v1 create-impersonation",
 		Transform:      transform,
 	})
@@ -221,6 +224,7 @@ func handleAPIKeysV1Revoke(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "api-keys:v1 revoke",
 		Transform:      transform,
 	})

@@ -120,6 +120,7 @@ func handlePapersV3ImplementationsCreate(ctx context.Context, cmd *cli.Command) 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3:implementations create",
 		Transform:      transform,
 	})
@@ -161,6 +162,7 @@ func handlePapersV3ImplementationsList(ctx context.Context, cmd *cli.Command) er
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3:implementations list",
 		Transform:      transform,
 	})
