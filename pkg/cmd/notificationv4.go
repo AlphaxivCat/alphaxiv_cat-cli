@@ -97,6 +97,7 @@ func handleNotificationsV4ListNotifications(ctx context.Context, cmd *cli.Comman
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "notifications:v4 list-notifications",
 		Transform:      transform,
 	})

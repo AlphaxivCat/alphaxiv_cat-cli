@@ -71,6 +71,7 @@ func handleBriefsV1SeenGetSeen(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "briefs:v1:seen get-seen",
 		Transform:      transform,
 	})

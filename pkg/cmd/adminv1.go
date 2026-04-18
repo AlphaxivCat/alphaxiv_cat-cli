@@ -88,6 +88,7 @@ func handleAdminV1GetModeratorFeed(ctx context.Context, cmd *cli.Command) error 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "admin:v1 get-moderator-feed",
 		Transform:      transform,
 	})
@@ -128,6 +129,7 @@ func handleAdminV1LookupUserByEmail(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "admin:v1 lookup-user-by-email",
 		Transform:      transform,
 	})

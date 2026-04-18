@@ -79,6 +79,7 @@ func handlePapersV3LegacyRetrieve(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3:legacy retrieve",
 		Transform:      transform,
 	})
@@ -120,6 +121,7 @@ func handlePapersV3LegacyRetrieveComments(ctx context.Context, cmd *cli.Command)
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3:legacy retrieve-comments",
 		Transform:      transform,
 	})

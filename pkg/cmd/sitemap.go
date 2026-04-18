@@ -103,6 +103,7 @@ func handleSitemapsListOverviews(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "sitemaps list-overviews",
 		Transform:      transform,
 	})
@@ -143,6 +144,7 @@ func handleSitemapsListPapers(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "sitemaps list-papers",
 		Transform:      transform,
 	})
@@ -183,6 +185,7 @@ func handleSitemapsListUsers(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "sitemaps list-users",
 		Transform:      transform,
 	})

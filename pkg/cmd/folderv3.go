@@ -209,6 +209,7 @@ func handleFoldersV3Create(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "folders:v3 create",
 		Transform:      transform,
 	})
@@ -247,6 +248,7 @@ func handleFoldersV3List(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "folders:v3 list",
 		Transform:      transform,
 	})
@@ -320,6 +322,7 @@ func handleFoldersV3AddPapers(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "folders:v3 add-papers",
 		Transform:      transform,
 	})
@@ -368,6 +371,7 @@ func handleFoldersV3MovePapers(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "folders:v3 move-papers",
 		Transform:      transform,
 	})
@@ -448,6 +452,7 @@ func handleFoldersV3ToggleSharing(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "folders:v3 toggle-sharing",
 		Transform:      transform,
 	})

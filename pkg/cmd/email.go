@@ -205,6 +205,7 @@ func handleEmailsCaptureBouncedEmails(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "emails capture-bounced-emails",
 		Transform:      transform,
 	})
@@ -245,6 +246,7 @@ func handleEmailsCaptureResendBouncedEmail(ctx context.Context, cmd *cli.Command
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "emails capture-resend-bounced-email",
 		Transform:      transform,
 	})
@@ -296,6 +298,7 @@ func handleEmailsKickoffCommentUpdate(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "emails kickoff-comment-update",
 		Transform:      transform,
 	})
@@ -337,6 +340,7 @@ func handleEmailsKickoffGeneralUpdate(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "emails kickoff-general-update",
 		Transform:      transform,
 	})
@@ -377,6 +381,7 @@ func handleEmailsProcessBouncedEmail(ctx context.Context, cmd *cli.Command) erro
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "emails process-bounced-email",
 		Transform:      transform,
 	})
@@ -417,6 +422,7 @@ func handleEmailsProcessCommentUpdate(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "emails process-comment-update",
 		Transform:      transform,
 	})
@@ -457,6 +463,7 @@ func handleEmailsProcessGeneralUpdate(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "emails process-general-update",
 		Transform:      transform,
 	})

@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.4.0 (2026-04-18)
+
+Full Changelog: [v0.3.1...v0.4.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.3.1...v0.4.0)
+
+### Features
+
+* **cli:** add `--raw-output`/`-r` option to print raw (non-JSON) strings ([2eb9846](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/2eb9846df90eeeab8a6c02b94def0cdd1efe15e5))
+* **cli:** send filename and content type when reading input from files ([1275415](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/12754156504dd13f763d3d59295c789bd5f4d5f6))
+
+
+### Chores
+
+* **ci:** support manually triggering release workflow ([7a1344c](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/7a1344c0a844bb79e03a0840e6e5601eecc09cfe))
+* **cli:** use `ShowJSONOpts` as argument to `formatJSON` instead of many positionals ([9cb55ed](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/9cb55ed0d102d2ea5035fad1c030776f9077b72e))
+
 ## 0.3.1 (2026-04-16)
 
 Full Changelog: [v0.3.0...v0.3.1](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.3.0...v0.3.1)

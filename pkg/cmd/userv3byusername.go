@@ -78,6 +78,7 @@ func handleUsersV3ByUsernameGetProfilePage(ctx context.Context, cmd *cli.Command
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3:by-username get-profile-page",
 		Transform:      transform,
 	})
@@ -119,6 +120,7 @@ func handleUsersV3ByUsernameGetUser(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3:by-username get-user",
 		Transform:      transform,
 	})

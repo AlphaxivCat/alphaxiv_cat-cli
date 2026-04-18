@@ -78,6 +78,7 @@ func handleUsersV3SemanticScholarLink(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3:semantic-scholar link",
 		Transform:      transform,
 	})
@@ -119,6 +120,7 @@ func handleUsersV3SemanticScholarScrape(ctx context.Context, cmd *cli.Command) e
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3:semantic-scholar scrape",
 		Transform:      transform,
 	})
