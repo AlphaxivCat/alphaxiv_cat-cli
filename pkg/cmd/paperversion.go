@@ -105,6 +105,7 @@ func handlePapersVersionsRequestAIOverview(ctx context.Context, cmd *cli.Command
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:versions request-ai-overview",
 		Transform:      transform,
 	})
@@ -156,6 +157,7 @@ func handlePapersVersionsRequestAITranslation(ctx context.Context, cmd *cli.Comm
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:versions request-ai-translation",
 		Transform:      transform,
 	})

@@ -495,6 +495,7 @@ func handlePapersAddAuthor(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers add-author",
 		Transform:      transform,
 	})
@@ -543,6 +544,7 @@ func handlePapersAdminVote(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers admin-vote",
 		Transform:      transform,
 	})
@@ -593,6 +595,7 @@ func handlePapersCrxAbstractClick(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers crx-abstract-click",
 		Transform:      transform,
 	})
@@ -634,6 +637,7 @@ func handlePapersCrxAbstractHit(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers crx-abstract-hit",
 		Transform:      transform,
 	})
@@ -684,6 +688,7 @@ func handlePapersCrxPdfClick(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers crx-pdf-click",
 		Transform:      transform,
 	})
@@ -725,6 +730,7 @@ func handlePapersCrxPdfHit(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers crx-pdf-hit",
 		Transform:      transform,
 	})
@@ -773,6 +779,7 @@ func handlePapersEmailAuthor(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers email-author",
 		Transform:      transform,
 	})
@@ -814,6 +821,7 @@ func handlePapersGetCrxPaperInfo(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers get-crx-paper-info",
 		Transform:      transform,
 	})
@@ -855,6 +863,7 @@ func handlePapersGetPaperInfo(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers get-paper-info",
 		Transform:      transform,
 	})
@@ -893,6 +902,7 @@ func handlePapersKickoffAbstractEmbed(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers kickoff-abstract-embed",
 		Transform:      transform,
 	})
@@ -931,6 +941,7 @@ func handlePapersKickoffAI(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers kickoff-ai",
 		Transform:      transform,
 	})
@@ -969,6 +980,7 @@ func handlePapersKickoffBibtex(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers kickoff-bibtex",
 		Transform:      transform,
 	})
@@ -1007,6 +1019,7 @@ func handlePapersKickoffGitHub(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers kickoff-github",
 		Transform:      transform,
 	})
@@ -1048,6 +1061,7 @@ func handlePapersKickoffPaperCategorization(ctx context.Context, cmd *cli.Comman
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers kickoff-paper-categorization",
 		Transform:      transform,
 	})
@@ -1086,6 +1100,7 @@ func handlePapersKickoffRecentPapers(ctx context.Context, cmd *cli.Command) erro
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers kickoff-recent-papers",
 		Transform:      transform,
 	})
@@ -1127,6 +1142,7 @@ func handlePapersMarkViewed(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers mark-viewed",
 		Transform:      transform,
 	})
@@ -1167,6 +1183,7 @@ func handlePapersProcessAbstractEmbed(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers process-abstract-embed",
 		Transform:      transform,
 	})
@@ -1207,6 +1224,7 @@ func handlePapersProcessMetadata(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers process-metadata",
 		Transform:      transform,
 	})
@@ -1255,6 +1273,7 @@ func handlePapersRequestAILatest(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers request-ai-latest",
 		Transform:      transform,
 	})
@@ -1305,6 +1324,7 @@ func handlePapersRequestAITranslationLatest(ctx context.Context, cmd *cli.Comman
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers request-ai-translation-latest",
 		Transform:      transform,
 	})
@@ -1353,6 +1373,7 @@ func handlePapersSetGitHubRepository(ctx context.Context, cmd *cli.Command) erro
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers set-github-repository",
 		Transform:      transform,
 	})
@@ -1394,6 +1415,7 @@ func handlePapersToggleFollow(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers toggle-follow",
 		Transform:      transform,
 	})
@@ -1444,6 +1466,7 @@ func handlePapersTranslateAIOverview(ctx context.Context, cmd *cli.Command) erro
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers translate-ai-overview",
 		Transform:      transform,
 	})
@@ -1485,6 +1508,7 @@ func handlePapersUnclaim(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers unclaim",
 		Transform:      transform,
 	})
@@ -1526,6 +1550,7 @@ func handlePapersVote(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers vote",
 		Transform:      transform,
 	})

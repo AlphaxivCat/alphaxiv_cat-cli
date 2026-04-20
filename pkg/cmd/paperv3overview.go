@@ -92,6 +92,7 @@ func handlePapersV3OverviewRetrieve(ctx context.Context, cmd *cli.Command) error
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3:overview retrieve",
 		Transform:      transform,
 	})
@@ -133,6 +134,7 @@ func handlePapersV3OverviewRetrieveStatus(ctx context.Context, cmd *cli.Command)
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3:overview retrieve-status",
 		Transform:      transform,
 	})

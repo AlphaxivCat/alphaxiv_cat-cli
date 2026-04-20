@@ -83,6 +83,7 @@ func handleUsersV3FollowingTopicsList(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3:following:topics list",
 		Transform:      transform,
 	})
@@ -131,6 +132,7 @@ func handleUsersV3FollowingTopicsToggle(ctx context.Context, cmd *cli.Command) e
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3:following:topics toggle",
 		Transform:      transform,
 	})

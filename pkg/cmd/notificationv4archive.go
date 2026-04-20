@@ -79,6 +79,7 @@ func handleNotificationsV4ArchiveCreate(ctx context.Context, cmd *cli.Command) e
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "notifications:v4:archive create",
 		Transform:      transform,
 	})
@@ -119,6 +120,7 @@ func handleNotificationsV4ArchiveList(ctx context.Context, cmd *cli.Command) err
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "notifications:v4:archive list",
 		Transform:      transform,
 	})

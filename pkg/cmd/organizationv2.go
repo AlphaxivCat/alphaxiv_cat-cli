@@ -113,6 +113,7 @@ func handleOrganizationsV2ListTop(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "organizations:v2 list-top",
 		Transform:      transform,
 	})
@@ -154,6 +155,7 @@ func handleOrganizationsV2RetrieveByID(ctx context.Context, cmd *cli.Command) er
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "organizations:v2 retrieve-by-id",
 		Transform:      transform,
 	})
@@ -195,6 +197,7 @@ func handleOrganizationsV2RetrieveByName(ctx context.Context, cmd *cli.Command) 
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "organizations:v2 retrieve-by-name",
 		Transform:      transform,
 	})
@@ -235,6 +238,7 @@ func handleOrganizationsV2Search(ctx context.Context, cmd *cli.Command) error {
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "organizations:v2 search",
 		Transform:      transform,
 	})
@@ -276,6 +280,7 @@ func handleOrganizationsV2ToggleFollow(ctx context.Context, cmd *cli.Command) er
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "organizations:v2 toggle-follow",
 		Transform:      transform,
 	})

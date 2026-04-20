@@ -134,6 +134,7 @@ func handleCommentsV2ModeratorToggleFlags(ctx context.Context, cmd *cli.Command)
 	return ShowJSON(obj, ShowJSONOpts{
 		ExplicitFormat: explicitFormat,
 		Format:         format,
+		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "comments:v2:moderator toggle-flags",
 		Transform:      transform,
 	})
