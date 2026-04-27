@@ -372,18 +372,8 @@ var papersV3RetrieveFeed = cli.Command{
 			QueryPath: "sort",
 		},
 		&requestflag.Flag[string]{
-			Name:      "exclude-seen-briefs",
-			Usage:     `Allowed values: "true", "false".`,
-			QueryPath: "excludeSeenBriefs",
-		},
-		&requestflag.Flag[string]{
 			Name:      "organizations",
 			QueryPath: "organizations",
-		},
-		&requestflag.Flag[string]{
-			Name:      "require-summary",
-			Usage:     `Allowed values: "true", "false".`,
-			QueryPath: "requireSummary",
 		},
 		&requestflag.Flag[string]{
 			Name:      "source",
