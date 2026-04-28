@@ -498,14 +498,6 @@ func init() {
 				},
 			},
 			{
-				Name:     "arxiv:v1:labs",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&arxivV1LabsRetrieve,
-				},
-			},
-			{
 				Name:     "api-keys:v1",
 				Category: "API RESOURCE",
 				Suggest:  true,
@@ -532,14 +524,6 @@ func init() {
 				Commands: []*cli.Command{
 					&adminV1EmailsSendMonthlyDigest,
 					&adminV1EmailsSendWeeklyDigest,
-				},
-			},
-			{
-				Name:     "wrapped",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&wrappedRetrieveByUser,
 				},
 			},
 			{
@@ -603,23 +587,6 @@ func init() {
 					&retoolV1GetWeeklyMessageCountsByUser,
 					&retoolV1GetWeeklyPrivateNotes,
 					&retoolV1GetWeeklyPublicComments,
-				},
-			},
-			{
-				Name:     "briefs:v1",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&briefsV1GenerateSpeech,
-				},
-			},
-			{
-				Name:     "briefs:v1:seen",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&briefsV1SeenGetSeen,
-					&briefsV1SeenMarkSeen,
 				},
 			},
 			{
