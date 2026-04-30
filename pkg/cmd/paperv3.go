@@ -20,9 +20,10 @@ var papersV3Retrieve = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "unresolved",
-			Usage:    "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
-			Required: true,
+			Name:      "unresolved",
+			Usage:     "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
+			Required:  true,
+			PathParam: "unresolved",
 		},
 	},
 	Action:          handlePapersV3Retrieve,
@@ -35,8 +36,9 @@ var papersV3Comment = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "version",
-			Required: true,
+			Name:      "version",
+			Required:  true,
+			PathParam: "version",
 		},
 		&requestflag.Flag[string]{
 			Name:     "tag",
@@ -44,15 +46,15 @@ var papersV3Comment = cli.Command{
 			Required: true,
 			BodyPath: "tag",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "body",
 			BodyPath: "body",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "parent",
 			BodyPath: "parent",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "title",
 			BodyPath: "title",
 		},
@@ -81,8 +83,9 @@ var papersV3Implementation = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-group-id",
-			Required: true,
+			Name:      "paper-group-id",
+			Required:  true,
+			PathParam: "paperGroupId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "url",
@@ -183,8 +186,9 @@ var papersV3Like = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "group",
-			Required: true,
+			Name:      "group",
+			Required:  true,
+			PathParam: "group",
 		},
 	},
 	Action:          handlePapersV3Like,
@@ -197,9 +201,10 @@ var papersV3Podcast = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-group-id",
-			Usage:    "Paper Group ID to generate a podcast for",
-			Required: true,
+			Name:      "paper-group-id",
+			Usage:     "Paper Group ID to generate a podcast for",
+			Required:  true,
+			PathParam: "paperGroupId",
 		},
 	},
 	Action:          handlePapersV3Podcast,
@@ -212,8 +217,9 @@ var papersV3ProcessAI = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-version-id",
-			Required: true,
+			Name:      "paper-version-id",
+			Required:  true,
+			PathParam: "paperVersionId",
 		},
 		&requestflag.Flag[string]{
 			Name:      "preferred-language",
@@ -272,8 +278,9 @@ var papersV3RequestImplementation = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "group",
-			Required: true,
+			Name:      "group",
+			Required:  true,
+			PathParam: "group",
 		},
 		&requestflag.Flag[string]{
 			Name:     "paper-title",
@@ -300,9 +307,10 @@ var papersV3RequestPodcast = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-group-id",
-			Usage:    "Paper Group ID to generate a podcast for",
-			Required: true,
+			Name:      "paper-group-id",
+			Usage:     "Paper Group ID to generate a podcast for",
+			Required:  true,
+			PathParam: "paperGroupId",
 		},
 	},
 	Action:          handlePapersV3RequestPodcast,
@@ -400,8 +408,9 @@ var papersV3RetrieveFigures = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-group-id",
-			Required: true,
+			Name:      "paper-group-id",
+			Required:  true,
+			PathParam: "paperGroupId",
 		},
 	},
 	Action:          handlePapersV3RetrieveFigures,
@@ -414,8 +423,9 @@ var papersV3RetrieveFullText = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-version",
-			Required: true,
+			Name:      "paper-version",
+			Required:  true,
+			PathParam: "paperVersion",
 		},
 	},
 	Action:          handlePapersV3RetrieveFullText,
@@ -458,9 +468,10 @@ var papersV3RetrieveMetrics = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "unresolved",
-			Usage:    "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
-			Required: true,
+			Name:      "unresolved",
+			Usage:     "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
+			Required:  true,
+			PathParam: "unresolved",
 		},
 	},
 	Action:          handlePapersV3RetrieveMetrics,
@@ -491,9 +502,10 @@ var papersV3RetrievePreview = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "id",
-			Usage:    "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
-			Required: true,
+			Name:      "id",
+			Usage:     "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
+			Required:  true,
+			PathParam: "id",
 		},
 	},
 	Action:          handlePapersV3RetrievePreview,
@@ -506,9 +518,10 @@ var papersV3RetrieveSimilarPapers = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "id",
-			Usage:    "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
-			Required: true,
+			Name:      "id",
+			Usage:     "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
+			Required:  true,
+			PathParam: "id",
 		},
 		&requestflag.Flag[string]{
 			Name:      "exclude",
@@ -565,8 +578,9 @@ var papersV3View = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "group",
-			Required: true,
+			Name:      "group",
+			Required:  true,
+			PathParam: "group",
 		},
 	},
 	Action:          handlePapersV3View,
@@ -626,8 +640,6 @@ func handlePapersV3Comment(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3CommentParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -638,6 +650,8 @@ func handlePapersV3Comment(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3CommentParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -672,8 +686,6 @@ func handlePapersV3DeleteVotes(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3DeleteVotesParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -684,6 +696,8 @@ func handlePapersV3DeleteVotes(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3DeleteVotesParams{}
 
 	return client.Papers.V3.DeleteVotes(ctx, params, options...)
 }
@@ -699,8 +713,6 @@ func handlePapersV3Implementation(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3ImplementationParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -711,6 +723,8 @@ func handlePapersV3Implementation(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3ImplementationParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -745,8 +759,6 @@ func handlePapersV3KickoffPaperCountries(ctx context.Context, cmd *cli.Command) 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3KickoffPaperCountriesParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -757,6 +769,8 @@ func handlePapersV3KickoffPaperCountries(ctx context.Context, cmd *cli.Command) 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3KickoffPaperCountriesParams{}
 
 	return client.Papers.V3.KickoffPaperCountries(ctx, params, options...)
 }
@@ -769,8 +783,6 @@ func handlePapersV3KickoffPaperFullText(ctx context.Context, cmd *cli.Command) e
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3KickoffPaperFullTextParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -781,6 +793,8 @@ func handlePapersV3KickoffPaperFullText(ctx context.Context, cmd *cli.Command) e
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3KickoffPaperFullTextParams{}
 
 	return client.Papers.V3.KickoffPaperFullText(ctx, params, options...)
 }
@@ -854,8 +868,6 @@ func handlePapersV3KickoffXMentionsSync(ctx context.Context, cmd *cli.Command) e
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3KickoffXMentionsSyncParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -866,6 +878,8 @@ func handlePapersV3KickoffXMentionsSync(ctx context.Context, cmd *cli.Command) e
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3KickoffXMentionsSyncParams{}
 
 	return client.Papers.V3.KickoffXMentionsSync(ctx, params, options...)
 }
@@ -948,8 +962,6 @@ func handlePapersV3ProcessAI(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3ProcessAIParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -960,6 +972,8 @@ func handlePapersV3ProcessAI(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3ProcessAIParams{}
 
 	return client.Papers.V3.ProcessAI(
 		ctx,
@@ -977,8 +991,6 @@ func handlePapersV3ProcessCountries(ctx context.Context, cmd *cli.Command) error
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3ProcessCountriesParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -989,6 +1001,8 @@ func handlePapersV3ProcessCountries(ctx context.Context, cmd *cli.Command) error
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3ProcessCountriesParams{}
 
 	return client.Papers.V3.ProcessCountries(ctx, params, options...)
 }
@@ -1001,8 +1015,6 @@ func handlePapersV3ProcessFullText(ctx context.Context, cmd *cli.Command) error 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3ProcessFullTextParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1013,6 +1025,8 @@ func handlePapersV3ProcessFullText(ctx context.Context, cmd *cli.Command) error 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3ProcessFullTextParams{}
 
 	return client.Papers.V3.ProcessFullText(ctx, params, options...)
 }
@@ -1067,8 +1081,6 @@ func handlePapersV3RequestImplementation(ctx context.Context, cmd *cli.Command) 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3RequestImplementationParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1079,6 +1091,8 @@ func handlePapersV3RequestImplementation(ctx context.Context, cmd *cli.Command) 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3RequestImplementationParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1155,8 +1169,6 @@ func handlePapersV3RetrieveAll(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3GetAllParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1167,6 +1179,8 @@ func handlePapersV3RetrieveAll(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3GetAllParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1196,8 +1210,6 @@ func handlePapersV3RetrieveDiversePapers(ctx context.Context, cmd *cli.Command) 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3GetDiversePapersParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1208,6 +1220,8 @@ func handlePapersV3RetrieveDiversePapers(ctx context.Context, cmd *cli.Command) 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3GetDiversePapersParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1237,8 +1251,6 @@ func handlePapersV3RetrieveFeed(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3GetFeedParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1249,6 +1261,8 @@ func handlePapersV3RetrieveFeed(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3GetFeedParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1362,8 +1376,6 @@ func handlePapersV3RetrieveGeoTrends(ctx context.Context, cmd *cli.Command) erro
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3GetGeoTrendsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1374,6 +1386,8 @@ func handlePapersV3RetrieveGeoTrends(ctx context.Context, cmd *cli.Command) erro
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3GetGeoTrendsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1445,8 +1459,6 @@ func handlePapersV3RetrievePapersByCountry(ctx context.Context, cmd *cli.Command
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3GetPapersByCountryParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1457,6 +1469,8 @@ func handlePapersV3RetrievePapersByCountry(ctx context.Context, cmd *cli.Command
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3GetPapersByCountryParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1531,8 +1545,6 @@ func handlePapersV3RetrieveSimilarPapers(ctx context.Context, cmd *cli.Command) 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3GetSimilarPapersParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1543,6 +1555,8 @@ func handlePapersV3RetrieveSimilarPapers(ctx context.Context, cmd *cli.Command) 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3GetSimilarPapersParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1577,8 +1591,6 @@ func handlePapersV3RetrieveUnrelated(ctx context.Context, cmd *cli.Command) erro
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3GetUnrelatedParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1589,6 +1601,8 @@ func handlePapersV3RetrieveUnrelated(ctx context.Context, cmd *cli.Command) erro
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3GetUnrelatedParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

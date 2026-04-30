@@ -20,9 +20,10 @@ var papersV3LegacyRetrieve = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "unresolved",
-			Usage:    "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
-			Required: true,
+			Name:      "unresolved",
+			Usage:     "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
+			Required:  true,
+			PathParam: "unresolved",
 		},
 	},
 	Action:          handlePapersV3LegacyRetrieve,
@@ -35,8 +36,9 @@ var papersV3LegacyRetrieveComments = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "group",
-			Required: true,
+			Name:      "group",
+			Required:  true,
+			PathParam: "group",
 		},
 	},
 	Action:          handlePapersV3LegacyRetrieveComments,

@@ -44,8 +44,9 @@ var foldersV3Delete = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			Required: true,
+			Name:      "folder-id",
+			Required:  true,
+			PathParam: "folderId",
 		},
 	},
 	Action:          handleFoldersV3Delete,
@@ -58,8 +59,9 @@ var foldersV3AddPapers = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			Required: true,
+			Name:      "folder-id",
+			Required:  true,
+			PathParam: "folderId",
 		},
 		&requestflag.Flag[[]string]{
 			Name:     "paper-group-id",
@@ -80,8 +82,9 @@ var foldersV3MovePapers = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			Required: true,
+			Name:      "folder-id",
+			Required:  true,
+			PathParam: "folderId",
 		},
 		&requestflag.Flag[[]string]{
 			Name:     "paper-group-id",
@@ -103,8 +106,9 @@ var foldersV3RemovePapers = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			Required: true,
+			Name:      "folder-id",
+			Required:  true,
+			PathParam: "folderId",
 		},
 		&requestflag.Flag[[]string]{
 			Name:     "paper-group-id",
@@ -122,8 +126,9 @@ var foldersV3ToggleSharing = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			Required: true,
+			Name:      "folder-id",
+			Required:  true,
+			PathParam: "folderId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "sharing-status",
@@ -142,8 +147,9 @@ var foldersV3UpdateName = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			Required: true,
+			Name:      "folder-id",
+			Required:  true,
+			PathParam: "folderId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "name",
@@ -161,10 +167,11 @@ var foldersV3UpdateParent = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			Required: true,
+			Name:      "folder-id",
+			Required:  true,
+			PathParam: "folderId",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "parent-id",
 			Required: true,
 			BodyPath: "parentId",
@@ -182,8 +189,6 @@ func handleFoldersV3Create(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.FolderV3NewParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -194,6 +199,8 @@ func handleFoldersV3Create(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.FolderV3NewParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -290,8 +297,6 @@ func handleFoldersV3AddPapers(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.FolderV3AddPapersParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -302,6 +307,8 @@ func handleFoldersV3AddPapers(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.FolderV3AddPapersParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -339,8 +346,6 @@ func handleFoldersV3MovePapers(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.FolderV3MovePapersParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -351,6 +356,8 @@ func handleFoldersV3MovePapers(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.FolderV3MovePapersParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -388,8 +395,6 @@ func handleFoldersV3RemovePapers(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.FolderV3RemovePapersParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -400,6 +405,8 @@ func handleFoldersV3RemovePapers(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.FolderV3RemovePapersParams{}
 
 	return client.Folders.V3.RemovePapers(
 		ctx,
@@ -420,8 +427,6 @@ func handleFoldersV3ToggleSharing(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.FolderV3ToggleSharingParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -432,6 +437,8 @@ func handleFoldersV3ToggleSharing(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.FolderV3ToggleSharingParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -469,8 +476,6 @@ func handleFoldersV3UpdateName(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.FolderV3UpdateNameParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -481,6 +486,8 @@ func handleFoldersV3UpdateName(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.FolderV3UpdateNameParams{}
 
 	return client.Folders.V3.UpdateName(
 		ctx,
@@ -501,8 +508,6 @@ func handleFoldersV3UpdateParent(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.FolderV3UpdateParentParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -513,6 +518,8 @@ func handleFoldersV3UpdateParent(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.FolderV3UpdateParentParams{}
 
 	return client.Folders.V3.UpdateParent(
 		ctx,

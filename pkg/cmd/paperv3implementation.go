@@ -20,8 +20,9 @@ var papersV3ImplementationsCreate = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-group-id",
-			Required: true,
+			Name:      "paper-group-id",
+			Required:  true,
+			PathParam: "paperGroupId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "implementation-type",
@@ -45,8 +46,9 @@ var papersV3ImplementationsList = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-group-id",
-			Required: true,
+			Name:      "paper-group-id",
+			Required:  true,
+			PathParam: "paperGroupId",
 		},
 	},
 	Action:          handlePapersV3ImplementationsList,
@@ -59,12 +61,14 @@ var papersV3ImplementationsDelete = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-group-id",
-			Required: true,
+			Name:      "paper-group-id",
+			Required:  true,
+			PathParam: "paperGroupId",
 		},
 		&requestflag.Flag[string]{
-			Name:     "implementation-id",
-			Required: true,
+			Name:      "implementation-id",
+			Required:  true,
+			PathParam: "implementationId",
 		},
 		&requestflag.Flag[string]{
 			Name:      "type",
@@ -88,8 +92,6 @@ func handlePapersV3ImplementationsCreate(ctx context.Context, cmd *cli.Command) 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3ImplementationNewParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -100,6 +102,8 @@ func handlePapersV3ImplementationsCreate(ctx context.Context, cmd *cli.Command) 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3ImplementationNewParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -179,10 +183,6 @@ func handlePapersV3ImplementationsDelete(ctx context.Context, cmd *cli.Command) 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3ImplementationDeleteParams{
-		PaperGroupID: cmd.Value("paper-group-id").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -192,6 +192,10 @@ func handlePapersV3ImplementationsDelete(ctx context.Context, cmd *cli.Command) 
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.PaperV3ImplementationDeleteParams{
+		PaperGroupID: cmd.Value("paper-group-id").(string),
 	}
 
 	return client.Papers.V3.Implementations.Delete(

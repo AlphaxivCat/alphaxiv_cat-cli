@@ -20,12 +20,14 @@ var papersVersionsRequestAIOverview = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "upid",
-			Required: true,
+			Name:      "upid",
+			Required:  true,
+			PathParam: "upid",
 		},
 		&requestflag.Flag[string]{
-			Name:     "version-order",
-			Required: true,
+			Name:      "version-order",
+			Required:  true,
+			PathParam: "versionOrder",
 		},
 		&requestflag.Flag[string]{
 			Name:      "preferred-language",
@@ -43,17 +45,20 @@ var papersVersionsRequestAITranslation = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "upid",
-			Required: true,
+			Name:      "upid",
+			Required:  true,
+			PathParam: "upid",
 		},
 		&requestflag.Flag[string]{
-			Name:     "version-order",
-			Required: true,
+			Name:      "version-order",
+			Required:  true,
+			PathParam: "versionOrder",
 		},
 		&requestflag.Flag[string]{
-			Name:     "language",
-			Usage:    `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
-			Required: true,
+			Name:      "language",
+			Usage:     `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
+			Required:  true,
+			PathParam: "language",
 		},
 	},
 	Action:          handlePapersVersionsRequestAITranslation,
@@ -71,10 +76,6 @@ func handlePapersVersionsRequestAIOverview(ctx context.Context, cmd *cli.Command
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperVersionRequestAIOverviewParams{
-		Upid: cmd.Value("upid").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -84,6 +85,10 @@ func handlePapersVersionsRequestAIOverview(ctx context.Context, cmd *cli.Command
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.PaperVersionRequestAIOverviewParams{
+		Upid: cmd.Value("upid").(string),
 	}
 
 	var res []byte
@@ -122,11 +127,6 @@ func handlePapersVersionsRequestAITranslation(ctx context.Context, cmd *cli.Comm
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperVersionRequestAITranslationParams{
-		Upid:         cmd.Value("upid").(string),
-		VersionOrder: cmd.Value("version-order").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -136,6 +136,11 @@ func handlePapersVersionsRequestAITranslation(ctx context.Context, cmd *cli.Comm
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.PaperVersionRequestAITranslationParams{
+		Upid:         cmd.Value("upid").(string),
+		VersionOrder: cmd.Value("version-order").(string),
 	}
 
 	var res []byte

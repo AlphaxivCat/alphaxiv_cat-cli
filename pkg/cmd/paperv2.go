@@ -20,8 +20,9 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "version",
-			Required: true,
+			Name:      "version",
+			Required:  true,
+			PathParam: "version",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "anchor-position",
@@ -43,28 +44,28 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "highlightRects",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "parent-comment-id",
 			Required: true,
 			BodyPath: "parentCommentId",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "selected-text",
 			Required: true,
 			BodyPath: "selectedText",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "tag",
 			Usage:    `Allowed values: "anonymous", "general", "personal", "research", "resources".`,
 			Required: true,
 			BodyPath: "tag",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "title",
 			Required: true,
 			BodyPath: "title",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "highlight-color",
 			BodyPath: "highlightColor",
 		},
@@ -102,12 +103,14 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 	},
 	"highlight-rect": {
 		&requestflag.InnerFlag[float64]{
-			Name:       "highlight-rect.page-index",
-			InnerField: "pageIndex",
+			Name:                  "highlight-rect.page-index",
+			InnerField:            "pageIndex",
+			OuterIsArrayOfObjects: true,
 		},
 		&requestflag.InnerFlag[[]map[string]any]{
-			Name:       "highlight-rect.rects",
-			InnerField: "rects",
+			Name:                  "highlight-rect.rects",
+			InnerField:            "rects",
+			OuterIsArrayOfObjects: true,
 		},
 	},
 })
@@ -123,8 +126,6 @@ func handlePapersV2Comment(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV2CommentParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -135,6 +136,8 @@ func handlePapersV2Comment(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV2CommentParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

@@ -20,13 +20,15 @@ var papersV3OverviewRetrieve = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-version",
-			Required: true,
+			Name:      "paper-version",
+			Required:  true,
+			PathParam: "paperVersion",
 		},
 		&requestflag.Flag[string]{
-			Name:     "language",
-			Usage:    `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "en", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
-			Required: true,
+			Name:      "language",
+			Usage:     `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "en", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
+			Required:  true,
+			PathParam: "language",
 		},
 	},
 	Action:          handlePapersV3OverviewRetrieve,
@@ -39,8 +41,9 @@ var papersV3OverviewRetrieveStatus = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-version",
-			Required: true,
+			Name:      "paper-version",
+			Required:  true,
+			PathParam: "paperVersion",
 		},
 	},
 	Action:          handlePapersV3OverviewRetrieveStatus,
@@ -58,10 +61,6 @@ func handlePapersV3OverviewRetrieve(ctx context.Context, cmd *cli.Command) error
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3OverviewGetParams{
-		PaperVersion: cmd.Value("paper-version").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -71,6 +70,10 @@ func handlePapersV3OverviewRetrieve(ctx context.Context, cmd *cli.Command) error
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.PaperV3OverviewGetParams{
+		PaperVersion: cmd.Value("paper-version").(string),
 	}
 
 	var res []byte

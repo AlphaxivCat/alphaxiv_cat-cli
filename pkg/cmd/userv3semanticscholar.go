@@ -20,8 +20,9 @@ var usersV3SemanticScholarLink = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "id",
-			Required: true,
+			Name:      "id",
+			Required:  true,
+			PathParam: "id",
 		},
 	},
 	Action:          handleUsersV3SemanticScholarLink,
@@ -34,8 +35,9 @@ var usersV3SemanticScholarScrape = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "id",
-			Required: true,
+			Name:      "id",
+			Required:  true,
+			PathParam: "id",
 		},
 	},
 	Action:          handleUsersV3SemanticScholarScrape,

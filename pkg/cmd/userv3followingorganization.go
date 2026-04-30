@@ -20,8 +20,9 @@ var usersV3FollowingOrganizationsList = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "id",
-			Required: true,
+			Name:      "id",
+			Required:  true,
+			PathParam: "id",
 		},
 	},
 	Action:          handleUsersV3FollowingOrganizationsList,
@@ -34,8 +35,9 @@ var usersV3FollowingOrganizationsToggle = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "id",
-			Required: true,
+			Name:      "id",
+			Required:  true,
+			PathParam: "id",
 		},
 		&requestflag.Flag[string]{
 			Name:     "organization",
@@ -100,8 +102,6 @@ func handleUsersV3FollowingOrganizationsToggle(ctx context.Context, cmd *cli.Com
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.UserV3FollowingOrganizationToggleParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -112,6 +112,8 @@ func handleUsersV3FollowingOrganizationsToggle(ctx context.Context, cmd *cli.Com
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.UserV3FollowingOrganizationToggleParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

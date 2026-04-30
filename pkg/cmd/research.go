@@ -63,8 +63,6 @@ func handleResearchCreateProject(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.ResearchNewProjectParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -75,6 +73,8 @@ func handleResearchCreateProject(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.ResearchNewProjectParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

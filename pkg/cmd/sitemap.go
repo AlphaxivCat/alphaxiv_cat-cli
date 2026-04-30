@@ -76,8 +76,6 @@ func handleSitemapsListOverviews(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.SitemapListOverviewsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -88,6 +86,8 @@ func handleSitemapsListOverviews(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.SitemapListOverviewsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -117,8 +117,6 @@ func handleSitemapsListPapers(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.SitemapListPapersParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -129,6 +127,8 @@ func handleSitemapsListPapers(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.SitemapListPapersParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -158,8 +158,6 @@ func handleSitemapsListUsers(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.SitemapListUsersParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -170,6 +168,8 @@ func handleSitemapsListUsers(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.SitemapListUsersParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

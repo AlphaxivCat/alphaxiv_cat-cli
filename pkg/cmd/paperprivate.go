@@ -45,9 +45,10 @@ var papersPrivateUpdateMetadata = requestflag.WithInnerFlags(cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-id",
-			Usage:    "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
-			Required: true,
+			Name:      "paper-id",
+			Usage:     "An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)",
+			Required:  true,
+			PathParam: "paperId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "abstract",
@@ -59,7 +60,7 @@ var papersPrivateUpdateMetadata = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "authors",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "bibtex",
 			Required: true,
 			BodyPath: "bibtex",
@@ -99,8 +100,6 @@ func handlePapersPrivateCreate(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperPrivateNewParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -111,6 +110,8 @@ func handlePapersPrivateCreate(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperPrivateNewParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -143,8 +144,6 @@ func handlePapersPrivateUpdateMetadata(ctx context.Context, cmd *cli.Command) er
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperPrivateUpdateMetadataParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -155,6 +154,8 @@ func handlePapersPrivateUpdateMetadata(ctx context.Context, cmd *cli.Command) er
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperPrivateUpdateMetadataParams{}
 
 	return client.Papers.Private.UpdateMetadata(
 		ctx,

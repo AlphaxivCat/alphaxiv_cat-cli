@@ -52,8 +52,6 @@ func handleNotificationsV4ArchiveCreate(ctx context.Context, cmd *cli.Command) e
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.NotificationV4ArchiveNewParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -64,6 +62,8 @@ func handleNotificationsV4ArchiveCreate(ctx context.Context, cmd *cli.Command) e
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.NotificationV4ArchiveNewParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -93,8 +93,6 @@ func handleNotificationsV4ArchiveList(ctx context.Context, cmd *cli.Command) err
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.NotificationV4ArchiveListParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -105,6 +103,8 @@ func handleNotificationsV4ArchiveList(ctx context.Context, cmd *cli.Command) err
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.NotificationV4ArchiveListParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

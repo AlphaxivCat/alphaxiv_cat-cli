@@ -63,9 +63,10 @@ var googleScholarV1Resync = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "mode",
-			Usage:    `Allowed values: "all", "new".`,
-			Required: true,
+			Name:      "mode",
+			Usage:     `Allowed values: "all", "new".`,
+			Required:  true,
+			PathParam: "mode",
 		},
 	},
 	Action:          handleGoogleScholarV1Resync,
@@ -126,8 +127,6 @@ func handleGoogleScholarV1Connect(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.GoogleScholarV1ConnectParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -138,6 +137,8 @@ func handleGoogleScholarV1Connect(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.GoogleScholarV1ConnectParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -309,8 +310,6 @@ func handleGoogleScholarV1SetEmail(ctx context.Context, cmd *cli.Command) error 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.GoogleScholarV1SetEmailParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -321,6 +320,8 @@ func handleGoogleScholarV1SetEmail(ctx context.Context, cmd *cli.Command) error 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.GoogleScholarV1SetEmailParams{}
 
 	return client.GoogleScholar.V1.SetEmail(ctx, params, options...)
 }
@@ -372,8 +373,6 @@ func handleGoogleScholarV1VerifyEmail(ctx context.Context, cmd *cli.Command) err
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.GoogleScholarV1VerifyEmailParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -384,6 +383,8 @@ func handleGoogleScholarV1VerifyEmail(ctx context.Context, cmd *cli.Command) err
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.GoogleScholarV1VerifyEmailParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

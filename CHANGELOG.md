@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.6.0 (2026-04-30)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* support passing path and query params over stdin ([dc4aa28](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/dc4aa285001554cbae026d2243deeea394c0f400))
+
+
+### Bug Fixes
+
+* **cli:** correctly load zsh autocompletion ([bcb8026](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/bcb8026af176b5e6dfb27aad7d703a418d48930b))
+* flags for nullable body scalar fields are strictly typed ([e6ec871](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/e6ec871320d911abd1b2bbb85a89c98846fc4412))
+
+
+### Chores
+
+* **internal:** codegen related update ([8446222](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/844622271f0cd31fc8be3eece62a001f079a7553))
+
 ## 0.5.0 (2026-04-27)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.4.0...v0.5.0)

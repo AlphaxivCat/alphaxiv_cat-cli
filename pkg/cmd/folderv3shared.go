@@ -20,8 +20,9 @@ var foldersV3SharedRetrieve = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			Required: true,
+			Name:      "folder-id",
+			Required:  true,
+			PathParam: "folderId",
 		},
 	},
 	Action:          handleFoldersV3SharedRetrieve,
@@ -34,8 +35,9 @@ var foldersV3SharedCopy = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			Required: true,
+			Name:      "folder-id",
+			Required:  true,
+			PathParam: "folderId",
 		},
 	},
 	Action:          handleFoldersV3SharedCopy,
