@@ -234,7 +234,7 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 	HideHelpCommand: true,
 }, map[string][]requestflag.HasOuterFlag{
 	"banner": {
-		&requestflag.InnerFlag[any]{
+		&requestflag.InnerFlag[*string]{
 			Name:       "banner.link",
 			InnerField: "link",
 		},
@@ -257,12 +257,12 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 			Name:       "base.assistant-style-selection",
 			InnerField: "assistantStyleSelection",
 		},
-		&requestflag.InnerFlag[any]{
+		&requestflag.InnerFlag[*string]{
 			Name:       "base.default-private-paper-sidebar-tab",
 			Usage:      `Allowed values: "assistant", "notes", "similar".`,
 			InnerField: "defaultPrivatePaperSidebarTab",
 		},
-		&requestflag.InnerFlag[any]{
+		&requestflag.InnerFlag[*string]{
 			Name:       "base.default-public-paper-sidebar-tab",
 			Usage:      `Allowed values: "comments", "assistant", "similar", "notes", "social".`,
 			InnerField: "defaultPublicPaperSidebarTab",
@@ -284,20 +284,20 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 			Name:       "base.is-members-sidebar-visible",
 			InnerField: "isMembersSidebarVisible",
 		},
-		&requestflag.InnerFlag[any]{
+		&requestflag.InnerFlag[*string]{
 			Name:       "base.preferred-language",
 			Usage:      `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "en", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
 			InnerField: "preferredLanguage",
 		},
-		&requestflag.InnerFlag[any]{
+		&requestflag.InnerFlag[*string]{
 			Name:       "base.preferred-llm-follow-latest-category",
 			InnerField: "preferredLlmFollowLatestCategory",
 		},
-		&requestflag.InnerFlag[any]{
+		&requestflag.InnerFlag[*string]{
 			Name:       "base.preferred-llm-model",
 			InnerField: "preferredLlmModel",
 		},
-		&requestflag.InnerFlag[any]{
+		&requestflag.InnerFlag[*string]{
 			Name:       "base.preferred-llm-thinking",
 			InnerField: "preferredLlmThinking",
 		},
@@ -309,7 +309,7 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 			Name:       "base.show-model-thinking",
 			InnerField: "showModelThinking",
 		},
-		&requestflag.InnerFlag[any]{
+		&requestflag.InnerFlag[*float64]{
 			Name:       "base.tooling-pane-width",
 			InnerField: "toolingPaneWidth",
 		},
@@ -326,31 +326,31 @@ var usersV3UpdateProfile = cli.Command{
 	Usage:   "Update profile details for the authenticated user",
 	Suggest: true,
 	Flags: []cli.Flag{
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "biography",
 			BodyPath: "biography",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "bluesky-username",
 			BodyPath: "blueskyUsername",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "github-username",
 			BodyPath: "githubUsername",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "institution",
 			BodyPath: "institution",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "linkedin-username",
 			BodyPath: "linkedinUsername",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "location",
 			BodyPath: "location",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "public-email",
 			BodyPath: "publicEmail",
 		},
@@ -362,7 +362,7 @@ var usersV3UpdateProfile = cli.Command{
 			Name:     "username",
 			BodyPath: "username",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "x-username",
 			BodyPath: "xUsername",
 		},

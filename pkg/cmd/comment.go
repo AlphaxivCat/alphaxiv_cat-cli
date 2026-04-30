@@ -36,7 +36,7 @@ var commentsEdit = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "focusPosition",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "highlight-color",
 			Required: true,
 			BodyPath: "highlightColor",
@@ -46,12 +46,12 @@ var commentsEdit = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "highlightRects",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "selected-text",
 			Required: true,
 			BodyPath: "selectedText",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "title",
 			Required: true,
 			BodyPath: "title",
@@ -90,12 +90,14 @@ var commentsEdit = requestflag.WithInnerFlags(cli.Command{
 	},
 	"highlight-rect": {
 		&requestflag.InnerFlag[float64]{
-			Name:       "highlight-rect.page-index",
-			InnerField: "pageIndex",
+			Name:                  "highlight-rect.page-index",
+			InnerField:            "pageIndex",
+			OuterIsArrayOfObjects: true,
 		},
 		&requestflag.InnerFlag[[]map[string]any]{
-			Name:       "highlight-rect.rects",
-			InnerField: "rects",
+			Name:                  "highlight-rect.rects",
+			InnerField:            "rects",
+			OuterIsArrayOfObjects: true,
 		},
 	},
 })

@@ -164,7 +164,7 @@ var foldersV3UpdateParent = cli.Command{
 			Name:     "folder-id",
 			Required: true,
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "parent-id",
 			Required: true,
 			BodyPath: "parentId",

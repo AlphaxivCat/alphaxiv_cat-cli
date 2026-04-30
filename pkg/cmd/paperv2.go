@@ -43,28 +43,28 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "highlightRects",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "parent-comment-id",
 			Required: true,
 			BodyPath: "parentCommentId",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "selected-text",
 			Required: true,
 			BodyPath: "selectedText",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "tag",
 			Usage:    `Allowed values: "anonymous", "general", "personal", "research", "resources".`,
 			Required: true,
 			BodyPath: "tag",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "title",
 			Required: true,
 			BodyPath: "title",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "highlight-color",
 			BodyPath: "highlightColor",
 		},
@@ -102,12 +102,14 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 	},
 	"highlight-rect": {
 		&requestflag.InnerFlag[float64]{
-			Name:       "highlight-rect.page-index",
-			InnerField: "pageIndex",
+			Name:                  "highlight-rect.page-index",
+			InnerField:            "pageIndex",
+			OuterIsArrayOfObjects: true,
 		},
 		&requestflag.InnerFlag[[]map[string]any]{
-			Name:       "highlight-rect.rects",
-			InnerField: "rects",
+			Name:                  "highlight-rect.rects",
+			InnerField:            "rects",
+			OuterIsArrayOfObjects: true,
 		},
 	},
 })

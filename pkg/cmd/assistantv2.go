@@ -24,7 +24,7 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "files",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "llm-chat-id",
 			Required: true,
 			BodyPath: "llmChatId",
@@ -34,12 +34,12 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "message",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "paper-version-id",
 			Required: true,
 			BodyPath: "paperVersionId",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "parent-message-id",
 			Required: true,
 			BodyPath: "parentMessageId",
