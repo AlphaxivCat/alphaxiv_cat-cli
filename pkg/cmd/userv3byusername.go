@@ -20,8 +20,9 @@ var usersV3ByUsernameGetProfilePage = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "username",
-			Required: true,
+			Name:      "username",
+			Required:  true,
+			PathParam: "username",
 		},
 	},
 	Action:          handleUsersV3ByUsernameGetProfilePage,
@@ -34,8 +35,9 @@ var usersV3ByUsernameGetUser = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "username",
-			Required: true,
+			Name:      "username",
+			Required:  true,
+			PathParam: "username",
 		},
 	},
 	Action:          handleUsersV3ByUsernameGetUser,

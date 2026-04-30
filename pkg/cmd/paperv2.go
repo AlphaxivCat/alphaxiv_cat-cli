@@ -20,8 +20,9 @@ var papersV2Comment = requestflag.WithInnerFlags(cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "version",
-			Required: true,
+			Name:      "version",
+			Required:  true,
+			PathParam: "version",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "anchor-position",
@@ -125,8 +126,6 @@ func handlePapersV2Comment(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV2CommentParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -137,6 +136,8 @@ func handlePapersV2Comment(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV2CommentParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

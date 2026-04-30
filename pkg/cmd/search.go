@@ -54,8 +54,6 @@ func handleSearchClosestTopic(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.SearchClosestTopicParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -66,6 +64,8 @@ func handleSearchClosestTopic(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.SearchClosestTopicParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -95,8 +95,6 @@ func handleSearchGoogleSearch(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.SearchGoogleSearchParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -107,6 +105,8 @@ func handleSearchGoogleSearch(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.SearchGoogleSearchParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

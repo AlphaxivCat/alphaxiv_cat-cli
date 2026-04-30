@@ -95,8 +95,6 @@ func handleMcpV1SendMessage(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.McpV1SendMessageParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -107,6 +105,8 @@ func handleMcpV1SendMessage(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.McpV1SendMessageParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

@@ -20,8 +20,9 @@ var papersAddAuthor = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-id",
-			Required: true,
+			Name:      "paper-id",
+			Required:  true,
+			PathParam: "paperId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "author-email",
@@ -43,8 +44,9 @@ var papersAdminVote = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-id",
-			Required: true,
+			Name:      "paper-id",
+			Required:  true,
+			PathParam: "paperId",
 		},
 		&requestflag.Flag[float64]{
 			Name:     "entry",
@@ -62,14 +64,16 @@ var papersCrxAbstractClick = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "pid",
-			Usage:    "Paper ID",
-			Required: true,
+			Name:      "pid",
+			Usage:     "Paper ID",
+			Required:  true,
+			PathParam: "pid",
 		},
 		&requestflag.Flag[string]{
-			Name:     "ref",
-			Usage:    "Referrer",
-			Required: true,
+			Name:      "ref",
+			Usage:     "Referrer",
+			Required:  true,
+			PathParam: "ref",
 		},
 	},
 	Action:          handlePapersCrxAbstractClick,
@@ -82,9 +86,10 @@ var papersCrxAbstractHit = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "pid",
-			Usage:    "Paper ID",
-			Required: true,
+			Name:      "pid",
+			Usage:     "Paper ID",
+			Required:  true,
+			PathParam: "pid",
 		},
 	},
 	Action:          handlePapersCrxAbstractHit,
@@ -97,14 +102,16 @@ var papersCrxPdfClick = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "pid",
-			Usage:    "Paper ID",
-			Required: true,
+			Name:      "pid",
+			Usage:     "Paper ID",
+			Required:  true,
+			PathParam: "pid",
 		},
 		&requestflag.Flag[string]{
-			Name:     "ref",
-			Usage:    "Referrer",
-			Required: true,
+			Name:      "ref",
+			Usage:     "Referrer",
+			Required:  true,
+			PathParam: "ref",
 		},
 	},
 	Action:          handlePapersCrxPdfClick,
@@ -117,9 +124,10 @@ var papersCrxPdfHit = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "pid",
-			Usage:    "Paper ID",
-			Required: true,
+			Name:      "pid",
+			Usage:     "Paper ID",
+			Required:  true,
+			PathParam: "pid",
 		},
 	},
 	Action:          handlePapersCrxPdfHit,
@@ -132,8 +140,9 @@ var papersEmailAuthor = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-id",
-			Required: true,
+			Name:      "paper-id",
+			Required:  true,
+			PathParam: "paperId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "author-individual-email",
@@ -171,9 +180,10 @@ var papersGetCrxPaperInfo = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "pid",
-			Usage:    "Paper ID",
-			Required: true,
+			Name:      "pid",
+			Usage:     "Paper ID",
+			Required:  true,
+			PathParam: "pid",
 		},
 	},
 	Action:          handlePapersGetCrxPaperInfo,
@@ -186,9 +196,10 @@ var papersGetPaperInfo = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "pid",
-			Usage:    "Paper ID",
-			Required: true,
+			Name:      "pid",
+			Usage:     "Paper ID",
+			Required:  true,
+			PathParam: "pid",
 		},
 	},
 	Action:          handlePapersGetPaperInfo,
@@ -237,8 +248,9 @@ var papersKickoffPaperCategorization = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "all",
-			Required: true,
+			Name:      "all",
+			Required:  true,
+			PathParam: "all",
 		},
 	},
 	Action:          handlePapersKickoffPaperCategorization,
@@ -260,8 +272,9 @@ var papersMarkViewed = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "upid",
-			Required: true,
+			Name:      "upid",
+			Required:  true,
+			PathParam: "upid",
 		},
 	},
 	Action:          handlePapersMarkViewed,
@@ -340,8 +353,9 @@ var papersRequestAILatest = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "upid",
-			Required: true,
+			Name:      "upid",
+			Required:  true,
+			PathParam: "upid",
 		},
 		&requestflag.Flag[string]{
 			Name:      "preferred-language",
@@ -359,13 +373,15 @@ var papersRequestAITranslationLatest = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "upid",
-			Required: true,
+			Name:      "upid",
+			Required:  true,
+			PathParam: "upid",
 		},
 		&requestflag.Flag[string]{
-			Name:     "language",
-			Usage:    `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
-			Required: true,
+			Name:      "language",
+			Usage:     `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
+			Required:  true,
+			PathParam: "language",
 		},
 	},
 	Action:          handlePapersRequestAITranslationLatest,
@@ -378,8 +394,9 @@ var papersSetGitHubRepository = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-id",
-			Required: true,
+			Name:      "paper-id",
+			Required:  true,
+			PathParam: "paperId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "github",
@@ -397,8 +414,9 @@ var papersToggleFollow = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-id",
-			Required: true,
+			Name:      "paper-id",
+			Required:  true,
+			PathParam: "paperId",
 		},
 	},
 	Action:          handlePapersToggleFollow,
@@ -411,13 +429,15 @@ var papersTranslateAIOverview = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-version-id",
-			Required: true,
+			Name:      "paper-version-id",
+			Required:  true,
+			PathParam: "paperVersionId",
 		},
 		&requestflag.Flag[string]{
-			Name:     "language",
-			Usage:    `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
-			Required: true,
+			Name:      "language",
+			Usage:     `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,
+			Required:  true,
+			PathParam: "language",
 		},
 	},
 	Action:          handlePapersTranslateAIOverview,
@@ -430,8 +450,9 @@ var papersUnclaim = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-id",
-			Required: true,
+			Name:      "paper-id",
+			Required:  true,
+			PathParam: "paperId",
 		},
 	},
 	Action:          handlePapersUnclaim,
@@ -444,8 +465,9 @@ var papersVote = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-id",
-			Required: true,
+			Name:      "paper-id",
+			Required:  true,
+			PathParam: "paperId",
 		},
 	},
 	Action:          handlePapersVote,
@@ -463,8 +485,6 @@ func handlePapersAddAuthor(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperAddAuthorParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -475,6 +495,8 @@ func handlePapersAddAuthor(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperAddAuthorParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -512,8 +534,6 @@ func handlePapersAdminVote(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperAdminVoteParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -524,6 +544,8 @@ func handlePapersAdminVote(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperAdminVoteParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -561,10 +583,6 @@ func handlePapersCrxAbstractClick(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperCrxAbstractClickParams{
-		Pid: cmd.Value("pid").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -574,6 +592,10 @@ func handlePapersCrxAbstractClick(ctx context.Context, cmd *cli.Command) error {
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.PaperCrxAbstractClickParams{
+		Pid: cmd.Value("pid").(string),
 	}
 
 	var res []byte
@@ -654,10 +676,6 @@ func handlePapersCrxPdfClick(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperCrxPdfClickParams{
-		Pid: cmd.Value("pid").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -667,6 +685,10 @@ func handlePapersCrxPdfClick(ctx context.Context, cmd *cli.Command) error {
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.PaperCrxPdfClickParams{
+		Pid: cmd.Value("pid").(string),
 	}
 
 	var res []byte
@@ -747,8 +769,6 @@ func handlePapersEmailAuthor(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperEmailAuthorParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -759,6 +779,8 @@ func handlePapersEmailAuthor(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperEmailAuthorParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1156,8 +1178,6 @@ func handlePapersProcessAbstractEmbed(ctx context.Context, cmd *cli.Command) err
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperProcessAbstractEmbedParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1168,6 +1188,8 @@ func handlePapersProcessAbstractEmbed(ctx context.Context, cmd *cli.Command) err
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperProcessAbstractEmbedParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1197,8 +1219,6 @@ func handlePapersProcessMetadata(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperProcessMetadataParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1209,6 +1229,8 @@ func handlePapersProcessMetadata(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperProcessMetadataParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1241,8 +1263,6 @@ func handlePapersRequestAILatest(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperRequestAILatestParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1253,6 +1273,8 @@ func handlePapersRequestAILatest(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperRequestAILatestParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1290,10 +1312,6 @@ func handlePapersRequestAITranslationLatest(ctx context.Context, cmd *cli.Comman
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperRequestAITranslationLatestParams{
-		Upid: cmd.Value("upid").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1303,6 +1321,10 @@ func handlePapersRequestAITranslationLatest(ctx context.Context, cmd *cli.Comman
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.PaperRequestAITranslationLatestParams{
+		Upid: cmd.Value("upid").(string),
 	}
 
 	var res []byte
@@ -1341,8 +1363,6 @@ func handlePapersSetGitHubRepository(ctx context.Context, cmd *cli.Command) erro
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperSetGitHubRepositoryParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1353,6 +1373,8 @@ func handlePapersSetGitHubRepository(ctx context.Context, cmd *cli.Command) erro
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperSetGitHubRepositoryParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -1432,10 +1454,6 @@ func handlePapersTranslateAIOverview(ctx context.Context, cmd *cli.Command) erro
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperTranslateAIOverviewParams{
-		PaperVersionID: cmd.Value("paper-version-id").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -1445,6 +1463,10 @@ func handlePapersTranslateAIOverview(ctx context.Context, cmd *cli.Command) erro
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.PaperTranslateAIOverviewParams{
+		PaperVersionID: cmd.Value("paper-version-id").(string),
 	}
 
 	var res []byte

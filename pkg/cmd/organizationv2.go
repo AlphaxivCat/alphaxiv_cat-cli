@@ -29,8 +29,9 @@ var organizationsV2RetrieveByID = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "id",
-			Required: true,
+			Name:      "id",
+			Required:  true,
+			PathParam: "id",
 		},
 	},
 	Action:          handleOrganizationsV2RetrieveByID,
@@ -43,8 +44,9 @@ var organizationsV2RetrieveByName = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "name",
-			Required: true,
+			Name:      "name",
+			Required:  true,
+			PathParam: "name",
 		},
 	},
 	Action:          handleOrganizationsV2RetrieveByName,
@@ -72,8 +74,9 @@ var organizationsV2ToggleFollow = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "id",
-			Required: true,
+			Name:      "id",
+			Required:  true,
+			PathParam: "id",
 		},
 	},
 	Action:          handleOrganizationsV2ToggleFollow,
@@ -211,8 +214,6 @@ func handleOrganizationsV2Search(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.OrganizationV2SearchParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -223,6 +224,8 @@ func handleOrganizationsV2Search(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.OrganizationV2SearchParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

@@ -20,9 +20,10 @@ var usersGetPrivateNotes = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "uid",
-			Usage:    "ignored field",
-			Required: true,
+			Name:      "uid",
+			Usage:     "ignored field",
+			Required:  true,
+			PathParam: "uid",
 		},
 		&requestflag.Flag[string]{
 			Name:      "limit",
@@ -59,8 +60,6 @@ func handleUsersGetPrivateNotes(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.UserGetPrivateNotesParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -71,6 +70,8 @@ func handleUsersGetPrivateNotes(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.UserGetPrivateNotesParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

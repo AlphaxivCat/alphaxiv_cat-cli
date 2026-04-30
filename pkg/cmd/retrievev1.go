@@ -42,8 +42,6 @@ func handleRetrieveV1GetTopPapers(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.RetrieveV1GetTopPapersParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -54,6 +52,8 @@ func handleRetrieveV1GetTopPapers(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.RetrieveV1GetTopPapersParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

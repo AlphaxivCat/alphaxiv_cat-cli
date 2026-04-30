@@ -20,8 +20,9 @@ var commentsV2ModeratorSendFeedback = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "comment",
-			Required: true,
+			Name:      "comment",
+			Required:  true,
+			PathParam: "comment",
 		},
 		&requestflag.Flag[string]{
 			Name:     "message",
@@ -39,8 +40,9 @@ var commentsV2ModeratorToggleFlags = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "comment",
-			Required: true,
+			Name:      "comment",
+			Required:  true,
+			PathParam: "comment",
 		},
 		&requestflag.Flag[bool]{
 			Name:     "addressed",
@@ -70,8 +72,6 @@ func handleCommentsV2ModeratorSendFeedback(ctx context.Context, cmd *cli.Command
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.CommentV2ModeratorSendFeedbackParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -82,6 +82,8 @@ func handleCommentsV2ModeratorSendFeedback(ctx context.Context, cmd *cli.Command
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.CommentV2ModeratorSendFeedbackParams{}
 
 	return client.Comments.V2.Moderator.SendFeedback(
 		ctx,
@@ -102,8 +104,6 @@ func handleCommentsV2ModeratorToggleFlags(ctx context.Context, cmd *cli.Command)
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.CommentV2ModeratorToggleFlagsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -114,6 +114,8 @@ func handleCommentsV2ModeratorToggleFlags(ctx context.Context, cmd *cli.Command)
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.CommentV2ModeratorToggleFlagsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

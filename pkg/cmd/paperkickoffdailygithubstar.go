@@ -20,8 +20,9 @@ var papersKickoffDailyGitHubStarsUpdate = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "max",
-			Required: true,
+			Name:      "max",
+			Required:  true,
+			PathParam: "max",
 		},
 	},
 	Action:          handlePapersKickoffDailyGitHubStarsUpdate,

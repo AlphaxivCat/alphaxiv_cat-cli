@@ -18,8 +18,9 @@ var commentsEdit = requestflag.WithInnerFlags(cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "comment",
-			Required: true,
+			Name:      "comment",
+			Required:  true,
+			PathParam: "comment",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "anchor-position",
@@ -113,8 +114,6 @@ func handleCommentsEdit(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.CommentEditParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -125,6 +124,8 @@ func handleCommentsEdit(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.CommentEditParams{}
 
 	return client.Comments.Edit(
 		ctx,
