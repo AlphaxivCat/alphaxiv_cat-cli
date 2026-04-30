@@ -44,15 +44,15 @@ var papersV3Comment = cli.Command{
 			Required: true,
 			BodyPath: "tag",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "body",
 			BodyPath: "body",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "parent",
 			BodyPath: "parent",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "title",
 			BodyPath: "title",
 		},

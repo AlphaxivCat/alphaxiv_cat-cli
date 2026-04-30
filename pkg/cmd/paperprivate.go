@@ -59,7 +59,7 @@ var papersPrivateUpdateMetadata = requestflag.WithInnerFlags(cli.Command{
 			Required: true,
 			BodyPath: "authors",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "bibtex",
 			Required: true,
 			BodyPath: "bibtex",

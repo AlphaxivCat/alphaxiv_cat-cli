@@ -30,7 +30,7 @@ var analyticsPaperViewCountIngestEvent = cli.Command{
 			Usage:    "Optional timestamp for the view event",
 			BodyPath: "createdAt",
 		},
-		&requestflag.Flag[any]{
+		&requestflag.Flag[*string]{
 			Name:     "user-id",
 			Usage:    "Optional user ID who viewed the paper",
 			BodyPath: "userId",
