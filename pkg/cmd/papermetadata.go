@@ -20,8 +20,9 @@ var papersMetadataRetrieveLatestMetadata = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "upid",
-			Required: true,
+			Name:      "upid",
+			Required:  true,
+			PathParam: "upid",
 		},
 		&requestflag.Flag[string]{
 			Name:      "prevent-tracking",
@@ -38,12 +39,14 @@ var papersMetadataRetrieveVersionMetadata = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "upid",
-			Required: true,
+			Name:      "upid",
+			Required:  true,
+			PathParam: "upid",
 		},
 		&requestflag.Flag[string]{
-			Name:     "version-order",
-			Required: true,
+			Name:      "version-order",
+			Required:  true,
+			PathParam: "versionOrder",
 		},
 		&requestflag.Flag[string]{
 			Name:      "prevent-tracking",
@@ -65,8 +68,6 @@ func handlePapersMetadataRetrieveLatestMetadata(ctx context.Context, cmd *cli.Co
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperMetadataGetLatestMetadataParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -77,6 +78,8 @@ func handlePapersMetadataRetrieveLatestMetadata(ctx context.Context, cmd *cli.Co
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperMetadataGetLatestMetadataParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -114,10 +117,6 @@ func handlePapersMetadataRetrieveVersionMetadata(ctx context.Context, cmd *cli.C
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperMetadataGetVersionMetadataParams{
-		Upid: cmd.Value("upid").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -127,6 +126,10 @@ func handlePapersMetadataRetrieveVersionMetadata(ctx context.Context, cmd *cli.C
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.PaperMetadataGetVersionMetadataParams{
+		Upid: cmd.Value("upid").(string),
 	}
 
 	var res []byte

@@ -96,8 +96,6 @@ func handleAnalyticsPaperViewCountIngestEvent(ctx context.Context, cmd *cli.Comm
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AnalyticsPaperViewCountIngestEventParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -108,6 +106,8 @@ func handleAnalyticsPaperViewCountIngestEvent(ctx context.Context, cmd *cli.Comm
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AnalyticsPaperViewCountIngestEventParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -137,8 +137,6 @@ func handleAnalyticsPaperViewCountKickoffJob(ctx context.Context, cmd *cli.Comma
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AnalyticsPaperViewCountKickoffJobParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -149,6 +147,8 @@ func handleAnalyticsPaperViewCountKickoffJob(ctx context.Context, cmd *cli.Comma
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AnalyticsPaperViewCountKickoffJobParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -178,8 +178,6 @@ func handleAnalyticsPaperViewCountProcessJob(ctx context.Context, cmd *cli.Comma
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AnalyticsPaperViewCountProcessJobParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -190,6 +188,8 @@ func handleAnalyticsPaperViewCountProcessJob(ctx context.Context, cmd *cli.Comma
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AnalyticsPaperViewCountProcessJobParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

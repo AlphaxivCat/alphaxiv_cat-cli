@@ -61,8 +61,6 @@ func handleAdminV1GetModeratorFeed(ctx context.Context, cmd *cli.Command) error 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AdminV1GetModeratorFeedParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -73,6 +71,8 @@ func handleAdminV1GetModeratorFeed(ctx context.Context, cmd *cli.Command) error 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AdminV1GetModeratorFeedParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -102,8 +102,6 @@ func handleAdminV1LookupUserByEmail(ctx context.Context, cmd *cli.Command) error
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AdminV1LookupUserByEmailParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -114,6 +112,8 @@ func handleAdminV1LookupUserByEmail(ctx context.Context, cmd *cli.Command) error
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AdminV1LookupUserByEmailParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

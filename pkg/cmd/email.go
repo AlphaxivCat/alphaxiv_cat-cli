@@ -72,19 +72,22 @@ var emailsKickoffCommentUpdate = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "role",
-			Usage:    "User role to filter by",
-			Required: true,
+			Name:      "role",
+			Usage:     "User role to filter by",
+			Required:  true,
+			PathParam: "role",
 		},
 		&requestflag.Flag[string]{
-			Name:     "window",
-			Usage:    "Time window in hours",
-			Required: true,
+			Name:      "window",
+			Usage:     "Time window in hours",
+			Required:  true,
+			PathParam: "window",
 		},
 		&requestflag.Flag[string]{
-			Name:     "custom",
-			Usage:    "Whether to use custom digest",
-			Required: true,
+			Name:      "custom",
+			Usage:     "Whether to use custom digest",
+			Required:  true,
+			PathParam: "custom",
 		},
 	},
 	Action:          handleEmailsKickoffCommentUpdate,
@@ -97,9 +100,10 @@ var emailsKickoffGeneralUpdate = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "role",
-			Usage:    "User role to filter by",
-			Required: true,
+			Name:      "role",
+			Usage:     "User role to filter by",
+			Required:  true,
+			PathParam: "role",
 		},
 	},
 	Action:          handleEmailsKickoffGeneralUpdate,
@@ -178,8 +182,6 @@ func handleEmailsCaptureBouncedEmails(ctx context.Context, cmd *cli.Command) err
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.EmailCaptureBouncedEmailsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -190,6 +192,8 @@ func handleEmailsCaptureBouncedEmails(ctx context.Context, cmd *cli.Command) err
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.EmailCaptureBouncedEmailsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -219,8 +223,6 @@ func handleEmailsCaptureResendBouncedEmail(ctx context.Context, cmd *cli.Command
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.EmailCaptureResendBouncedEmailParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -231,6 +233,8 @@ func handleEmailsCaptureResendBouncedEmail(ctx context.Context, cmd *cli.Command
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.EmailCaptureResendBouncedEmailParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -263,11 +267,6 @@ func handleEmailsKickoffCommentUpdate(ctx context.Context, cmd *cli.Command) err
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.EmailKickoffCommentUpdateParams{
-		Role:   cmd.Value("role").(string),
-		Window: cmd.Value("window").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -277,6 +276,11 @@ func handleEmailsKickoffCommentUpdate(ctx context.Context, cmd *cli.Command) err
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.EmailKickoffCommentUpdateParams{
+		Role:   cmd.Value("role").(string),
+		Window: cmd.Value("window").(string),
 	}
 
 	var res []byte
@@ -354,8 +358,6 @@ func handleEmailsProcessBouncedEmail(ctx context.Context, cmd *cli.Command) erro
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.EmailProcessBouncedEmailParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -366,6 +368,8 @@ func handleEmailsProcessBouncedEmail(ctx context.Context, cmd *cli.Command) erro
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.EmailProcessBouncedEmailParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -395,8 +399,6 @@ func handleEmailsProcessCommentUpdate(ctx context.Context, cmd *cli.Command) err
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.EmailProcessCommentUpdateParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -407,6 +409,8 @@ func handleEmailsProcessCommentUpdate(ctx context.Context, cmd *cli.Command) err
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.EmailProcessCommentUpdateParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -436,8 +440,6 @@ func handleEmailsProcessGeneralUpdate(ctx context.Context, cmd *cli.Command) err
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.EmailProcessGeneralUpdateParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -448,6 +450,8 @@ func handleEmailsProcessGeneralUpdate(ctx context.Context, cmd *cli.Command) err
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.EmailProcessGeneralUpdateParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

@@ -114,8 +114,9 @@ var assistantV2DeleteChat = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "llm-chat",
-			Required: true,
+			Name:      "llm-chat",
+			Required:  true,
+			PathParam: "llmChat",
 		},
 	},
 	Action:          handleAssistantV2DeleteChat,
@@ -128,8 +129,9 @@ var assistantV2EditChat = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "llm-chat",
-			Required: true,
+			Name:      "llm-chat",
+			Required:  true,
+			PathParam: "llmChat",
 		},
 		&requestflag.Flag[string]{
 			Name:     "title",
@@ -188,8 +190,6 @@ func handleAssistantV2Chat(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AssistantV2ChatParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -200,6 +200,8 @@ func handleAssistantV2Chat(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AssistantV2ChatParams{}
 
 	format := cmd.Root().String("format")
 	explicitFormat := cmd.Root().IsSet("format")
@@ -254,8 +256,6 @@ func handleAssistantV2EditChat(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AssistantV2EditChatParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -266,6 +266,8 @@ func handleAssistantV2EditChat(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AssistantV2EditChatParams{}
 
 	return client.Assistant.V2.EditChat(
 		ctx,
@@ -283,8 +285,6 @@ func handleAssistantV2GetChats(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AssistantV2GetChatsParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -295,6 +295,8 @@ func handleAssistantV2GetChats(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AssistantV2GetChatsParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
@@ -324,8 +326,6 @@ func handleAssistantV2GetURLMetadata(ctx context.Context, cmd *cli.Command) erro
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AssistantV2GetURLMetadataParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -336,6 +336,8 @@ func handleAssistantV2GetURLMetadata(ctx context.Context, cmd *cli.Command) erro
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AssistantV2GetURLMetadataParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

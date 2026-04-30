@@ -111,8 +111,6 @@ func handleNotificationsV4Subscribe(ctx context.Context, cmd *cli.Command) error
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.NotificationV4SubscribeParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -123,6 +121,8 @@ func handleNotificationsV4Subscribe(ctx context.Context, cmd *cli.Command) error
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.NotificationV4SubscribeParams{}
 
 	return client.Notifications.V4.Subscribe(ctx, params, options...)
 }
@@ -135,8 +135,6 @@ func handleNotificationsV4Unsubscribe(ctx context.Context, cmd *cli.Command) err
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.NotificationV4UnsubscribeParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -147,6 +145,8 @@ func handleNotificationsV4Unsubscribe(ctx context.Context, cmd *cli.Command) err
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.NotificationV4UnsubscribeParams{}
 
 	return client.Notifications.V4.Unsubscribe(ctx, params, options...)
 }

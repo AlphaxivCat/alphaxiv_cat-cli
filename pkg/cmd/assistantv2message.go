@@ -20,8 +20,9 @@ var assistantV2MessagesList = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "llm-chat",
-			Required: true,
+			Name:      "llm-chat",
+			Required:  true,
+			PathParam: "llmChat",
 		},
 	},
 	Action:          handleAssistantV2MessagesList,
@@ -34,12 +35,14 @@ var assistantV2MessagesSelect = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "llm-chat",
-			Required: true,
+			Name:      "llm-chat",
+			Required:  true,
+			PathParam: "llmChat",
 		},
 		&requestflag.Flag[string]{
-			Name:     "message",
-			Required: true,
+			Name:      "message",
+			Required:  true,
+			PathParam: "message",
 		},
 	},
 	Action:          handleAssistantV2MessagesSelect,
@@ -52,8 +55,9 @@ var assistantV2MessagesSetFeedback = requestflag.WithInnerFlags(cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "message-id",
-			Required: true,
+			Name:      "message-id",
+			Required:  true,
+			PathParam: "messageId",
 		},
 		&requestflag.Flag[map[string]any]{
 			Name:     "feedback",
@@ -134,10 +138,6 @@ func handleAssistantV2MessagesSelect(ctx context.Context, cmd *cli.Command) erro
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AssistantV2MessageSelectParams{
-		LlmChat: cmd.Value("llm-chat").(string),
-	}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -147,6 +147,10 @@ func handleAssistantV2MessagesSelect(ctx context.Context, cmd *cli.Command) erro
 	)
 	if err != nil {
 		return err
+	}
+
+	params := alphaxivcat.AssistantV2MessageSelectParams{
+		LlmChat: cmd.Value("llm-chat").(string),
 	}
 
 	return client.Assistant.V2.Messages.Select(
@@ -168,8 +172,6 @@ func handleAssistantV2MessagesSetFeedback(ctx context.Context, cmd *cli.Command)
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AssistantV2MessageSetFeedbackParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -180,6 +182,8 @@ func handleAssistantV2MessagesSetFeedback(ctx context.Context, cmd *cli.Command)
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AssistantV2MessageSetFeedbackParams{}
 
 	return client.Assistant.V2.Messages.SetFeedback(
 		ctx,

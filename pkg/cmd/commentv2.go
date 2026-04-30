@@ -18,8 +18,9 @@ var commentsV2Delete = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "comment",
-			Required: true,
+			Name:      "comment",
+			Required:  true,
+			PathParam: "comment",
 		},
 	},
 	Action:          handleCommentsV2Delete,
@@ -32,8 +33,9 @@ var commentsV2Downvote = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "comment",
-			Required: true,
+			Name:      "comment",
+			Required:  true,
+			PathParam: "comment",
 		},
 	},
 	Action:          handleCommentsV2Downvote,
@@ -46,8 +48,9 @@ var commentsV2Flag = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "comment",
-			Required: true,
+			Name:      "comment",
+			Required:  true,
+			PathParam: "comment",
 		},
 		&requestflag.Flag[string]{
 			Name:     "reason",
@@ -65,8 +68,9 @@ var commentsV2ToggleEndorse = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "comment",
-			Required: true,
+			Name:      "comment",
+			Required:  true,
+			PathParam: "comment",
 		},
 	},
 	Action:          handleCommentsV2ToggleEndorse,
@@ -79,8 +83,9 @@ var commentsV2Upvote = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "comment",
-			Required: true,
+			Name:      "comment",
+			Required:  true,
+			PathParam: "comment",
 		},
 	},
 	Action:          handleCommentsV2Upvote,
@@ -148,8 +153,6 @@ func handleCommentsV2Flag(ctx context.Context, cmd *cli.Command) error {
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.CommentV2FlagParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -160,6 +163,8 @@ func handleCommentsV2Flag(ctx context.Context, cmd *cli.Command) error {
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.CommentV2FlagParams{}
 
 	return client.Comments.V2.Flag(
 		ctx,

@@ -20,9 +20,10 @@ var papersV3XMentionsUpdate = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-group-id",
-			Usage:    "Paper group ID (UUID)",
-			Required: true,
+			Name:      "paper-group-id",
+			Usage:     "Paper group ID (UUID)",
+			Required:  true,
+			PathParam: "paperGroupId",
 		},
 		&requestflag.Flag[bool]{
 			Name:     "dry-run",
@@ -41,9 +42,10 @@ var papersV3XMentionsDelete = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "paper-group-id",
-			Usage:    "Paper group ID (UUID)",
-			Required: true,
+			Name:      "paper-group-id",
+			Usage:     "Paper group ID (UUID)",
+			Required:  true,
+			PathParam: "paperGroupId",
 		},
 	},
 	Action:          handlePapersV3XMentionsDelete,
@@ -61,8 +63,6 @@ func handlePapersV3XMentionsUpdate(ctx context.Context, cmd *cli.Command) error 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.PaperV3XMentionUpdateParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -73,6 +73,8 @@ func handlePapersV3XMentionsUpdate(ctx context.Context, cmd *cli.Command) error 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.PaperV3XMentionUpdateParams{}
 
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))

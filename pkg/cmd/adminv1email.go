@@ -92,8 +92,6 @@ func handleAdminV1EmailsSendMonthlyDigest(ctx context.Context, cmd *cli.Command)
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AdminV1EmailSendMonthlyDigestParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -104,6 +102,8 @@ func handleAdminV1EmailsSendMonthlyDigest(ctx context.Context, cmd *cli.Command)
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AdminV1EmailSendMonthlyDigestParams{}
 
 	return client.Admin.V1.Emails.SendMonthlyDigest(ctx, params, options...)
 }
@@ -116,8 +116,6 @@ func handleAdminV1EmailsSendWeeklyDigest(ctx context.Context, cmd *cli.Command) 
 		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
 	}
 
-	params := alphaxivcat.AdminV1EmailSendWeeklyDigestParams{}
-
 	options, err := flagOptions(
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
@@ -128,6 +126,8 @@ func handleAdminV1EmailsSendWeeklyDigest(ctx context.Context, cmd *cli.Command) 
 	if err != nil {
 		return err
 	}
+
+	params := alphaxivcat.AdminV1EmailSendWeeklyDigestParams{}
 
 	return client.Admin.V1.Emails.SendWeeklyDigest(ctx, params, options...)
 }
