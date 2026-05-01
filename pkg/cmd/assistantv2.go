@@ -62,16 +62,8 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "assistant-variant",
-			Usage:    `Allowed values: "homepage", "paper", "folder", "landing", "folder-add-papers".`,
+			Usage:    `Allowed values: "homepage", "paper", "landing".`,
 			BodyPath: "assistantVariant",
-		},
-		&requestflag.Flag[bool]{
-			Name:     "folder-add-papers",
-			BodyPath: "folderAddPapers",
-		},
-		&requestflag.Flag[string]{
-			Name:     "folder-id",
-			BodyPath: "folderId",
 		},
 		&requestflag.Flag[string]{
 			Name:     "model",
@@ -149,16 +141,12 @@ var assistantV2GetChats = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:      "folder",
-			QueryPath: "folder",
-		},
-		&requestflag.Flag[string]{
 			Name:      "paper-version",
 			QueryPath: "paperVersion",
 		},
 		&requestflag.Flag[string]{
 			Name:      "variant",
-			Usage:     `Allowed values: "homepage", "paper", "folder".`,
+			Usage:     `Allowed values: "homepage", "paper".`,
 			QueryPath: "variant",
 		},
 	},
