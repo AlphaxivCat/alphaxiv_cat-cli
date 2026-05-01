@@ -590,14 +590,6 @@ func init() {
 				},
 			},
 			{
-				Name:     "research",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&researchCreateProject,
-				},
-			},
-			{
 				Name:     "mcp:v1",
 				Category: "API RESOURCE",
 				Suggest:  true,

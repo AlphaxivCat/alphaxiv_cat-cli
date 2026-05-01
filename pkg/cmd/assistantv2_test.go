@@ -26,8 +26,6 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--thinking=true",
 			"--web-search", "off",
 			"--assistant-variant", "homepage",
-			"--folder-add-papers=true",
-			"--folder-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--model", "claude-opus-4.5",
 			"--plan", "free",
 			"--signature", "signature",
@@ -54,8 +52,6 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--thinking=true",
 			"--web-search", "off",
 			"--assistant-variant", "homepage",
-			"--folder-add-papers=true",
-			"--folder-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--model", "claude-opus-4.5",
 			"--plan", "free",
 			"--signature", "signature",
@@ -78,8 +74,6 @@ func TestAssistantV2Chat(t *testing.T) {
 			"thinking: true\n" +
 			"webSearch: 'off'\n" +
 			"assistantVariant: homepage\n" +
-			"folderAddPapers: true\n" +
-			"folderId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n" +
 			"model: claude-opus-4.5\n" +
 			"plan: free\n" +
 			"signature: signature\n")
@@ -135,7 +129,6 @@ func TestAssistantV2GetChats(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"assistant:v2", "get-chats",
-			"--folder", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--paper-version", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--variant", "homepage",
 		)
