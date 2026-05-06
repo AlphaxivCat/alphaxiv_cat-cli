@@ -168,31 +168,6 @@ func TestPapersV3KickoffThumbnailsTrendingPapers(t *testing.T) {
 	})
 }
 
-func TestPapersV3KickoffXMentionsSync(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers:v3", "kickoff-x-mentions-sync",
-			"--dry-run=true",
-			"--limit", "1",
-		)
-	})
-
-	t.Run("piping data", func(t *testing.T) {
-		// Test piping YAML data over stdin
-		pipeData := []byte("" +
-			"dryRun: true\n" +
-			"limit: 1\n")
-		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData,
-			"--api-key", "string",
-			"papers:v3", "kickoff-x-mentions-sync",
-		)
-	})
-}
-
 func TestPapersV3Like(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {

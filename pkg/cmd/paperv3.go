@@ -158,28 +158,6 @@ var papersV3KickoffThumbnailsTrendingPapers = cli.Command{
 	HideHelpCommand: true,
 }
 
-var papersV3KickoffXMentionsSync = cli.Command{
-	Name:    "kickoff-x-mentions-sync",
-	Usage:   "Kickoff X mentions sync for hot papers. Uses x-mentions-sync-queue with\nparallelism=1 and built-in delays.",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[bool]{
-			Name:     "dry-run",
-			Usage:    "If true, only logs papers without queuing",
-			Default:  false,
-			BodyPath: "dryRun",
-		},
-		&requestflag.Flag[int64]{
-			Name:     "limit",
-			Usage:    "Number of hot papers to sync (default: 500)",
-			Default:  500,
-			BodyPath: "limit",
-		},
-	},
-	Action:          handlePapersV3KickoffXMentionsSync,
-	HideHelpCommand: true,
-}
-
 var papersV3Like = cli.Command{
 	Name:    "like",
 	Usage:   "Toggle your like status on a paper group",
@@ -375,7 +353,7 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "sort",
-			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended".`,
+			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended".`,
 			Required:  true,
 			QueryPath: "sort",
 		},
@@ -385,7 +363,7 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "source",
-			Usage:     `Allowed values: "GitHub", "Twitter (X)".`,
+			Usage:     `Allowed values: "GitHub".`,
 			QueryPath: "source",
 		},
 		&requestflag.Flag[string]{
@@ -858,30 +836,6 @@ func handlePapersV3KickoffThumbnailsTrendingPapers(ctx context.Context, cmd *cli
 		Title:          "papers:v3 kickoff-thumbnails-trending-papers",
 		Transform:      transform,
 	})
-}
-
-func handlePapersV3KickoffXMentionsSync(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.PaperV3KickoffXMentionsSyncParams{}
-
-	return client.Papers.V3.KickoffXMentionsSync(ctx, params, options...)
 }
 
 func handlePapersV3Like(ctx context.Context, cmd *cli.Command) error {
