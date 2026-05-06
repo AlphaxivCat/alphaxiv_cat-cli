@@ -272,12 +272,12 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[*string]{
 			Name:       "base.default-public-paper-sidebar-tab",
-			Usage:      `Allowed values: "comments", "assistant", "similar", "notes", "social".`,
+			Usage:      `Allowed values: "comments", "assistant", "similar", "notes".`,
 			InnerField: "defaultPublicPaperSidebarTab",
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "base.feed-sort",
-			Usage:      `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended".`,
+			Usage:      `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended".`,
 			InnerField: "feedSort",
 		},
 		&requestflag.InnerFlag[bool]{

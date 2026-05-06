@@ -174,7 +174,6 @@ func init() {
 					&papersV3KickoffPaperFullText,
 					&papersV3KickoffPaperPodcasts,
 					&papersV3KickoffThumbnailsTrendingPapers,
-					&papersV3KickoffXMentionsSync,
 					&papersV3Like,
 					&papersV3Podcast,
 					&papersV3ProcessAI,
@@ -223,15 +222,6 @@ func init() {
 					&papersV3ImplementationsCreate,
 					&papersV3ImplementationsList,
 					&papersV3ImplementationsDelete,
-				},
-			},
-			{
-				Name:     "papers:v3:x-mentions",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&papersV3XMentionsUpdate,
-					&papersV3XMentionsDelete,
 				},
 			},
 			{
@@ -532,25 +522,6 @@ func init() {
 				Suggest:  true,
 				Commands: []*cli.Command{
 					&notificationsSendKickoffNotificationEmails,
-				},
-			},
-			{
-				Name:     "notifications:v4",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&notificationsV4ListNotifications,
-					&notificationsV4Subscribe,
-					&notificationsV4Unsubscribe,
-				},
-			},
-			{
-				Name:     "notifications:v4:archive",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&notificationsV4ArchiveCreate,
-					&notificationsV4ArchiveList,
 				},
 			},
 			{
