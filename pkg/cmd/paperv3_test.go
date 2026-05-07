@@ -371,22 +371,6 @@ func TestPapersV3RetrieveFullText(t *testing.T) {
 	})
 }
 
-func TestPapersV3RetrieveGeoTrends(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers:v3", "retrieve-geo-trends",
-			"--collaboration-limit", "collaborationLimit",
-			"--paper-limit", "paperLimit",
-			"--past-months", "pastMonths",
-			"--repo-limit", "repoLimit",
-			"--top-countries", "topCountries",
-		)
-	})
-}
-
 func TestPapersV3RetrieveMetrics(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -395,19 +379,6 @@ func TestPapersV3RetrieveMetrics(t *testing.T) {
 			"--api-key", "string",
 			"papers:v3", "retrieve-metrics",
 			"--unresolved", "unresolved",
-		)
-	})
-}
-
-func TestPapersV3RetrievePapersByCountry(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers:v3", "retrieve-papers-by-country",
-			"--country", "country",
-			"--limit", "limit",
 		)
 	})
 }
