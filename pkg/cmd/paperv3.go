@@ -158,28 +158,6 @@ var papersV3KickoffThumbnailsTrendingPapers = cli.Command{
 	HideHelpCommand: true,
 }
 
-var papersV3KickoffXMentionsSync = cli.Command{
-	Name:    "kickoff-x-mentions-sync",
-	Usage:   "Kickoff X mentions sync for hot papers. Uses x-mentions-sync-queue with\nparallelism=1 and built-in delays.",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[bool]{
-			Name:     "dry-run",
-			Usage:    "If true, only logs papers without queuing",
-			Default:  false,
-			BodyPath: "dryRun",
-		},
-		&requestflag.Flag[int64]{
-			Name:     "limit",
-			Usage:    "Number of hot papers to sync (default: 500)",
-			Default:  500,
-			BodyPath: "limit",
-		},
-	},
-	Action:          handlePapersV3KickoffXMentionsSync,
-	HideHelpCommand: true,
-}
-
 var papersV3Like = cli.Command{
 	Name:    "like",
 	Usage:   "Toggle your like status on a paper group",
@@ -375,7 +353,7 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "sort",
-			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended".`,
+			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended".`,
 			Required:  true,
 			QueryPath: "sort",
 		},
@@ -385,7 +363,7 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "source",
-			Usage:     `Allowed values: "GitHub", "Twitter (X)".`,
+			Usage:     `Allowed values: "GitHub".`,
 			QueryPath: "source",
 		},
 		&requestflag.Flag[string]{
@@ -432,36 +410,6 @@ var papersV3RetrieveFullText = cli.Command{
 	HideHelpCommand: true,
 }
 
-var papersV3RetrieveGeoTrends = cli.Command{
-	Name:    "retrieve-geo-trends",
-	Usage:   "Retrieve geographical trends and analytics data for papers",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:      "collaboration-limit",
-			QueryPath: "collaborationLimit",
-		},
-		&requestflag.Flag[string]{
-			Name:      "paper-limit",
-			QueryPath: "paperLimit",
-		},
-		&requestflag.Flag[string]{
-			Name:      "past-months",
-			QueryPath: "pastMonths",
-		},
-		&requestflag.Flag[string]{
-			Name:      "repo-limit",
-			QueryPath: "repoLimit",
-		},
-		&requestflag.Flag[string]{
-			Name:      "top-countries",
-			QueryPath: "topCountries",
-		},
-	},
-	Action:          handlePapersV3RetrieveGeoTrends,
-	HideHelpCommand: true,
-}
-
 var papersV3RetrieveMetrics = cli.Command{
 	Name:    "retrieve-metrics",
 	Usage:   "Retrieve metrics for a paper (comments count, upvotes, views)",
@@ -475,24 +423,6 @@ var papersV3RetrieveMetrics = cli.Command{
 		},
 	},
 	Action:          handlePapersV3RetrieveMetrics,
-	HideHelpCommand: true,
-}
-
-var papersV3RetrievePapersByCountry = cli.Command{
-	Name:    "retrieve-papers-by-country",
-	Usage:   "Retrieve top papers by country with optional country filter",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:      "country",
-			QueryPath: "country",
-		},
-		&requestflag.Flag[string]{
-			Name:      "limit",
-			QueryPath: "limit",
-		},
-	},
-	Action:          handlePapersV3RetrievePapersByCountry,
 	HideHelpCommand: true,
 }
 
@@ -858,30 +788,6 @@ func handlePapersV3KickoffThumbnailsTrendingPapers(ctx context.Context, cmd *cli
 		Title:          "papers:v3 kickoff-thumbnails-trending-papers",
 		Transform:      transform,
 	})
-}
-
-func handlePapersV3KickoffXMentionsSync(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.PaperV3KickoffXMentionsSyncParams{}
-
-	return client.Papers.V3.KickoffXMentionsSync(ctx, params, options...)
 }
 
 func handlePapersV3Like(ctx context.Context, cmd *cli.Command) error {
@@ -1368,47 +1274,6 @@ func handlePapersV3RetrieveFullText(ctx context.Context, cmd *cli.Command) error
 	})
 }
 
-func handlePapersV3RetrieveGeoTrends(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.PaperV3GetGeoTrendsParams{}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Papers.V3.GetGeoTrends(ctx, params, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "papers:v3 retrieve-geo-trends",
-		Transform:      transform,
-	})
-}
-
 func handlePapersV3RetrieveMetrics(ctx context.Context, cmd *cli.Command) error {
 	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
@@ -1447,47 +1312,6 @@ func handlePapersV3RetrieveMetrics(ctx context.Context, cmd *cli.Command) error 
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "papers:v3 retrieve-metrics",
-		Transform:      transform,
-	})
-}
-
-func handlePapersV3RetrievePapersByCountry(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.PaperV3GetPapersByCountryParams{}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Papers.V3.GetPapersByCountry(ctx, params, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "papers:v3 retrieve-papers-by-country",
 		Transform:      transform,
 	})
 }

@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.8.0 (2026-05-08)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** api update ([7c1a9dd](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/7c1a9dd5f9cb75c5a76b461d6829fec57dadd899))
+* **api:** api update ([c2d364f](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/c2d364f0858dd1e73ac59ae68c7bddc3744affb4))
+
+
+### Chores
+
+* redact api-key headers in debug logs ([5884578](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/58845786a95b3e4ebebecf656d75bd4f7416e4ee))
+
 ## 0.7.0 (2026-05-01)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.6.0...v0.7.0)
