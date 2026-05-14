@@ -15,7 +15,7 @@ func TestPapersIngestIngestLatest(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"papers:ingest", "ingest-latest",
-			"--upid", "x",
+			"--upid", "upid",
 			"--prevent-tracking", "preventTracking",
 		)
 	})
@@ -28,8 +28,8 @@ func TestPapersIngestIngestVersion(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"papers:ingest", "ingest-version",
-			"--upid", "x",
-			"--version-label", "x",
+			"--upid", "upid",
+			"--version-label", "v469",
 			"--prevent-tracking", "preventTracking",
 		)
 	})

@@ -15,7 +15,7 @@ func TestPapersMetadataRetrieveLatestMetadata(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"papers:metadata", "retrieve-latest-metadata",
-			"--upid", "x",
+			"--upid", "upid",
 			"--prevent-tracking", "preventTracking",
 		)
 	})
@@ -28,8 +28,8 @@ func TestPapersMetadataRetrieveVersionMetadata(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"papers:metadata", "retrieve-version-metadata",
-			"--upid", "x",
-			"--version-order", "x",
+			"--upid", "upid",
+			"--version-order", "469",
 			"--prevent-tracking", "preventTracking",
 		)
 	})
