@@ -26,6 +26,8 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--thinking=true",
 			"--web-search", "off",
 			"--assistant-variant", "homepage",
+			"--custom-filter", "{apiKey: x, url: https://example.com}",
+			"--filter-model", "baseline",
 			"--model", "claude-opus-4.5",
 			"--plan", "free",
 			"--signature", "signature",
@@ -52,6 +54,9 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--thinking=true",
 			"--web-search", "off",
 			"--assistant-variant", "homepage",
+			"--custom-filter.api-key", "x",
+			"--custom-filter.url", "https://example.com",
+			"--filter-model", "baseline",
 			"--model", "claude-opus-4.5",
 			"--plan", "free",
 			"--signature", "signature",
@@ -74,6 +79,10 @@ func TestAssistantV2Chat(t *testing.T) {
 			"thinking: true\n" +
 			"webSearch: 'off'\n" +
 			"assistantVariant: homepage\n" +
+			"customFilter:\n" +
+			"  apiKey: x\n" +
+			"  url: https://example.com\n" +
+			"filterModel: baseline\n" +
 			"model: claude-opus-4.5\n" +
 			"plan: free\n" +
 			"signature: signature\n")
