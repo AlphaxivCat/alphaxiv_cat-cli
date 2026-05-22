@@ -168,7 +168,6 @@ func init() {
 				Commands: []*cli.Command{
 					&papersV3Retrieve,
 					&papersV3Comment,
-					&papersV3DeleteVotes,
 					&papersV3Implementation,
 					&papersV3KickoffPaperCountries,
 					&papersV3KickoffPaperFullText,

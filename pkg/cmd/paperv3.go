@@ -63,20 +63,6 @@ var papersV3Comment = cli.Command{
 	HideHelpCommand: true,
 }
 
-var papersV3DeleteVotes = cli.Command{
-	Name:    "delete-votes",
-	Usage:   "Remove votes from many papers at once",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[[]string]{
-			Name:     "body",
-			BodyRoot: true,
-		},
-	},
-	Action:          handlePapersV3DeleteVotes,
-	HideHelpCommand: true,
-}
-
 var papersV3Implementation = cli.Command{
 	Name:    "implementation",
 	Usage:   "Create or update an implementation for a paper group",
@@ -160,13 +146,18 @@ var papersV3KickoffThumbnailsTrendingPapers = cli.Command{
 
 var papersV3Like = cli.Command{
 	Name:    "like",
-	Usage:   "Toggle your like status on a paper group",
+	Usage:   "Set your like status on a paper group",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:      "group",
 			Required:  true,
 			PathParam: "group",
+		},
+		&requestflag.Flag[bool]{
+			Name:     "liked",
+			Required: true,
+			BodyPath: "liked",
 		},
 	},
 	Action:          handlePapersV3Like,
@@ -356,10 +347,6 @@ var papersV3RetrieveFeed = cli.Command{
 			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended".`,
 			Required:  true,
 			QueryPath: "sort",
-		},
-		&requestflag.Flag[string]{
-			Name:      "organizations",
-			QueryPath: "organizations",
 		},
 		&requestflag.Flag[string]{
 			Name:      "source",
@@ -608,30 +595,6 @@ func handlePapersV3Comment(ctx context.Context, cmd *cli.Command) error {
 	})
 }
 
-func handlePapersV3DeleteVotes(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.PaperV3DeleteVotesParams{}
-
-	return client.Papers.V3.DeleteVotes(ctx, params, options...)
-}
-
 func handlePapersV3Implementation(ctx context.Context, cmd *cli.Command) error {
 	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
@@ -805,16 +768,23 @@ func handlePapersV3Like(ctx context.Context, cmd *cli.Command) error {
 		cmd,
 		apiquery.NestedQueryFormatBrackets,
 		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
+		ApplicationJSON,
 		false,
 	)
 	if err != nil {
 		return err
 	}
 
+	params := alphaxivcat.PaperV3LikeParams{}
+
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Papers.V3.Like(ctx, cmd.Value("group").(string), options...)
+	_, err = client.Papers.V3.Like(
+		ctx,
+		cmd.Value("group").(string),
+		params,
+		options...,
+	)
 	if err != nil {
 		return err
 	}
