@@ -71,7 +71,7 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "filter-model",
-			Usage:    `Allowed values: "baseline", "v1-baseten".`,
+			Usage:    `Allowed values: "baseline", "v1-baseten", "cohere".`,
 			BodyPath: "filterModel",
 		},
 		&requestflag.Flag[string]{

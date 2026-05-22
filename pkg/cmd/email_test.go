@@ -131,7 +131,7 @@ func TestEmailsProcessCommentUpdate(t *testing.T) {
 			"--api-key", "string",
 			"emails", "process-comment-update",
 			"--user-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-			"--custom-content", "{events: [{date: date, description: description, link: link, title: title, endTimeRaw: endTimeRaw, startTimeRaw: startTimeRaw}], introText: introText, subject: subject}",
+			"--custom-content", "{events: [{date: date, description: description, link: link, title: title, ctaText: ctaText, endTimeRaw: endTimeRaw, startTimeRaw: startTimeRaw}], introText: introText, subject: subject}",
 		)
 	})
 
@@ -145,7 +145,7 @@ func TestEmailsProcessCommentUpdate(t *testing.T) {
 			"--api-key", "string",
 			"emails", "process-comment-update",
 			"--user-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-			"--custom-content.events", "[{date: date, description: description, link: link, title: title, endTimeRaw: endTimeRaw, startTimeRaw: startTimeRaw}]",
+			"--custom-content.events", "[{date: date, description: description, link: link, title: title, ctaText: ctaText, endTimeRaw: endTimeRaw, startTimeRaw: startTimeRaw}]",
 			"--custom-content.intro-text", "introText",
 			"--custom-content.subject", "subject",
 		)
@@ -161,6 +161,7 @@ func TestEmailsProcessCommentUpdate(t *testing.T) {
 			"      description: description\n" +
 			"      link: link\n" +
 			"      title: title\n" +
+			"      ctaText: ctaText\n" +
 			"      endTimeRaw: endTimeRaw\n" +
 			"      startTimeRaw: startTimeRaw\n" +
 			"  introText: introText\n" +
