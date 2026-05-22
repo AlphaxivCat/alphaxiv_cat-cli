@@ -51,6 +51,28 @@ func TestPapersV3Comment(t *testing.T) {
 	})
 }
 
+func TestPapersV3DeleteVotes(t *testing.T) {
+	t.Skip("Mock server tests are disabled")
+	t.Run("regular flags", func(t *testing.T) {
+		mocktest.TestRunMockTestWithFlags(
+			t,
+			"--api-key", "string",
+			"papers:v3", "delete-votes",
+			"--body", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+		)
+	})
+
+	t.Run("piping data", func(t *testing.T) {
+		// Test piping YAML data over stdin
+		pipeData := []byte("- 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+		mocktest.TestRunMockTestWithPipeAndFlags(
+			t, pipeData,
+			"--api-key", "string",
+			"papers:v3", "delete-votes",
+		)
+	})
+}
+
 func TestPapersV3Implementation(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -154,18 +176,7 @@ func TestPapersV3Like(t *testing.T) {
 			"--api-key", "string",
 			"papers:v3", "like",
 			"--group", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-			"--liked=true",
-		)
-	})
-
-	t.Run("piping data", func(t *testing.T) {
-		// Test piping YAML data over stdin
-		pipeData := []byte("liked: true")
-		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData,
-			"--api-key", "string",
-			"papers:v3", "like",
-			"--group", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+			"--liked", "true",
 		)
 	})
 }
