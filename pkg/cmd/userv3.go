@@ -14,21 +14,6 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-var usersV3AutocompleteProfile = cli.Command{
-	Name:    "autocomplete-profile",
-	Usage:   "Generate a biography and institution for a user using their claimed papers",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:     "user-id",
-			Required: true,
-			BodyPath: "userId",
-		},
-	},
-	Action:          handleUsersV3AutocompleteProfile,
-	HideHelpCommand: true,
-}
-
 var usersV3DeleteBanner = cli.Command{
 	Name:    "delete-banner",
 	Usage:   "Delete the given banner",
@@ -359,6 +344,10 @@ var usersV3UpdateProfile = cli.Command{
 			BodyPath: "location",
 		},
 		&requestflag.Flag[*string]{
+			Name:     "orcid-id",
+			BodyPath: "orcidId",
+		},
+		&requestflag.Flag[*string]{
 			Name:     "public-email",
 			BodyPath: "publicEmail",
 		},
@@ -386,47 +375,6 @@ var usersV3UploadAvatar = cli.Command{
 	Flags:           []cli.Flag{},
 	Action:          handleUsersV3UploadAvatar,
 	HideHelpCommand: true,
-}
-
-func handleUsersV3AutocompleteProfile(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.UserV3AutocompleteProfileParams{}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Users.V3.AutocompleteProfile(ctx, params, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "users:v3 autocomplete-profile",
-		Transform:      transform,
-	})
 }
 
 func handleUsersV3DeleteBanner(ctx context.Context, cmd *cli.Command) error {

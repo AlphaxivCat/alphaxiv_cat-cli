@@ -27,7 +27,7 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--web-search", "off",
 			"--assistant-variant", "homepage",
 			"--custom-filter", "{apiKey: x, url: https://example.com}",
-			"--filter-model", "baseline",
+			"--filter-model", "cohere",
 			"--model", "claude-opus-4.5",
 			"--plan", "free",
 			"--signature", "signature",
@@ -56,7 +56,7 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--assistant-variant", "homepage",
 			"--custom-filter.api-key", "x",
 			"--custom-filter.url", "https://example.com",
-			"--filter-model", "baseline",
+			"--filter-model", "cohere",
 			"--model", "claude-opus-4.5",
 			"--plan", "free",
 			"--signature", "signature",
@@ -82,7 +82,7 @@ func TestAssistantV2Chat(t *testing.T) {
 			"customFilter:\n" +
 			"  apiKey: x\n" +
 			"  url: https://example.com\n" +
-			"filterModel: baseline\n" +
+			"filterModel: cohere\n" +
 			"model: claude-opus-4.5\n" +
 			"plan: free\n" +
 			"signature: signature\n")
