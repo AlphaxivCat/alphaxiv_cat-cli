@@ -124,28 +124,6 @@ func TestPapersV3KickoffPaperCountries(t *testing.T) {
 	})
 }
 
-func TestPapersV3KickoffPaperFullText(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers:v3", "kickoff-paper-full-text",
-			"--max-papers", "1",
-		)
-	})
-
-	t.Run("piping data", func(t *testing.T) {
-		// Test piping YAML data over stdin
-		pipeData := []byte("maxPapers: 1")
-		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData,
-			"--api-key", "string",
-			"papers:v3", "kickoff-paper-full-text",
-		)
-	})
-}
-
 func TestPapersV3KickoffPaperPodcasts(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -153,17 +131,6 @@ func TestPapersV3KickoffPaperPodcasts(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"papers:v3", "kickoff-paper-podcasts",
-		)
-	})
-}
-
-func TestPapersV3KickoffThumbnailsTrendingPapers(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers:v3", "kickoff-thumbnails-trending-papers",
 		)
 	})
 }
@@ -226,28 +193,6 @@ func TestPapersV3ProcessCountries(t *testing.T) {
 			t, pipeData,
 			"--api-key", "string",
 			"papers:v3", "process-countries",
-		)
-	})
-}
-
-func TestPapersV3ProcessFullText(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers:v3", "process-full-text",
-			"--paper-version-id", "paperVersionId",
-		)
-	})
-
-	t.Run("piping data", func(t *testing.T) {
-		// Test piping YAML data over stdin
-		pipeData := []byte("paperVersionId: paperVersionId")
-		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData,
-			"--api-key", "string",
-			"papers:v3", "process-full-text",
 		)
 	})
 }

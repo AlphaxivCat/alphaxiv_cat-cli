@@ -71,12 +71,12 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:     "filter-model",
-			Usage:    `Allowed values: "baseline", "v1-baseten", "cohere".`,
+			Usage:    `Allowed values: "cohere".`,
 			BodyPath: "filterModel",
 		},
 		&requestflag.Flag[string]{
 			Name:     "model",
-			Usage:    `Allowed values: "claude-opus-4.5", "claude-opus-4.6", "claude-opus-4.7", "claude-sonnet-4.5", "claude-sonnet-4.6", "gemini-2.5-flash", "gemini-2.5-pro", "gemini-3-flash", "gemini-3.1-pro", "glm-5-turbo", "glm-5.1", "gpt-5", "gpt-5.1", "gpt-5.2", "gpt-5.4", "gpt-5.4-mini", "gpt-5.4-nano", "kimi-k2.5", "kimi-k2.6", "mercury-2", "minimax-m2.5", "minimax-m2.7", "qwen-3.5", "fast", "smart", "pro".`,
+			Usage:    `Allowed values: "claude-opus-4.5", "claude-opus-4.6", "claude-opus-4.7", "claude-sonnet-4.5", "claude-sonnet-4.6", "deepseek-v4-flash", "deepseek-v4-pro", "gemini-2.5-flash", "gemini-2.5-pro", "gemini-3-flash", "gemini-3.1-flash-lite", "gemini-3.1-pro", "gemini-3.5-flash", "glm-5-turbo", "glm-5.1", "gpt-5", "gpt-5.1", "gpt-5.2", "gpt-5.4", "gpt-5.5", "gpt-5.4-mini", "gpt-5.4-nano", "kimi-k2.5", "kimi-k2.6", "mercury-2", "minimax-m2.5", "minimax-m2.7", "qwen-3.5", "fast", "smart", "pro".`,
 			Default:  "fast",
 			BodyPath: "model",
 		},

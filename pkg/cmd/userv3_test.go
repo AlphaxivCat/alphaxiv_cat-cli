@@ -9,28 +9,6 @@ import (
 	"github.com/AlphaxivCat/alphaxiv_cat-cli/internal/requestflag"
 )
 
-func TestUsersV3AutocompleteProfile(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"users:v3", "autocomplete-profile",
-			"--user-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-		)
-	})
-
-	t.Run("piping data", func(t *testing.T) {
-		// Test piping YAML data over stdin
-		pipeData := []byte("userId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData,
-			"--api-key", "string",
-			"users:v3", "autocomplete-profile",
-		)
-	})
-}
-
 func TestUsersV3DeleteBanner(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -279,6 +257,7 @@ func TestUsersV3UpdateProfile(t *testing.T) {
 			"--institution", "institution",
 			"--linkedin-username", "linkedinUsername",
 			"--location", "location",
+			"--orcid-id", "orcidId",
 			"--public-email", "dev@stainless.com",
 			"--real-name", "x",
 			"--username", "username",
@@ -295,6 +274,7 @@ func TestUsersV3UpdateProfile(t *testing.T) {
 			"institution: institution\n" +
 			"linkedinUsername: linkedinUsername\n" +
 			"location: location\n" +
+			"orcidId: orcidId\n" +
 			"publicEmail: dev@stainless.com\n" +
 			"realName: x\n" +
 			"username: username\n" +
