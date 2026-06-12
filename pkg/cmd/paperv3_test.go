@@ -197,17 +197,6 @@ func TestPapersV3ProcessCountries(t *testing.T) {
 	})
 }
 
-func TestPapersV3PruneEmbeddingsByDate(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers:v3", "prune-embeddings-by-date",
-		)
-	})
-}
-
 func TestPapersV3RequestImplementation(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -285,6 +274,7 @@ func TestPapersV3RetrieveFeed(t *testing.T) {
 			"--page-num", "pageNum",
 			"--page-size", "pageSize",
 			"--sort", "Hot",
+			"--include-external-blogs", "includeExternalBlogs",
 			"--source", "GitHub",
 			"--topics", "topics",
 			"--universal-id", "universalId",

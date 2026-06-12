@@ -262,7 +262,7 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "base.feed-sort",
-			Usage:      `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended".`,
+			Usage:      `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent".`,
 			InnerField: "feedSort",
 		},
 		&requestflag.InnerFlag[bool]{
