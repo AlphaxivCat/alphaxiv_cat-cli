@@ -206,15 +206,6 @@ var papersV3ProcessCountries = cli.Command{
 	HideHelpCommand: true,
 }
 
-var papersV3PruneEmbeddingsByDate = cli.Command{
-	Name:            "prune-embeddings-by-date",
-	Usage:           "Clear 'is_last_X_days' flags from paper embeddings that have become too old",
-	Suggest:         true,
-	Flags:           []cli.Flag{},
-	Action:          handlePapersV3PruneEmbeddingsByDate,
-	HideHelpCommand: true,
-}
-
 var papersV3RequestImplementation = cli.Command{
 	Name:    "request-implementation",
 	Usage:   "Toggle your implementation request status on a paper group",
@@ -318,9 +309,13 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "sort",
-			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended".`,
+			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent".`,
 			Required:  true,
 			QueryPath: "sort",
+		},
+		&requestflag.Flag[string]{
+			Name:      "include-external-blogs",
+			QueryPath: "includeExternalBlogs",
 		},
 		&requestflag.Flag[string]{
 			Name:      "source",
@@ -816,45 +811,6 @@ func handlePapersV3ProcessCountries(ctx context.Context, cmd *cli.Command) error
 	params := alphaxivcat.PaperV3ProcessCountriesParams{}
 
 	return client.Papers.V3.ProcessCountries(ctx, params, options...)
-}
-
-func handlePapersV3PruneEmbeddingsByDate(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Papers.V3.PruneEmbeddingsByDate(ctx, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "papers:v3 prune-embeddings-by-date",
-		Transform:      transform,
-	})
 }
 
 func handlePapersV3RequestImplementation(ctx context.Context, cmd *cli.Command) error {
