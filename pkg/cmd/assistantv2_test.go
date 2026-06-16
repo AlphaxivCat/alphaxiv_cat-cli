@@ -28,7 +28,7 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--assistant-variant", "homepage",
 			"--custom-filter", "{apiKey: x, url: https://example.com}",
 			"--filter-model", "cohere",
-			"--model", "claude-opus-4.5",
+			"--model", "model",
 			"--plan", "free",
 			"--signature", "signature",
 		)
@@ -57,7 +57,7 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--custom-filter.api-key", "x",
 			"--custom-filter.url", "https://example.com",
 			"--filter-model", "cohere",
-			"--model", "claude-opus-4.5",
+			"--model", "model",
 			"--plan", "free",
 			"--signature", "signature",
 		)
@@ -83,7 +83,7 @@ func TestAssistantV2Chat(t *testing.T) {
 			"  apiKey: x\n" +
 			"  url: https://example.com\n" +
 			"filterModel: cohere\n" +
-			"model: claude-opus-4.5\n" +
+			"model: model\n" +
 			"plan: free\n" +
 			"signature: signature\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
