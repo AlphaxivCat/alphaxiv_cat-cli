@@ -36,30 +36,6 @@ func TestPapersAddAuthor(t *testing.T) {
 	})
 }
 
-func TestPapersAdminVote(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers", "admin-vote",
-			"--paper-id", "x",
-			"--entry", "0",
-		)
-	})
-
-	t.Run("piping data", func(t *testing.T) {
-		// Test piping YAML data over stdin
-		pipeData := []byte("entry: 0")
-		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData,
-			"--api-key", "string",
-			"papers", "admin-vote",
-			"--paper-id", "x",
-		)
-	})
-}
-
 func TestPapersCrxAbstractClick(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -167,17 +143,6 @@ func TestPapersGetPaperInfo(t *testing.T) {
 	})
 }
 
-func TestPapersKickoffAbstractEmbed(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers", "kickoff-abstract-embed",
-		)
-	})
-}
-
 func TestPapersKickoffAI(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -246,28 +211,6 @@ func TestPapersMarkViewed(t *testing.T) {
 	})
 }
 
-func TestPapersProcessAbstractEmbed(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"papers", "process-abstract-embed",
-			"--paper-version-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-		)
-	})
-
-	t.Run("piping data", func(t *testing.T) {
-		// Test piping YAML data over stdin
-		pipeData := []byte("paperVersionId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData,
-			"--api-key", "string",
-			"papers", "process-abstract-embed",
-		)
-	})
-}
-
 func TestPapersProcessMetadata(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -275,7 +218,7 @@ func TestPapersProcessMetadata(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"papers", "process-metadata",
-			"--metadata", "{bibtex: true, custom_categories: true, embedding: true, github: true, organizations: true, overview: true, thumbnail: true}",
+			"--metadata", "{bibtex: true, custom_categories: true, github: true, organizations: true, overview: true, thumbnail: true}",
 			"--universal-paper-id", "universalPaperId",
 		)
 	})
@@ -291,7 +234,6 @@ func TestPapersProcessMetadata(t *testing.T) {
 			"papers", "process-metadata",
 			"--metadata.bibtex=true",
 			"--metadata.custom-categories=true",
-			"--metadata.embedding=true",
 			"--metadata.github=true",
 			"--metadata.organizations=true",
 			"--metadata.overview=true",
@@ -306,7 +248,6 @@ func TestPapersProcessMetadata(t *testing.T) {
 			"metadata:\n" +
 			"  bibtex: true\n" +
 			"  custom_categories: true\n" +
-			"  embedding: true\n" +
 			"  github: true\n" +
 			"  organizations: true\n" +
 			"  overview: true\n" +

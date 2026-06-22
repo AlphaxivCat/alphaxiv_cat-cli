@@ -74,6 +74,10 @@ var adminV1EmailsSendWeeklyDigest = requestflag.WithInnerFlags(cli.Command{
 			InnerField: "title",
 		},
 		&requestflag.InnerFlag[string]{
+			Name:       "event.cta-text",
+			InnerField: "ctaText",
+		},
+		&requestflag.InnerFlag[string]{
 			Name:       "event.end-time-raw",
 			InnerField: "endTimeRaw",
 		},

@@ -38,7 +38,7 @@ func TestAdminV1EmailsSendWeeklyDigest(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"admin:v1:emails", "send-weekly-digest",
-			"--event", "{date: date, description: description, link: link, title: title, endTimeRaw: endTimeRaw, startTimeRaw: startTimeRaw}",
+			"--event", "{date: date, description: description, link: link, title: title, ctaText: ctaText, endTimeRaw: endTimeRaw, startTimeRaw: startTimeRaw}",
 			"--intro-text", "introText",
 			"--role", "admin",
 			"--subject", "subject",
@@ -58,6 +58,7 @@ func TestAdminV1EmailsSendWeeklyDigest(t *testing.T) {
 			"--event.description", "description",
 			"--event.link", "link",
 			"--event.title", "title",
+			"--event.cta-text", "ctaText",
 			"--event.end-time-raw", "endTimeRaw",
 			"--event.start-time-raw", "startTimeRaw",
 			"--intro-text", "introText",
@@ -74,6 +75,7 @@ func TestAdminV1EmailsSendWeeklyDigest(t *testing.T) {
 			"    description: description\n" +
 			"    link: link\n" +
 			"    title: title\n" +
+			"    ctaText: ctaText\n" +
 			"    endTimeRaw: endTimeRaw\n" +
 			"    startTimeRaw: startTimeRaw\n" +
 			"introText: introText\n" +

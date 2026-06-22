@@ -124,22 +124,6 @@ var papersV3KickoffPaperCountries = cli.Command{
 	HideHelpCommand: true,
 }
 
-var papersV3KickoffPaperFullText = cli.Command{
-	Name:    "kickoff-paper-full-text",
-	Usage:   "Kickoff paper full text processing for recent papers",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[float64]{
-			Name:     "max-papers",
-			Usage:    "Maximum number of paper versions to process",
-			Default:  100,
-			BodyPath: "maxPapers",
-		},
-	},
-	Action:          handlePapersV3KickoffPaperFullText,
-	HideHelpCommand: true,
-}
-
 var papersV3KickoffPaperPodcasts = cli.Command{
 	Name:            "kickoff-paper-podcasts",
 	Usage:           "Kickoff paper podcasts on Uptash for a subset of paper groups",
@@ -149,24 +133,21 @@ var papersV3KickoffPaperPodcasts = cli.Command{
 	HideHelpCommand: true,
 }
 
-var papersV3KickoffThumbnailsTrendingPapers = cli.Command{
-	Name:            "kickoff-thumbnails-trending-papers",
-	Usage:           "Kickoff background job to generate thumbnails for trending papers",
-	Suggest:         true,
-	Flags:           []cli.Flag{},
-	Action:          handlePapersV3KickoffThumbnailsTrendingPapers,
-	HideHelpCommand: true,
-}
-
 var papersV3Like = cli.Command{
 	Name:    "like",
-	Usage:   "Toggle your like status on a paper group",
+	Usage:   "Set your like status on a paper group",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
 			Name:      "group",
 			Required:  true,
 			PathParam: "group",
+		},
+		&requestflag.Flag[string]{
+			Name:      "liked",
+			Usage:     `Allowed values: "true", "false".`,
+			Required:  true,
+			QueryPath: "liked",
 		},
 	},
 	Action:          handlePapersV3Like,
@@ -222,31 +203,6 @@ var papersV3ProcessCountries = cli.Command{
 		},
 	},
 	Action:          handlePapersV3ProcessCountries,
-	HideHelpCommand: true,
-}
-
-var papersV3ProcessFullText = cli.Command{
-	Name:    "process-full-text",
-	Usage:   "Processes and extracts full text from paper PDFs for indexing and search",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:     "paper-version-id",
-			Usage:    "Paper version ID to process for full text extraction",
-			Required: true,
-			BodyPath: "paperVersionId",
-		},
-	},
-	Action:          handlePapersV3ProcessFullText,
-	HideHelpCommand: true,
-}
-
-var papersV3PruneEmbeddingsByDate = cli.Command{
-	Name:            "prune-embeddings-by-date",
-	Usage:           "Clear 'is_last_X_days' flags from paper embeddings that have become too old",
-	Suggest:         true,
-	Flags:           []cli.Flag{},
-	Action:          handlePapersV3PruneEmbeddingsByDate,
 	HideHelpCommand: true,
 }
 
@@ -353,13 +309,13 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "sort",
-			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended".`,
+			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent".`,
 			Required:  true,
 			QueryPath: "sort",
 		},
 		&requestflag.Flag[string]{
-			Name:      "organizations",
-			QueryPath: "organizations",
+			Name:      "include-external-blogs",
+			QueryPath: "includeExternalBlogs",
 		},
 		&requestflag.Flag[string]{
 			Name:      "source",
@@ -705,30 +661,6 @@ func handlePapersV3KickoffPaperCountries(ctx context.Context, cmd *cli.Command) 
 	return client.Papers.V3.KickoffPaperCountries(ctx, params, options...)
 }
 
-func handlePapersV3KickoffPaperFullText(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.PaperV3KickoffPaperFullTextParams{}
-
-	return client.Papers.V3.KickoffPaperFullText(ctx, params, options...)
-}
-
 func handlePapersV3KickoffPaperPodcasts(ctx context.Context, cmd *cli.Command) error {
 	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
@@ -749,45 +681,6 @@ func handlePapersV3KickoffPaperPodcasts(ctx context.Context, cmd *cli.Command) e
 	}
 
 	return client.Papers.V3.KickoffPaperPodcasts(ctx, options...)
-}
-
-func handlePapersV3KickoffThumbnailsTrendingPapers(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Papers.V3.KickoffThumbnailsTrendingPapers(ctx, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "papers:v3 kickoff-thumbnails-trending-papers",
-		Transform:      transform,
-	})
 }
 
 func handlePapersV3Like(ctx context.Context, cmd *cli.Command) error {
@@ -812,9 +705,16 @@ func handlePapersV3Like(ctx context.Context, cmd *cli.Command) error {
 		return err
 	}
 
+	params := alphaxivcat.PaperV3LikeParams{}
+
 	var res []byte
 	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Papers.V3.Like(ctx, cmd.Value("group").(string), options...)
+	_, err = client.Papers.V3.Like(
+		ctx,
+		cmd.Value("group").(string),
+		params,
+		options...,
+	)
 	if err != nil {
 		return err
 	}
@@ -911,69 +811,6 @@ func handlePapersV3ProcessCountries(ctx context.Context, cmd *cli.Command) error
 	params := alphaxivcat.PaperV3ProcessCountriesParams{}
 
 	return client.Papers.V3.ProcessCountries(ctx, params, options...)
-}
-
-func handlePapersV3ProcessFullText(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.PaperV3ProcessFullTextParams{}
-
-	return client.Papers.V3.ProcessFullText(ctx, params, options...)
-}
-
-func handlePapersV3PruneEmbeddingsByDate(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Papers.V3.PruneEmbeddingsByDate(ctx, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "papers:v3 prune-embeddings-by-date",
-		Transform:      transform,
-	})
 }
 
 func handlePapersV3RequestImplementation(ctx context.Context, cmd *cli.Command) error {

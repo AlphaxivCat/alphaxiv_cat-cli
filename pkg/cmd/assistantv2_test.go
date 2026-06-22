@@ -26,7 +26,9 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--thinking=true",
 			"--web-search", "off",
 			"--assistant-variant", "homepage",
-			"--model", "claude-opus-4.5",
+			"--custom-filter", "{apiKey: x, url: https://example.com}",
+			"--filter-model", "cohere",
+			"--model", "model",
 			"--plan", "free",
 			"--signature", "signature",
 		)
@@ -52,7 +54,10 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--thinking=true",
 			"--web-search", "off",
 			"--assistant-variant", "homepage",
-			"--model", "claude-opus-4.5",
+			"--custom-filter.api-key", "x",
+			"--custom-filter.url", "https://example.com",
+			"--filter-model", "cohere",
+			"--model", "model",
 			"--plan", "free",
 			"--signature", "signature",
 		)
@@ -74,7 +79,11 @@ func TestAssistantV2Chat(t *testing.T) {
 			"thinking: true\n" +
 			"webSearch: 'off'\n" +
 			"assistantVariant: homepage\n" +
-			"model: claude-opus-4.5\n" +
+			"customFilter:\n" +
+			"  apiKey: x\n" +
+			"  url: https://example.com\n" +
+			"filterModel: cohere\n" +
+			"model: model\n" +
 			"plan: free\n" +
 			"signature: signature\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
