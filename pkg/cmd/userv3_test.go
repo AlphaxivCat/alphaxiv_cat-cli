@@ -174,7 +174,7 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--api-key", "string",
 			"users:v3", "update-preferences",
 			"--banner", "{link: link, name: name, type: success}",
-			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, isDarkModeEnabled: true, isDebugModeEnabled: true, isMembersSidebarVisible: true, preferredLanguage: am, preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory, preferredLlmModel: preferredLlmModel, preferredLlmThinking: preferredLlmThinking, readingModeEnabled: true, showModelThinking: true, toolingPaneWidth: 0, webSearch: 'off'}",
+			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, isDarkModeEnabled: true, isDebugModeEnabled: true, preferredLanguage: am, preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory, preferredLlmModel: preferredLlmModel, preferredLlmThinking: preferredLlmThinking, readingModeEnabled: true, showModelThinking: true, toolingPaneWidth: 0, webSearch: 'off'}",
 		)
 	})
 
@@ -197,7 +197,6 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--base.feed-sort", "Hot",
 			"--base.is-dark-mode-enabled=true",
 			"--base.is-debug-mode-enabled=true",
-			"--base.is-members-sidebar-visible=true",
 			"--base.preferred-language", "am",
 			"--base.preferred-llm-follow-latest-category", "preferredLlmFollowLatestCategory",
 			"--base.preferred-llm-model", "preferredLlmModel",
@@ -227,7 +226,6 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"  feedSort: Hot\n" +
 			"  isDarkModeEnabled: true\n" +
 			"  isDebugModeEnabled: true\n" +
-			"  isMembersSidebarVisible: true\n" +
 			"  preferredLanguage: am\n" +
 			"  preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory\n" +
 			"  preferredLlmModel: preferredLlmModel\n" +

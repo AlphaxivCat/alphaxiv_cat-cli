@@ -275,6 +275,7 @@ func TestPapersV3RetrieveFeed(t *testing.T) {
 			"--page-size", "pageSize",
 			"--sort", "Hot",
 			"--include-external-blogs", "includeExternalBlogs",
+			"--runnable", "runnable",
 			"--source", "GitHub",
 			"--topics", "topics",
 			"--universal-id", "universalId",
