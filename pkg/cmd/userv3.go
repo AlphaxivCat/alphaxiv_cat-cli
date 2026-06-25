@@ -273,10 +273,6 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 			Name:       "base.is-debug-mode-enabled",
 			InnerField: "isDebugModeEnabled",
 		},
-		&requestflag.InnerFlag[bool]{
-			Name:       "base.is-members-sidebar-visible",
-			InnerField: "isMembersSidebarVisible",
-		},
 		&requestflag.InnerFlag[*string]{
 			Name:       "base.preferred-language",
 			Usage:      `Allowed values: "am", "ar", "az", "bg", "bn", "ca", "cs", "da", "de", "el", "en", "es", "et", "fa", "fi", "fr", "gu", "ha", "he", "hi", "hr", "hu", "id", "it", "ja", "ka", "kn", "ko", "lt", "lv", "ml", "mr", "ms", "my", "ne", "nl", "no", "pa", "pl", "pt", "ro", "ru", "si", "sk", "sl", "sr", "sv", "sw", "ta", "te", "th", "tl", "tr", "uk", "ur", "uz", "vi", "yo", "zh".`,

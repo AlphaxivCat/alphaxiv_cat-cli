@@ -318,6 +318,10 @@ var papersV3RetrieveFeed = cli.Command{
 			QueryPath: "includeExternalBlogs",
 		},
 		&requestflag.Flag[string]{
+			Name:      "runnable",
+			QueryPath: "runnable",
+		},
+		&requestflag.Flag[string]{
 			Name:      "source",
 			Usage:     `Allowed values: "GitHub".`,
 			QueryPath: "source",
