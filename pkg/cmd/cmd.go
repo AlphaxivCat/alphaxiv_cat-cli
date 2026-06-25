@@ -484,7 +484,6 @@ func init() {
 				Commands: []*cli.Command{
 					&apiKeysV1Create,
 					&apiKeysV1List,
-					&apiKeysV1CreateImpersonation,
 					&apiKeysV1Revoke,
 				},
 			},

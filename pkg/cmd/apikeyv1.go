@@ -38,21 +38,6 @@ var apiKeysV1List = cli.Command{
 	HideHelpCommand: true,
 }
 
-var apiKeysV1CreateImpersonation = cli.Command{
-	Name:    "create-impersonation",
-	Usage:   "Create a new API key for the current user.",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:     "user",
-			Required: true,
-			BodyPath: "user",
-		},
-	},
-	Action:          handleAPIKeysV1CreateImpersonation,
-	HideHelpCommand: true,
-}
-
 var apiKeysV1Revoke = cli.Command{
 	Name:    "revoke",
 	Usage:   "Revoke an API key for the authenticated user. No-op if already revoked.",
@@ -144,47 +129,6 @@ func handleAPIKeysV1List(ctx context.Context, cmd *cli.Command) error {
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "api-keys:v1 list",
-		Transform:      transform,
-	})
-}
-
-func handleAPIKeysV1CreateImpersonation(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.APIKeyV1NewImpersonationParams{}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.APIKeys.V1.NewImpersonation(ctx, params, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "api-keys:v1 create-impersonation",
 		Transform:      transform,
 	})
 }
