@@ -430,7 +430,6 @@ func init() {
 				Commands: []*cli.Command{
 					&analyticsPaperViewCountIngestEvent,
 					&analyticsPaperViewCountKickoffJob,
-					&analyticsPaperViewCountProcessJob,
 				},
 			},
 			{
