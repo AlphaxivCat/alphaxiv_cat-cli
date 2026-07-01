@@ -61,33 +61,6 @@ var analyticsPaperViewCountKickoffJob = cli.Command{
 	HideHelpCommand: true,
 }
 
-var analyticsPaperViewCountProcessJob = cli.Command{
-	Name:    "process-job",
-	Usage:   "Process view count aggregation for a specific paper",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:     "paper-id",
-			Usage:    "Paper ID to process view counts for",
-			Required: true,
-			BodyPath: "paperId",
-		},
-		&requestflag.Flag[string]{
-			Name:     "publication-date",
-			Usage:    "Publication date for age decay calculation",
-			Required: true,
-			BodyPath: "publicationDate",
-		},
-		&requestflag.Flag[bool]{
-			Name:     "like",
-			Usage:    "Whether to add noise to votes",
-			BodyPath: "like",
-		},
-	},
-	Action:          handleAnalyticsPaperViewCountProcessJob,
-	HideHelpCommand: true,
-}
-
 func handleAnalyticsPaperViewCountIngestEvent(ctx context.Context, cmd *cli.Command) error {
 	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
@@ -166,47 +139,6 @@ func handleAnalyticsPaperViewCountKickoffJob(ctx context.Context, cmd *cli.Comma
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "analytics:paper-view-count kickoff-job",
-		Transform:      transform,
-	})
-}
-
-func handleAnalyticsPaperViewCountProcessJob(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.AnalyticsPaperViewCountProcessJobParams{}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Analytics.PaperViewCount.ProcessJob(ctx, params, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "analytics:paper-view-count process-job",
 		Transform:      transform,
 	})
 }
