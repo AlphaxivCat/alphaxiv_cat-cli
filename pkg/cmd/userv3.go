@@ -298,6 +298,11 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 			Name:       "base.show-model-thinking",
 			InnerField: "showModelThinking",
 		},
+		&requestflag.InnerFlag[*string]{
+			Name:       "base.theme",
+			Usage:      `Allowed values: "light", "dark", "system".`,
+			InnerField: "theme",
+		},
 		&requestflag.InnerFlag[*float64]{
 			Name:       "base.tooling-pane-width",
 			InnerField: "toolingPaneWidth",

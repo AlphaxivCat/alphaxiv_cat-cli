@@ -174,7 +174,7 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--api-key", "string",
 			"users:v3", "update-preferences",
 			"--banner", "{link: link, name: name, type: success}",
-			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, isDarkModeEnabled: true, isDebugModeEnabled: true, preferredLanguage: am, preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory, preferredLlmModel: preferredLlmModel, preferredLlmThinking: preferredLlmThinking, readingModeEnabled: true, showModelThinking: true, toolingPaneWidth: 0, webSearch: 'off'}",
+			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, isDarkModeEnabled: true, isDebugModeEnabled: true, preferredLanguage: am, preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory, preferredLlmModel: preferredLlmModel, preferredLlmThinking: preferredLlmThinking, readingModeEnabled: true, showModelThinking: true, theme: light, toolingPaneWidth: 0, webSearch: 'off'}",
 		)
 	})
 
@@ -203,6 +203,7 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--base.preferred-llm-thinking", "preferredLlmThinking",
 			"--base.reading-mode-enabled=true",
 			"--base.show-model-thinking=true",
+			"--base.theme", "light",
 			"--base.tooling-pane-width", "0",
 			"--base.web-search", "off",
 		)
@@ -232,6 +233,7 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"  preferredLlmThinking: preferredLlmThinking\n" +
 			"  readingModeEnabled: true\n" +
 			"  showModelThinking: true\n" +
+			"  theme: light\n" +
 			"  toolingPaneWidth: 0\n" +
 			"  webSearch: 'off'\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
