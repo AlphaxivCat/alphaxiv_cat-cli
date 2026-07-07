@@ -519,7 +519,6 @@ func init() {
 				Commands: []*cli.Command{
 					&sitemapsListOverviews,
 					&sitemapsListPapers,
-					&sitemapsListUsers,
 				},
 			},
 			{
