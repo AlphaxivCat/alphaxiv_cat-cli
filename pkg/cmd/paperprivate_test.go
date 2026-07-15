@@ -16,18 +16,18 @@ func TestPapersPrivateCreate(t *testing.T) {
 			t,
 			"--api-key", "string",
 			"papers:private", "create",
-			"--content-type", "x",
 			"--file", "x",
 			"--filename", "x",
+			"--content-type", "contentType",
 		)
 	})
 
 	t.Run("piping data", func(t *testing.T) {
 		// Test piping YAML data over stdin
 		pipeData := []byte("" +
-			"contentType: x\n" +
 			"file: x\n" +
-			"filename: x\n")
+			"filename: x\n" +
+			"contentType: contentType\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,
 			"--api-key", "string",
