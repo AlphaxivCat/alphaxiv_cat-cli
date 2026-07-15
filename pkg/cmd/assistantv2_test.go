@@ -30,6 +30,7 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--filter-model", "cohere",
 			"--model", "model",
 			"--plan", "free",
+			"--protocol", "0",
 			"--signature", "signature",
 		)
 	})
@@ -59,6 +60,7 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--filter-model", "cohere",
 			"--model", "model",
 			"--plan", "free",
+			"--protocol", "0",
 			"--signature", "signature",
 		)
 	})
@@ -85,6 +87,7 @@ func TestAssistantV2Chat(t *testing.T) {
 			"filterModel: cohere\n" +
 			"model: model\n" +
 			"plan: free\n" +
+			"protocol: 0\n" +
 			"signature: signature\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,

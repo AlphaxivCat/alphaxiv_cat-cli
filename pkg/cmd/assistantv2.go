@@ -84,6 +84,10 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 			Usage:    `Allowed values: "free", "pro".`,
 			BodyPath: "plan",
 		},
+		&requestflag.Flag[int64]{
+			Name:     "protocol",
+			BodyPath: "protocol",
+		},
 		&requestflag.Flag[string]{
 			Name:     "signature",
 			BodyPath: "signature",
