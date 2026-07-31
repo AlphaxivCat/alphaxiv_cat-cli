@@ -477,16 +477,6 @@ func init() {
 				},
 			},
 			{
-				Name:     "api-keys:v1",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&apiKeysV1Create,
-					&apiKeysV1List,
-					&apiKeysV1Revoke,
-				},
-			},
-			{
 				Name:     "admin:v1",
 				Category: "API RESOURCE",
 				Suggest:  true,

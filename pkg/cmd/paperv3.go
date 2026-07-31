@@ -309,7 +309,7 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "sort",
-			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent".`,
+			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent".`,
 			Required:  true,
 			QueryPath: "sort",
 		},
