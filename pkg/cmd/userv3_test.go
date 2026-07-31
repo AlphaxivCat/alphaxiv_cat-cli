@@ -174,7 +174,7 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--api-key", "string",
 			"users:v3", "update-preferences",
 			"--banner", "{link: link, name: name, type: success}",
-			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, isDarkModeEnabled: true, isDebugModeEnabled: true, preferredLanguage: am, preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory, preferredLlmModel: preferredLlmModel, preferredLlmThinking: preferredLlmThinking, readingModeEnabled: true, showModelThinking: true, theme: light, toolingPaneWidth: 0, webSearch: 'off'}",
+			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, hasSeenForYouOnboarding: true, hasSeenResearcherOnboarding: true, isDarkModeEnabled: true, isDebugModeEnabled: true, preferredLanguage: am, preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory, preferredLlmModel: preferredLlmModel, preferredLlmThinking: preferredLlmThinking, readingModeEnabled: true, showLikedPapersPublicly: true, showModelThinking: true, theme: light, toolingPaneWidth: 0, webSearch: 'off'}",
 		)
 	})
 
@@ -195,6 +195,8 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--base.default-private-paper-sidebar-tab", "assistant",
 			"--base.default-public-paper-sidebar-tab", "comments",
 			"--base.feed-sort", "Hot",
+			"--base.has-seen-for-you-onboarding=true",
+			"--base.has-seen-researcher-onboarding=true",
 			"--base.is-dark-mode-enabled=true",
 			"--base.is-debug-mode-enabled=true",
 			"--base.preferred-language", "am",
@@ -202,6 +204,7 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--base.preferred-llm-model", "preferredLlmModel",
 			"--base.preferred-llm-thinking", "preferredLlmThinking",
 			"--base.reading-mode-enabled=true",
+			"--base.show-liked-papers-publicly=true",
 			"--base.show-model-thinking=true",
 			"--base.theme", "light",
 			"--base.tooling-pane-width", "0",
@@ -225,6 +228,8 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"  defaultPrivatePaperSidebarTab: assistant\n" +
 			"  defaultPublicPaperSidebarTab: comments\n" +
 			"  feedSort: Hot\n" +
+			"  hasSeenForYouOnboarding: true\n" +
+			"  hasSeenResearcherOnboarding: true\n" +
 			"  isDarkModeEnabled: true\n" +
 			"  isDebugModeEnabled: true\n" +
 			"  preferredLanguage: am\n" +
@@ -232,6 +237,7 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"  preferredLlmModel: preferredLlmModel\n" +
 			"  preferredLlmThinking: preferredLlmThinking\n" +
 			"  readingModeEnabled: true\n" +
+			"  showLikedPapersPublicly: true\n" +
 			"  showModelThinking: true\n" +
 			"  theme: light\n" +
 			"  toolingPaneWidth: 0\n" +
