@@ -262,8 +262,16 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 		},
 		&requestflag.InnerFlag[string]{
 			Name:       "base.feed-sort",
-			Usage:      `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent".`,
+			Usage:      `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent".`,
 			InnerField: "feedSort",
+		},
+		&requestflag.InnerFlag[bool]{
+			Name:       "base.has-seen-for-you-onboarding",
+			InnerField: "hasSeenForYouOnboarding",
+		},
+		&requestflag.InnerFlag[bool]{
+			Name:       "base.has-seen-researcher-onboarding",
+			InnerField: "hasSeenResearcherOnboarding",
 		},
 		&requestflag.InnerFlag[bool]{
 			Name:       "base.is-dark-mode-enabled",
@@ -293,6 +301,10 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 		&requestflag.InnerFlag[bool]{
 			Name:       "base.reading-mode-enabled",
 			InnerField: "readingModeEnabled",
+		},
+		&requestflag.InnerFlag[bool]{
+			Name:       "base.show-liked-papers-publicly",
+			InnerField: "showLikedPapersPublicly",
 		},
 		&requestflag.InnerFlag[bool]{
 			Name:       "base.show-model-thinking",
