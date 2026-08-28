@@ -230,11 +230,7 @@ func init() {
 				Commands: []*cli.Command{
 					&emailsCaptureBouncedEmails,
 					&emailsCaptureResendBouncedEmail,
-					&emailsKickoffCommentUpdate,
-					&emailsKickoffGeneralUpdate,
 					&emailsProcessBouncedEmail,
-					&emailsProcessCommentUpdate,
-					&emailsProcessGeneralUpdate,
 				},
 			},
 			{
@@ -253,8 +249,6 @@ func init() {
 				Commands: []*cli.Command{
 					&usersV3DeleteBanner,
 					&usersV3DeleteOwnUser,
-					&usersV3GetActivity,
-					&usersV3GetClaimedPapers,
 					&usersV3GetCurrentUser,
 					&usersV3GetFeaturedActivity,
 					&usersV3GetFollowers,
@@ -300,17 +294,7 @@ func init() {
 				Category: "API RESOURCE",
 				Suggest:  true,
 				Commands: []*cli.Command{
-					&usersV3ByUsernameGetProfilePage,
 					&usersV3ByUsernameGetUser,
-				},
-			},
-			{
-				Name:     "users:v3:semantic-scholar",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&usersV3SemanticScholarLink,
-					&usersV3SemanticScholarScrape,
 				},
 			},
 			{
@@ -490,7 +474,6 @@ func init() {
 				Category: "API RESOURCE",
 				Suggest:  true,
 				Commands: []*cli.Command{
-					&adminV1EmailsSendMonthlyDigest,
 					&adminV1EmailsSendWeeklyDigest,
 				},
 			},

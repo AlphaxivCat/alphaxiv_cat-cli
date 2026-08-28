@@ -33,6 +33,10 @@ var papersPrivateCreate = cli.Command{
 			Name:     "content-type",
 			BodyPath: "contentType",
 		},
+		&requestflag.Flag[string]{
+			Name:     "folder-id",
+			BodyPath: "folderId",
+		},
 	},
 	Action:          handlePapersPrivateCreate,
 	HideHelpCommand: true,
