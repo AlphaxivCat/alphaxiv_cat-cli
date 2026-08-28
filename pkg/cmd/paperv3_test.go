@@ -274,6 +274,7 @@ func TestPapersV3RetrieveFeed(t *testing.T) {
 			"--page-num", "pageNum",
 			"--page-size", "pageSize",
 			"--sort", "Hot",
+			"--feed-cursor", "feedCursor",
 			"--include-external-blogs", "includeExternalBlogs",
 			"--runnable", "runnable",
 			"--source", "GitHub",

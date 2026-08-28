@@ -38,47 +38,6 @@ var usersV3DeleteOwnUser = cli.Command{
 	HideHelpCommand: true,
 }
 
-var usersV3GetActivity = cli.Command{
-	Name:    "get-activity",
-	Usage:   "Retrieve public activity timeline for a user",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:      "id",
-			Required:  true,
-			PathParam: "id",
-		},
-		&requestflag.Flag[string]{
-			Name:      "sort",
-			Usage:     `Allowed values: "date", "liked".`,
-			Default:   "date",
-			QueryPath: "sort",
-		},
-	},
-	Action:          handleUsersV3GetActivity,
-	HideHelpCommand: true,
-}
-
-var usersV3GetClaimedPapers = cli.Command{
-	Name:    "get-claimed-papers",
-	Usage:   "Retrieve the claimed papers for a user",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:      "id",
-			Required:  true,
-			PathParam: "id",
-		},
-		&requestflag.Flag[string]{
-			Name:      "sort",
-			Usage:     `Allowed values: "date", "liked", "citations".`,
-			QueryPath: "sort",
-		},
-	},
-	Action:          handleUsersV3GetClaimedPapers,
-	HideHelpCommand: true,
-}
-
 var usersV3GetCurrentUser = cli.Command{
 	Name:            "get-current-user",
 	Usage:           "Retrieve information about yourself",
@@ -250,6 +209,11 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 			Name:       "base.assistant-style-selection",
 			InnerField: "assistantStyleSelection",
 		},
+		&requestflag.InnerFlag[string]{
+			Name:       "base.default-paper-page",
+			Usage:      `Allowed values: "abstract", "pdf".`,
+			InnerField: "defaultPaperPage",
+		},
 		&requestflag.InnerFlag[*string]{
 			Name:       "base.default-private-paper-sidebar-tab",
 			Usage:      `Allowed values: "assistant", "notes", "similar".`,
@@ -265,6 +229,23 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 			Usage:      `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent".`,
 			InnerField: "feedSort",
 		},
+		&requestflag.InnerFlag[string]{
+			Name:       "base.folder-sort",
+			Usage:      `Allowed values: "added", "name", "modified", "manual".`,
+			InnerField: "folderSort",
+		},
+		&requestflag.InnerFlag[bool]{
+			Name:       "base.folder-sort-reversed",
+			InnerField: "folderSortReversed",
+		},
+		&requestflag.InnerFlag[bool]{
+			Name:       "base.has-completed-onboarding",
+			InnerField: "hasCompletedOnboarding",
+		},
+		&requestflag.InnerFlag[bool]{
+			Name:       "base.has-seen-assistant-intro",
+			InnerField: "hasSeenAssistantIntro",
+		},
 		&requestflag.InnerFlag[bool]{
 			Name:       "base.has-seen-for-you-onboarding",
 			InnerField: "hasSeenForYouOnboarding",
@@ -274,12 +255,25 @@ var usersV3UpdatePreferences = requestflag.WithInnerFlags(cli.Command{
 			InnerField: "hasSeenResearcherOnboarding",
 		},
 		&requestflag.InnerFlag[bool]{
+			Name:       "base.hides-home-assistant-intro",
+			InnerField: "hidesHomeAssistantIntro",
+		},
+		&requestflag.InnerFlag[bool]{
 			Name:       "base.is-dark-mode-enabled",
 			InnerField: "isDarkModeEnabled",
 		},
 		&requestflag.InnerFlag[bool]{
 			Name:       "base.is-debug-mode-enabled",
 			InnerField: "isDebugModeEnabled",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "base.paper-sort",
+			Usage:      `Allowed values: "added", "name", "published", "votes".`,
+			InnerField: "paperSort",
+		},
+		&requestflag.InnerFlag[bool]{
+			Name:       "base.paper-sort-reversed",
+			InnerField: "paperSortReversed",
 		},
 		&requestflag.InnerFlag[*string]{
 			Name:       "base.preferred-language",
@@ -435,104 +429,6 @@ func handleUsersV3DeleteOwnUser(ctx context.Context, cmd *cli.Command) error {
 	}
 
 	return client.Users.V3.DeleteOwnUser(ctx, options...)
-}
-
-func handleUsersV3GetActivity(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-	if !cmd.IsSet("id") && len(unusedArgs) > 0 {
-		cmd.Set("id", unusedArgs[0])
-		unusedArgs = unusedArgs[1:]
-	}
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.UserV3GetActivityParams{}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Users.V3.GetActivity(
-		ctx,
-		cmd.Value("id").(string),
-		params,
-		options...,
-	)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "users:v3 get-activity",
-		Transform:      transform,
-	})
-}
-
-func handleUsersV3GetClaimedPapers(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-	if !cmd.IsSet("id") && len(unusedArgs) > 0 {
-		cmd.Set("id", unusedArgs[0])
-		unusedArgs = unusedArgs[1:]
-	}
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.UserV3GetClaimedPapersParams{}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Users.V3.GetClaimedPapers(
-		ctx,
-		cmd.Value("id").(string),
-		params,
-		options...,
-	)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "users:v3 get-claimed-papers",
-		Transform:      transform,
-	})
 }
 
 func handleUsersV3GetCurrentUser(ctx context.Context, cmd *cli.Command) error {

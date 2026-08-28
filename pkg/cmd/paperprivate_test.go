@@ -19,6 +19,7 @@ func TestPapersPrivateCreate(t *testing.T) {
 			"--file", "x",
 			"--filename", "x",
 			"--content-type", "contentType",
+			"--folder-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
 
@@ -27,7 +28,8 @@ func TestPapersPrivateCreate(t *testing.T) {
 		pipeData := []byte("" +
 			"file: x\n" +
 			"filename: x\n" +
-			"contentType: contentType\n")
+			"contentType: contentType\n" +
+			"folderId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,
 			"--api-key", "string",

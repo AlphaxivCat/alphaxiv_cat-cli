@@ -75,32 +75,6 @@ func TestEmailsCaptureResendBouncedEmail(t *testing.T) {
 	})
 }
 
-func TestEmailsKickoffCommentUpdate(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"emails", "kickoff-comment-update",
-			"--role", "role",
-			"--window", "window",
-			"--custom", "true",
-		)
-	})
-}
-
-func TestEmailsKickoffGeneralUpdate(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"emails", "kickoff-general-update",
-			"--role", "role",
-		)
-	})
-}
-
 func TestEmailsProcessBouncedEmail(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -119,79 +93,6 @@ func TestEmailsProcessBouncedEmail(t *testing.T) {
 			t, pipeData,
 			"--api-key", "string",
 			"emails", "process-bounced-email",
-		)
-	})
-}
-
-func TestEmailsProcessCommentUpdate(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"emails", "process-comment-update",
-			"--user-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-			"--custom-content", "{events: [{date: date, description: description, link: link, title: title, ctaText: ctaText, endTimeRaw: endTimeRaw, startTimeRaw: startTimeRaw}], introText: introText, subject: subject}",
-		)
-	})
-
-	t.Run("inner flags", func(t *testing.T) {
-		// Check that inner flags have been set up correctly
-		requestflag.CheckInnerFlags(emailsProcessCommentUpdate)
-
-		// Alternative argument passing style using inner flags
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"emails", "process-comment-update",
-			"--user-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-			"--custom-content.events", "[{date: date, description: description, link: link, title: title, ctaText: ctaText, endTimeRaw: endTimeRaw, startTimeRaw: startTimeRaw}]",
-			"--custom-content.intro-text", "introText",
-			"--custom-content.subject", "subject",
-		)
-	})
-
-	t.Run("piping data", func(t *testing.T) {
-		// Test piping YAML data over stdin
-		pipeData := []byte("" +
-			"userId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n" +
-			"customContent:\n" +
-			"  events:\n" +
-			"    - date: date\n" +
-			"      description: description\n" +
-			"      link: link\n" +
-			"      title: title\n" +
-			"      ctaText: ctaText\n" +
-			"      endTimeRaw: endTimeRaw\n" +
-			"      startTimeRaw: startTimeRaw\n" +
-			"  introText: introText\n" +
-			"  subject: subject\n")
-		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData,
-			"--api-key", "string",
-			"emails", "process-comment-update",
-		)
-	})
-}
-
-func TestEmailsProcessGeneralUpdate(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"emails", "process-general-update",
-			"--user-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-		)
-	})
-
-	t.Run("piping data", func(t *testing.T) {
-		// Test piping YAML data over stdin
-		pipeData := []byte("userId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-		mocktest.TestRunMockTestWithPipeAndFlags(
-			t, pipeData,
-			"--api-key", "string",
-			"emails", "process-general-update",
 		)
 	})
 }

@@ -32,32 +32,6 @@ func TestUsersV3DeleteOwnUser(t *testing.T) {
 	})
 }
 
-func TestUsersV3GetActivity(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"users:v3", "get-activity",
-			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-			"--sort", "date",
-		)
-	})
-}
-
-func TestUsersV3GetClaimedPapers(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"users:v3", "get-claimed-papers",
-			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-			"--sort", "date",
-		)
-	})
-}
-
 func TestUsersV3GetCurrentUser(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -174,7 +148,7 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--api-key", "string",
 			"users:v3", "update-preferences",
 			"--banner", "{link: link, name: name, type: success}",
-			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, hasSeenForYouOnboarding: true, hasSeenResearcherOnboarding: true, isDarkModeEnabled: true, isDebugModeEnabled: true, preferredLanguage: am, preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory, preferredLlmModel: preferredLlmModel, preferredLlmThinking: preferredLlmThinking, readingModeEnabled: true, showLikedPapersPublicly: true, showModelThinking: true, theme: light, toolingPaneWidth: 0, webSearch: 'off'}",
+			"--base", "{assistantCustomStyles: [{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}], assistantStyleSelection: default, defaultPaperPage: abstract, defaultPrivatePaperSidebarTab: assistant, defaultPublicPaperSidebarTab: comments, feedSort: Hot, folderSort: added, folderSortReversed: true, hasCompletedOnboarding: true, hasSeenAssistantIntro: true, hasSeenForYouOnboarding: true, hasSeenResearcherOnboarding: true, hidesHomeAssistantIntro: true, isDarkModeEnabled: true, isDebugModeEnabled: true, paperSort: added, paperSortReversed: true, preferredLanguage: am, preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory, preferredLlmModel: preferredLlmModel, preferredLlmThinking: preferredLlmThinking, readingModeEnabled: true, showLikedPapersPublicly: true, showModelThinking: true, theme: light, toolingPaneWidth: 0, webSearch: 'off'}",
 		)
 	})
 
@@ -192,13 +166,21 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"--banner.type", "success",
 			"--base.assistant-custom-styles", "[{id: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e, instructions: x, name: x}]",
 			"--base.assistant-style-selection", "default",
+			"--base.default-paper-page", "abstract",
 			"--base.default-private-paper-sidebar-tab", "assistant",
 			"--base.default-public-paper-sidebar-tab", "comments",
 			"--base.feed-sort", "Hot",
+			"--base.folder-sort", "added",
+			"--base.folder-sort-reversed=true",
+			"--base.has-completed-onboarding=true",
+			"--base.has-seen-assistant-intro=true",
 			"--base.has-seen-for-you-onboarding=true",
 			"--base.has-seen-researcher-onboarding=true",
+			"--base.hides-home-assistant-intro=true",
 			"--base.is-dark-mode-enabled=true",
 			"--base.is-debug-mode-enabled=true",
+			"--base.paper-sort", "added",
+			"--base.paper-sort-reversed=true",
 			"--base.preferred-language", "am",
 			"--base.preferred-llm-follow-latest-category", "preferredLlmFollowLatestCategory",
 			"--base.preferred-llm-model", "preferredLlmModel",
@@ -225,13 +207,21 @@ func TestUsersV3UpdatePreferences(t *testing.T) {
 			"      instructions: x\n" +
 			"      name: x\n" +
 			"  assistantStyleSelection: default\n" +
+			"  defaultPaperPage: abstract\n" +
 			"  defaultPrivatePaperSidebarTab: assistant\n" +
 			"  defaultPublicPaperSidebarTab: comments\n" +
 			"  feedSort: Hot\n" +
+			"  folderSort: added\n" +
+			"  folderSortReversed: true\n" +
+			"  hasCompletedOnboarding: true\n" +
+			"  hasSeenAssistantIntro: true\n" +
 			"  hasSeenForYouOnboarding: true\n" +
 			"  hasSeenResearcherOnboarding: true\n" +
+			"  hidesHomeAssistantIntro: true\n" +
 			"  isDarkModeEnabled: true\n" +
 			"  isDebugModeEnabled: true\n" +
+			"  paperSort: added\n" +
+			"  paperSortReversed: true\n" +
 			"  preferredLanguage: am\n" +
 			"  preferredLlmFollowLatestCategory: preferredLlmFollowLatestCategory\n" +
 			"  preferredLlmModel: preferredLlmModel\n" +

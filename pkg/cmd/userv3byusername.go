@@ -14,21 +14,6 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-var usersV3ByUsernameGetProfilePage = cli.Command{
-	Name:    "get-profile-page",
-	Usage:   "This route is specifically for the Client's user page",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:      "username",
-			Required:  true,
-			PathParam: "username",
-		},
-	},
-	Action:          handleUsersV3ByUsernameGetProfilePage,
-	HideHelpCommand: true,
-}
-
 var usersV3ByUsernameGetUser = cli.Command{
 	Name:    "get-user",
 	Usage:   "Retrieve a user's basic information given its username",
@@ -42,48 +27,6 @@ var usersV3ByUsernameGetUser = cli.Command{
 	},
 	Action:          handleUsersV3ByUsernameGetUser,
 	HideHelpCommand: true,
-}
-
-func handleUsersV3ByUsernameGetProfilePage(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-	if !cmd.IsSet("username") && len(unusedArgs) > 0 {
-		cmd.Set("username", unusedArgs[0])
-		unusedArgs = unusedArgs[1:]
-	}
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Users.V3.ByUsername.GetProfilePage(ctx, cmd.Value("username").(string), options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "users:v3:by-username get-profile-page",
-		Transform:      transform,
-	})
 }
 
 func handleUsersV3ByUsernameGetUser(ctx context.Context, cmd *cli.Command) error {
