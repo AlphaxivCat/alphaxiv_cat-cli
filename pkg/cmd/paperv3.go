@@ -314,6 +314,10 @@ var papersV3RetrieveFeed = cli.Command{
 			QueryPath: "sort",
 		},
 		&requestflag.Flag[string]{
+			Name:      "feed-cursor",
+			QueryPath: "feedCursor",
+		},
+		&requestflag.Flag[string]{
 			Name:      "include-external-blogs",
 			QueryPath: "includeExternalBlogs",
 		},
