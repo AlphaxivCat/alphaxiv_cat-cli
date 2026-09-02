@@ -281,6 +281,10 @@ var papersV3RetrieveDiversePapers = cli.Command{
 			Required:  true,
 			QueryPath: "topics",
 		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
+		},
 	},
 	Action:          handlePapersV3RetrieveDiversePapers,
 	HideHelpCommand: true,
@@ -320,6 +324,10 @@ var papersV3RetrieveFeed = cli.Command{
 		&requestflag.Flag[string]{
 			Name:      "include-external-blogs",
 			QueryPath: "includeExternalBlogs",
+		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
 		},
 		&requestflag.Flag[string]{
 			Name:      "runnable",
@@ -436,6 +444,10 @@ var papersV3RetrieveSimilarPapers = cli.Command{
 			Name:      "limit",
 			QueryPath: "limit",
 		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
+		},
 	},
 	Action:          handlePapersV3RetrieveSimilarPapers,
 	HideHelpCommand: true,
@@ -460,6 +472,10 @@ var papersV3RetrieveUnrelated = cli.Command{
 			Name:      "topics",
 			Required:  true,
 			QueryPath: "topics",
+		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
 		},
 	},
 	Action:          handlePapersV3RetrieveUnrelated,
