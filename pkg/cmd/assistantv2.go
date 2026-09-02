@@ -80,6 +80,10 @@ var assistantV2Chat = requestflag.WithInnerFlags(cli.Command{
 			BodyPath: "model",
 		},
 		&requestflag.Flag[string]{
+			Name:     "overview-id",
+			BodyPath: "overviewId",
+		},
+		&requestflag.Flag[string]{
 			Name:     "plan",
 			Usage:    `Allowed values: "free", "pro".`,
 			BodyPath: "plan",
