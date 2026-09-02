@@ -62,21 +62,6 @@ var usersV3GetFeaturedActivity = cli.Command{
 	HideHelpCommand: true,
 }
 
-var usersV3GetFollowers = cli.Command{
-	Name:    "get-followers",
-	Usage:   "List the users following the specified user",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:      "id",
-			Required:  true,
-			PathParam: "id",
-		},
-	},
-	Action:          handleUsersV3GetFollowers,
-	HideHelpCommand: true,
-}
-
 var usersV3GetLeaderboard = cli.Command{
 	Name:            "get-leaderboard",
 	Usage:           "Retrieve weekly and all-time leaderboards for users ranked by reputation",
@@ -150,21 +135,6 @@ var usersV3Search = cli.Command{
 		},
 	},
 	Action:          handleUsersV3Search,
-	HideHelpCommand: true,
-}
-
-var usersV3ToggleFollowUser = cli.Command{
-	Name:    "toggle-follow-user",
-	Usage:   "Follow or unfollow another user",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:      "id",
-			Required:  true,
-			PathParam: "id",
-		},
-	},
-	Action:          handleUsersV3ToggleFollowUser,
 	HideHelpCommand: true,
 }
 
@@ -512,48 +482,6 @@ func handleUsersV3GetFeaturedActivity(ctx context.Context, cmd *cli.Command) err
 	})
 }
 
-func handleUsersV3GetFollowers(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-	if !cmd.IsSet("id") && len(unusedArgs) > 0 {
-		cmd.Set("id", unusedArgs[0])
-		unusedArgs = unusedArgs[1:]
-	}
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Users.V3.GetFollowers(ctx, cmd.Value("id").(string), options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "users:v3 get-followers",
-		Transform:      transform,
-	})
-}
-
 func handleUsersV3GetLeaderboard(ctx context.Context, cmd *cli.Command) error {
 	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
 	unusedArgs := cmd.Args().Slice()
@@ -755,48 +683,6 @@ func handleUsersV3Search(ctx context.Context, cmd *cli.Command) error {
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "users:v3 search",
-		Transform:      transform,
-	})
-}
-
-func handleUsersV3ToggleFollowUser(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-	if !cmd.IsSet("id") && len(unusedArgs) > 0 {
-		cmd.Set("id", unusedArgs[0])
-		unusedArgs = unusedArgs[1:]
-	}
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Users.V3.ToggleFollowUser(ctx, cmd.Value("id").(string), options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "users:v3 toggle-follow-user",
 		Transform:      transform,
 	})
 }

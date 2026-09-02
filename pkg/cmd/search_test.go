@@ -28,6 +28,7 @@ func TestSearchGoogleSearch(t *testing.T) {
 			"--api-key", "string",
 			"search", "google-search",
 			"--q", "q",
+			"--link-blogs", "linkBlogs",
 		)
 	})
 }

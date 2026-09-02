@@ -41,6 +41,10 @@ var searchGoogleSearch = cli.Command{
 			Required:  true,
 			QueryPath: "q",
 		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
+		},
 	},
 	Action:          handleSearchGoogleSearch,
 	HideHelpCommand: true,

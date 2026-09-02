@@ -55,18 +55,6 @@ func TestUsersV3GetFeaturedActivity(t *testing.T) {
 	})
 }
 
-func TestUsersV3GetFollowers(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"users:v3", "get-followers",
-			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-		)
-	})
-}
-
 func TestUsersV3GetLeaderboard(t *testing.T) {
 	t.Skip("Mock server tests are disabled")
 	t.Run("regular flags", func(t *testing.T) {
@@ -124,18 +112,6 @@ func TestUsersV3Search(t *testing.T) {
 			"users:v3", "search",
 			"--q", "x",
 			"--limit", "limit",
-		)
-	})
-}
-
-func TestUsersV3ToggleFollowUser(t *testing.T) {
-	t.Skip("Mock server tests are disabled")
-	t.Run("regular flags", func(t *testing.T) {
-		mocktest.TestRunMockTestWithFlags(
-			t,
-			"--api-key", "string",
-			"users:v3", "toggle-follow-user",
-			"--id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 		)
 	})
 }
