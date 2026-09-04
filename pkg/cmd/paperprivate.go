@@ -20,11 +20,6 @@ var papersPrivateCreate = cli.Command{
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
-			Name:     "content-type",
-			Required: true,
-			BodyPath: "contentType",
-		},
-		&requestflag.Flag[string]{
 			Name:     "file",
 			Required: true,
 			BodyPath: "file",
@@ -33,6 +28,14 @@ var papersPrivateCreate = cli.Command{
 			Name:     "filename",
 			Required: true,
 			BodyPath: "filename",
+		},
+		&requestflag.Flag[string]{
+			Name:     "content-type",
+			BodyPath: "contentType",
+		},
+		&requestflag.Flag[string]{
+			Name:     "folder-id",
+			BodyPath: "folderId",
 		},
 	},
 	Action:          handlePapersPrivateCreate,

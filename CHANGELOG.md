@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.10.0 (2026-09-04)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **api:** api update ([8f80fad](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/8f80fadaea6b01f1b49efb5a6d44434bcf5daa0e))
+* **api:** api update ([f97006f](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/f97006ffb61e2bc3e8757de191984ae3fd2834e2))
+* **api:** api update ([04b6a25](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/04b6a25ee890237f03d6382947f5d24aec812d90))
+* **api:** api update ([3d9d91c](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/3d9d91c3a5781d173eea5d5dbd0dc1b80e144e21))
+* **api:** api update ([2b8c337](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/2b8c33796b49a99837f51d037b767950d29c9606))
+* **api:** api update ([4cf3da7](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/4cf3da728aab89d8d13a90ccbcb5a63210e83523))
+* **api:** api update ([85510ad](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/85510ad1a9bc0485e03a1c6d508818a332b152a2))
+* **api:** api update ([d21b74a](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/d21b74ae71c5109da0eccf0baff76c00f4a48b32))
+* **api:** api update ([996db93](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/996db93e8496c5823e1fc82d43f3c442d3fa0972))
+* **api:** api update ([caabc37](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/caabc371396661049918e978531849c474a29a86))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([218b047](https://github.com/AlphaxivCat/alphaxiv_cat-cli/commit/218b047a1623eda37885c208dd2ad6be3819b938))
+
 ## 0.9.0 (2026-06-17)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/AlphaxivCat/alphaxiv_cat-cli/compare/v0.8.0...v0.9.0)

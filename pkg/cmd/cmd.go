@@ -230,11 +230,7 @@ func init() {
 				Commands: []*cli.Command{
 					&emailsCaptureBouncedEmails,
 					&emailsCaptureResendBouncedEmail,
-					&emailsKickoffCommentUpdate,
-					&emailsKickoffGeneralUpdate,
 					&emailsProcessBouncedEmail,
-					&emailsProcessCommentUpdate,
-					&emailsProcessGeneralUpdate,
 				},
 			},
 			{
@@ -253,28 +249,16 @@ func init() {
 				Commands: []*cli.Command{
 					&usersV3DeleteBanner,
 					&usersV3DeleteOwnUser,
-					&usersV3GetActivity,
-					&usersV3GetClaimedPapers,
 					&usersV3GetCurrentUser,
 					&usersV3GetFeaturedActivity,
-					&usersV3GetFollowers,
 					&usersV3GetLeaderboard,
 					&usersV3GetUserByUuid,
 					&usersV3GetViewedHistory,
 					&usersV3ProcessNotificationEmail,
 					&usersV3Search,
-					&usersV3ToggleFollowUser,
 					&usersV3UpdatePreferences,
 					&usersV3UpdateProfile,
 					&usersV3UploadAvatar,
-				},
-			},
-			{
-				Name:     "users:v3:following",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&usersV3FollowingList,
 				},
 			},
 			{
@@ -300,17 +284,7 @@ func init() {
 				Category: "API RESOURCE",
 				Suggest:  true,
 				Commands: []*cli.Command{
-					&usersV3ByUsernameGetProfilePage,
 					&usersV3ByUsernameGetUser,
-				},
-			},
-			{
-				Name:     "users:v3:semantic-scholar",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&usersV3SemanticScholarLink,
-					&usersV3SemanticScholarScrape,
 				},
 			},
 			{
@@ -430,7 +404,6 @@ func init() {
 				Commands: []*cli.Command{
 					&analyticsPaperViewCountIngestEvent,
 					&analyticsPaperViewCountKickoffJob,
-					&analyticsPaperViewCountProcessJob,
 				},
 			},
 			{
@@ -478,17 +451,6 @@ func init() {
 				},
 			},
 			{
-				Name:     "api-keys:v1",
-				Category: "API RESOURCE",
-				Suggest:  true,
-				Commands: []*cli.Command{
-					&apiKeysV1Create,
-					&apiKeysV1List,
-					&apiKeysV1CreateImpersonation,
-					&apiKeysV1Revoke,
-				},
-			},
-			{
 				Name:     "admin:v1",
 				Category: "API RESOURCE",
 				Suggest:  true,
@@ -502,7 +464,6 @@ func init() {
 				Category: "API RESOURCE",
 				Suggest:  true,
 				Commands: []*cli.Command{
-					&adminV1EmailsSendMonthlyDigest,
 					&adminV1EmailsSendWeeklyDigest,
 				},
 			},
@@ -521,7 +482,6 @@ func init() {
 				Commands: []*cli.Command{
 					&sitemapsListOverviews,
 					&sitemapsListPapers,
-					&sitemapsListUsers,
 				},
 			},
 			{
