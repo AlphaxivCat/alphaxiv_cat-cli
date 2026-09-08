@@ -12,50 +12,69 @@ import (
 	"github.com/urfave/cli/v3"
 )
 
-var adminV1EmailsSendMonthlyDigest = cli.Command{
-	Name:    "send-monthly-digest",
-	Usage:   "Queue monthly digest emails to users",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:     "role",
-			Usage:    "Filter by user role",
-			BodyPath: "role",
-		},
-	},
-	Action:          handleAdminV1EmailsSendMonthlyDigest,
-	HideHelpCommand: true,
-}
-
 var adminV1EmailsSendWeeklyDigest = requestflag.WithInnerFlags(cli.Command{
 	Name:    "send-weekly-digest",
 	Usage:   "Queue weekly digest emails to users",
 	Suggest: true,
 	Flags: []cli.Flag{
+		&requestflag.Flag[map[string]any]{
+			Name:     "a",
+			Usage:    "Text overrides for copy variant A",
+			BodyPath: "a",
+		},
+		&requestflag.Flag[map[string]any]{
+			Name:     "b",
+			Usage:    "Text overrides for copy variant B",
+			BodyPath: "b",
+		},
 		&requestflag.Flag[[]map[string]any]{
 			Name:     "event",
-			Usage:    "Custom events to include",
+			Usage:    "Custom events to include, both variants",
 			BodyPath: "events",
-		},
-		&requestflag.Flag[string]{
-			Name:     "intro-text",
-			Usage:    "Custom intro message",
-			BodyPath: "introText",
 		},
 		&requestflag.Flag[string]{
 			Name:     "role",
 			Usage:    "Filter by user role",
 			BodyPath: "role",
 		},
-		&requestflag.Flag[string]{
-			Name:     "subject",
-			Usage:    "Custom email subject",
-			BodyPath: "subject",
+		&requestflag.Flag[int64]{
+			Name:     "test-batch-size",
+			Usage:    "Test mode: page size override, to exercise batching",
+			BodyPath: "testBatchSize",
+		},
+		&requestflag.Flag[[]string]{
+			Name:     "test-email",
+			Usage:    "Test mode: only these addresses can receive the digest",
+			BodyPath: "testEmails",
 		},
 	},
 	Action:          handleAdminV1EmailsSendWeeklyDigest,
 	HideHelpCommand: true,
 }, map[string][]requestflag.HasOuterFlag{
+	"a": {
+		&requestflag.InnerFlag[string]{
+			Name:       "a.intro-text",
+			Usage:      "Custom intro message",
+			InnerField: "introText",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "a.subject",
+			Usage:      "Custom email subject",
+			InnerField: "subject",
+		},
+	},
+	"b": {
+		&requestflag.InnerFlag[string]{
+			Name:       "b.intro-text",
+			Usage:      "Custom intro message",
+			InnerField: "introText",
+		},
+		&requestflag.InnerFlag[string]{
+			Name:       "b.subject",
+			Usage:      "Custom email subject",
+			InnerField: "subject",
+		},
+	},
 	"event": {
 		&requestflag.InnerFlag[string]{
 			Name:       "event.date",
@@ -87,30 +106,6 @@ var adminV1EmailsSendWeeklyDigest = requestflag.WithInnerFlags(cli.Command{
 		},
 	},
 })
-
-func handleAdminV1EmailsSendMonthlyDigest(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		ApplicationJSON,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.AdminV1EmailSendMonthlyDigestParams{}
-
-	return client.Admin.V1.Emails.SendMonthlyDigest(ctx, params, options...)
-}
 
 func handleAdminV1EmailsSendWeeklyDigest(ctx context.Context, cmd *cli.Command) error {
 	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)

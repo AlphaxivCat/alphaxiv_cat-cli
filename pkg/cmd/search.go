@@ -32,7 +32,7 @@ var searchClosestTopic = cli.Command{
 
 var searchGoogleSearch = cli.Command{
 	Name:    "google-search",
-	Usage:   "Search for papers using Google and enrich results",
+	Usage:   "Search for papers, fusing Google's ranking with built-in keyword search",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -40,6 +40,10 @@ var searchGoogleSearch = cli.Command{
 			Usage:     "Search query",
 			Required:  true,
 			QueryPath: "q",
+		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
 		},
 	},
 	Action:          handleSearchGoogleSearch,

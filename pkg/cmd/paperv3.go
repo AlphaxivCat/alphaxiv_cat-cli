@@ -281,6 +281,10 @@ var papersV3RetrieveDiversePapers = cli.Command{
 			Required:  true,
 			QueryPath: "topics",
 		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
+		},
 	},
 	Action:          handlePapersV3RetrieveDiversePapers,
 	HideHelpCommand: true,
@@ -309,13 +313,25 @@ var papersV3RetrieveFeed = cli.Command{
 		},
 		&requestflag.Flag[string]{
 			Name:      "sort",
-			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent".`,
+			Usage:     `Allowed values: "Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent".`,
 			Required:  true,
 			QueryPath: "sort",
 		},
 		&requestflag.Flag[string]{
+			Name:      "feed-cursor",
+			QueryPath: "feedCursor",
+		},
+		&requestflag.Flag[string]{
 			Name:      "include-external-blogs",
 			QueryPath: "includeExternalBlogs",
+		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
+		},
+		&requestflag.Flag[string]{
+			Name:      "runnable",
+			QueryPath: "runnable",
 		},
 		&requestflag.Flag[string]{
 			Name:      "source",
@@ -428,6 +444,10 @@ var papersV3RetrieveSimilarPapers = cli.Command{
 			Name:      "limit",
 			QueryPath: "limit",
 		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
+		},
 	},
 	Action:          handlePapersV3RetrieveSimilarPapers,
 	HideHelpCommand: true,
@@ -452,6 +472,10 @@ var papersV3RetrieveUnrelated = cli.Command{
 			Name:      "topics",
 			Required:  true,
 			QueryPath: "topics",
+		},
+		&requestflag.Flag[string]{
+			Name:      "link-blogs",
+			QueryPath: "linkBlogs",
 		},
 	},
 	Action:          handlePapersV3RetrieveUnrelated,

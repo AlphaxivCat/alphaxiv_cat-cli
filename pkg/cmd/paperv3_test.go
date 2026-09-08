@@ -259,6 +259,7 @@ func TestPapersV3RetrieveDiversePapers(t *testing.T) {
 			"--api-key", "string",
 			"papers:v3", "retrieve-diverse-papers",
 			"--topics", "topics",
+			"--link-blogs", "linkBlogs",
 		)
 	})
 }
@@ -274,7 +275,10 @@ func TestPapersV3RetrieveFeed(t *testing.T) {
 			"--page-num", "pageNum",
 			"--page-size", "pageSize",
 			"--sort", "Hot",
+			"--feed-cursor", "feedCursor",
 			"--include-external-blogs", "includeExternalBlogs",
+			"--link-blogs", "linkBlogs",
+			"--runnable", "runnable",
 			"--source", "GitHub",
 			"--topics", "topics",
 			"--universal-id", "universalId",
@@ -342,6 +346,7 @@ func TestPapersV3RetrieveSimilarPapers(t *testing.T) {
 			"--exclude-likes", "false",
 			"--interval", "3 Days",
 			"--limit", "limit",
+			"--link-blogs", "linkBlogs",
 		)
 	})
 }
@@ -356,6 +361,7 @@ func TestPapersV3RetrieveUnrelated(t *testing.T) {
 			"--limit", "limit",
 			"--papers", "papers",
 			"--topics", "topics",
+			"--link-blogs", "linkBlogs",
 		)
 	})
 }

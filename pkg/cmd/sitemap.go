@@ -34,7 +34,7 @@ var sitemapsListOverviews = cli.Command{
 
 var sitemapsListPapers = cli.Command{
 	Name:    "list-papers",
-	Usage:   "Get paginated list of public papers for sitemap generation. Uses cursor caching\nfor efficient deep pagination.",
+	Usage:   "Get paginated list of original (non-arXiv, non-blog) public papers for sitemap\ngeneration. Uses cursor caching for efficient deep pagination.",
 	Suggest: true,
 	Flags: []cli.Flag{
 		&requestflag.Flag[string]{
@@ -47,24 +47,6 @@ var sitemapsListPapers = cli.Command{
 		},
 	},
 	Action:          handleSitemapsListPapers,
-	HideHelpCommand: true,
-}
-
-var sitemapsListUsers = cli.Command{
-	Name:    "list-users",
-	Usage:   "Get paginated list of users for sitemap generation",
-	Suggest: true,
-	Flags: []cli.Flag{
-		&requestflag.Flag[string]{
-			Name:      "limit",
-			QueryPath: "limit",
-		},
-		&requestflag.Flag[string]{
-			Name:      "page",
-			QueryPath: "page",
-		},
-	},
-	Action:          handleSitemapsListUsers,
 	HideHelpCommand: true,
 }
 
@@ -146,47 +128,6 @@ func handleSitemapsListPapers(ctx context.Context, cmd *cli.Command) error {
 		Format:         format,
 		RawOutput:      cmd.Root().Bool("raw-output"),
 		Title:          "sitemaps list-papers",
-		Transform:      transform,
-	})
-}
-
-func handleSitemapsListUsers(ctx context.Context, cmd *cli.Command) error {
-	client := alphaxivcat.NewClient(getDefaultRequestOptions(cmd)...)
-	unusedArgs := cmd.Args().Slice()
-
-	if len(unusedArgs) > 0 {
-		return fmt.Errorf("Unexpected extra arguments: %v", unusedArgs)
-	}
-
-	options, err := flagOptions(
-		cmd,
-		apiquery.NestedQueryFormatBrackets,
-		apiquery.ArrayQueryFormatComma,
-		EmptyBody,
-		false,
-	)
-	if err != nil {
-		return err
-	}
-
-	params := alphaxivcat.SitemapListUsersParams{}
-
-	var res []byte
-	options = append(options, option.WithResponseBodyInto(&res))
-	_, err = client.Sitemaps.ListUsers(ctx, params, options...)
-	if err != nil {
-		return err
-	}
-
-	obj := gjson.ParseBytes(res)
-	format := cmd.Root().String("format")
-	explicitFormat := cmd.Root().IsSet("format")
-	transform := cmd.Root().String("transform")
-	return ShowJSON(obj, ShowJSONOpts{
-		ExplicitFormat: explicitFormat,
-		Format:         format,
-		RawOutput:      cmd.Root().Bool("raw-output"),
-		Title:          "sitemaps list-users",
 		Transform:      transform,
 	})
 }

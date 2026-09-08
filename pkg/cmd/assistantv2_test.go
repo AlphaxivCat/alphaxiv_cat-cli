@@ -29,7 +29,9 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--custom-filter", "{apiKey: x, url: https://example.com}",
 			"--filter-model", "cohere",
 			"--model", "model",
+			"--overview-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--plan", "free",
+			"--protocol", "0",
 			"--signature", "signature",
 		)
 	})
@@ -58,7 +60,9 @@ func TestAssistantV2Chat(t *testing.T) {
 			"--custom-filter.url", "https://example.com",
 			"--filter-model", "cohere",
 			"--model", "model",
+			"--overview-id", "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
 			"--plan", "free",
+			"--protocol", "0",
 			"--signature", "signature",
 		)
 	})
@@ -84,7 +88,9 @@ func TestAssistantV2Chat(t *testing.T) {
 			"  url: https://example.com\n" +
 			"filterModel: cohere\n" +
 			"model: model\n" +
+			"overviewId: 182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e\n" +
 			"plan: free\n" +
+			"protocol: 0\n" +
 			"signature: signature\n")
 		mocktest.TestRunMockTestWithPipeAndFlags(
 			t, pipeData,
